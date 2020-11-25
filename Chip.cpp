@@ -6,3 +6,11 @@ Declarations are in Chip.h
 
 #include "Chip.h"
 
+
+void test(){
+  
+    LCD.Clear();
+    LCD.WriteLine("Hello World!");
+  
+}
+
