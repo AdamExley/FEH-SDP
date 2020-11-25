@@ -9,7 +9,7 @@ class Chip {
     //int example_var
   
   public: //function prototypes, etc.
-    //void exmaple_function();
+    //void exmple_function();
   
 };
 
