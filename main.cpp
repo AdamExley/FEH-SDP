@@ -1,4 +1,6 @@
 #include "FEHLCD.h"
+#include "AI.h"
+#include "Chip.h"
 
 /**
  * Entry point to the application.
