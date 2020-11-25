@@ -8,15 +8,15 @@ This is an overview of how files are organized in this program
 
 Header files are used [here's a reference](https://www.learncpp.com/cpp-tutorial/header-files/)
 
-### main.cpp
+#### main.cpp
 Contains all basic code for the project
-### AI.h
+#### AI.h
 Contains class definition and prototypes for the AI class.
-### AI.cpp
+#### AI.cpp
 Contains declarations and code for everything in AI.h.
-### Chip.h
+#### Chip.h
 Contains class definition and prototypes for the Chip class.
-### Chip.cpp
+#### Chip.cpp
 Contains declarations and code for everything in Chip.h.
 
 ## Compiling code
