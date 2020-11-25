@@ -7,7 +7,7 @@ Declarations are in AI.h
 #include "AI.h"
 
 
-//AI::example_function(){     }
+//void AI::example_function(){     }
 
 
 

@@ -7,10 +7,4 @@ Declarations are in Chip.h
 #include "Chip.h"
 
 
-void test(){
-  
-    LCD.Clear();
-    LCD.WriteLine("Hello World!");
-  
-}
-
+// void Chip::example_function(){   }

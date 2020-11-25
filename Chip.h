@@ -15,7 +15,6 @@ class Chip {
   
   public: //function prototypes, etc.
     //void exmple_function();
-  void test();
   
 };
 

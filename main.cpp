@@ -8,7 +8,10 @@
  * @returns status code of program exit
  */
 int main() {
-    Chip.test();
+    AI ai;
+    Chip chip;
+
+
     while (1) {
         // Run forever
     }
