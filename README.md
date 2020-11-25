@@ -7,6 +7,7 @@ Connect4
 
 ## File Structure
 This is an overview of how files are organized in this program
+Header files are used https://www.learncpp.com/cpp-tutorial/header-files/
 
 ### main.cpp
 Contains all basic code for the project
