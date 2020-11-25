@@ -10,7 +10,7 @@ class AI {
     //int example_var
   
   public: //function prototypes, etc.
-    //void exmaple_function();
+    //void example_function();
   
 };
 
