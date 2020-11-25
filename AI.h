@@ -5,6 +5,15 @@ It contains all class code and functions for the AI class
 */
 
 
+class AI {
+  private: //private variables, etc.
+    //int example_var
+  
+  public: //function prototypes, etc.
+    //void exmaple_function();
+  
+};
+
 
 
 
