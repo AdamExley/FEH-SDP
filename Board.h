@@ -16,11 +16,16 @@ Contains the class definition and prototypes for the Board class
 #define BOARD_COLUMNS 7
 
 class Board {
+
   private: //private variables, etc.
     //int example_var
   
   public: //function prototypes, etc.
-    //void exmple_function();
-    void DrawFullBoard(); //Draw the game board, square by square
+
+    void DrawFullBoard(); 
+    /*Draw the entire game board, square by square
+      Ideally, only use to initally draw board
+      Clears screen before drawing board
+    */
   
 };
