@@ -13,11 +13,15 @@ Contains all basic code for the project
 #### AI.h
 Contains class definition and prototypes for the AI class.
 #### AI.cpp
-Contains declarations and code for everything in AI.h.
+Contains code for the game AI.
 #### Chip.h
 Contains class definition and prototypes for the Chip class.
 #### Chip.cpp
-Contains declarations and code for everything in Chip.h.
+Contains code for animating the Chip class.
+#### Board.h
+Contains class definition and prototypes for the Board class.
+#### Board.cpp
+Contains code to draw and update the game board.
 
 ## Compiling code
 As long as you have the [Proteus Simulator](https://feh.osu.edu/simulator/) installed, compilation is simple.
