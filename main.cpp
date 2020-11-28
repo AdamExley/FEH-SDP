@@ -21,7 +21,7 @@ int main() {
     Chip chip;
     Board board;
 
-    board.DrawFullBoard();
+    board.DrawNewBoard();
 
 
     while (1) {

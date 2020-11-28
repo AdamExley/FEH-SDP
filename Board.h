@@ -17,15 +17,30 @@ Contains the class definition and prototypes for the Board class
 
 class Board {
 
-  private: //private variables, etc.
-    //int example_var
-  
-  public: //function prototypes, etc.
+  private:
 
-    void DrawFullBoard(); 
+    int game_state[BOARD_ROWS][BOARD_COLUMNS];
+    /*Array representing the current game state
+      Uses different integers to correspond to different player's chips
+    */
+  
+  public:
+
+    Board();
+    /*Constructor
+      Initializes game_state array to all 0's
+    */
+
+    void DrawNewBoard(); 
     /*Draw the entire game board, square by square
       Ideally, only use to initally draw board
       Clears screen before drawing board
     */
+
+   int checkWin();
+   /*Takes the array representing the state of the game
+     Checks for 4 of any integer in a row
+     If found, returns said integer, otherwise returns 0
+   */
   
 };
