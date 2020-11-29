@@ -17,7 +17,9 @@ Header files are used, [here's a reference on how they work.](https://www.learnc
 *Italics* indicate that the class/function has yet to be implemented.
 
 ### AI
+- ***AI()***
 - ***PickMove()***
+- ***PickRandom()***
 
 ### Board
 - **Board()** - Constructs the board with all spaces set to be blank
@@ -27,9 +29,11 @@ Header files are used, [here's a reference on how they work.](https://www.learnc
 - ***isValidMove(column)***
 
 ### Chip
+- ***Chip()***
 - ***drop(column)***
 
 ### *Menu* 
+- ***Menu()***
 - ***showMain()***
 - ***showStats()***
 - ***showInstructions()***
