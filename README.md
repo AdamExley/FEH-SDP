@@ -33,11 +33,12 @@ Header files are used, [here's a reference on how they work.](https://www.learnc
 - ***drop(*** column ***)***
 
 ### *Menu* 
-- ***Menu()***
-- ***showMain()***
-- ***showStats()***
-- ***showInstructions()***
-- ***showCredits()***
+- **Menu()**
+- **showMain()**
+- **showPlay()**
+- **showStats()**
+- **showInstructions()**
+- **showCredits()**
 - ***playerSelect()***
 
 ### Class-less Functions
