@@ -21,6 +21,7 @@ class Menu{
 
     public:
       void showMain();
+      void showPlay();
       void showStats();
       void showInstructions();
       void showCredits();
@@ -61,30 +62,7 @@ int main() {
     //Play Button
     if (40<=x && x<=140 && 50<=y && y<=100)
     {
-    LCD.Clear();
-
-    LCD.SetDrawColor(LCD.Scarlet);
-
-    //Single Player Rectangle
-    LCD.FillRectangle(40,110,110,50);
-
-    //Multi-Player Rectangle
-    LCD.FillRectangle(185,110,110,50);
-
-    //Writing button names
-    LCD.SetFontColor(LCD.White);
-    LCD.WriteAt("Choose a game mode:", 80, 20);
-    LCD.WriteAt("Single Player", 45, 125);
-    LCD.WriteAt("Multi Player", 195, 125);
-
-    //Return and Exit Button
-    LCD.SetDrawColor(LCD.Scarlet);
-
-    LCD.FillRectangle(10, 210, 130, 24); //Return Button
-    LCD.FillRectangle(210, 210, 90, 24); //Exit Button
-
-    LCD.WriteAt("Return to Menu", 13, 213);
-    LCD.WriteAt("Exit Game", 215, 213);
+        menu.showPlay();
 
         while(!LCD.Touch(&x, &y))
         {
@@ -209,6 +187,9 @@ void waitForInput(int *x, int *y){
     while(!LCD.Touch(x, y)); 
 }
 
+
+
+
 void Menu::showMain(){
 
     LCD.Clear();
@@ -233,5 +214,34 @@ void Menu::showMain(){
     LCD.WriteAt("Statistics", 200, 65);
     LCD.WriteAt("Instructions", 45, 165);
     LCD.WriteAt("Credits", 210, 165);
+
+}
+
+
+void Menu::showPlay(){
+    LCD.Clear();
+
+    LCD.SetDrawColor(LCD.Scarlet);
+
+    //Single Player Rectangle
+    LCD.FillRectangle(40,110,110,50);
+
+    //Multi-Player Rectangle
+    LCD.FillRectangle(185,110,110,50);
+
+    //Writing button names
+    LCD.SetFontColor(LCD.White);
+    LCD.WriteAt("Choose a game mode:", 80, 20);
+    LCD.WriteAt("Single Player", 45, 125);
+    LCD.WriteAt("Multi Player", 195, 125);
+
+    //Return and Exit Button
+    LCD.SetDrawColor(LCD.Scarlet);
+
+    LCD.FillRectangle(10, 210, 130, 24); //Return Button
+    LCD.FillRectangle(210, 210, 90, 24); //Exit Button
+
+    LCD.WriteAt("Return to Menu", 13, 213);
+    LCD.WriteAt("Exit Game", 215, 213);
 
 }
