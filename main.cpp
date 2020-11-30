@@ -48,7 +48,7 @@ int main() {
     //board.DrawNewBoard();
 
   
-    int x, y, z = 1;
+    int x, y;
 
     LCD.SetDrawColor(LCD.Scarlet);
 
