@@ -17,6 +17,14 @@ void waitForInput(int &x, int &y);
 
 class Menu{
     private:
+        //menu_state: Stores current menu
+        /*  0 - Main
+            1 - Play
+            2 - Stats
+            3 - Instructions
+            4 - Credits
+            5 - Exit
+        */
         int menu_state;
 
     public:
@@ -27,7 +35,8 @@ class Menu{
         void showInstructions();
         void showCredits();
         void showExit();
-        void checkTouchLocation(int x, int y);
+        bool checkTouchLocation(int x, int y);
+        //Returns whether the menu should look for more inputs
 
 };
 
@@ -51,70 +60,78 @@ int main() {
 
     //board.DrawNewBoard();
 
-  
     int x, y;
 
     menu.showMain();
 
-    waitForInput(x,y);
+    do{
 
-    //Play Button
-    if (40<=x && x<=140 && 50<=y && y<=100)
-    {
-        menu.showPlay();
+    waitForInput(x, y); 
 
-        waitForInput(x,y);
+    }while(menu.checkTouchLocation(x, y));
+    
 
-        //single player mode statement
-        if (40<=x && x<=150 && 150<=y && y<=200)
-        {
-        //Code for Single Player mode
-        } //end if for single player
 
-        //multi-player mode statement
-        else if (185<=x && x<=296 && 150<=y && y<=200)
-        {
-        //code for Multi Player mode
-        }//end if for multi player
 
-        //code for Exit Button
-        else if (210<=x && x<=300 && 210<=y && y<=234)
-        {
-        menu.showExit();
-        }//end else if for Exit Button
 
-        //code for return button
-        else if (10<=x && x<=140 && 210<=y && y<=234)
-        {
-        //Code for return button
-        }//end else if for return button
+    // //Play Button
+    // if (40<=x && x<=140 && 50<=y && y<=100)
+    // {
+    //     menu.showPlay();
 
-    } //end if for Play Button
+    //     waitForInput(x,y);
+
+    //     //single player mode statement
+    //     if (40<=x && x<=150 && 150<=y && y<=200)
+    //     {
+    //     //Code for Single Player mode
+    //     } //end if for single player
+
+    //     //multi-player mode statement
+    //     else if (185<=x && x<=296 && 150<=y && y<=200)
+    //     {
+    //     //code for Multi Player mode
+    //     }//end if for multi player
+
+    //     //code for Exit Button
+    //     else if (210<=x && x<=300 && 210<=y && y<=234)
+    //     {
+    //     menu.showExit();
+    //     }//end else if for Exit Button
+
+    //     //code for return button
+    //     else if (10<=x && x<=140 && 210<=y && y<=234)
+    //     {
+    //     //Code for return button
+    //     }//end else if for return button
+
+    // } //end if for Play Button
 
  
-    //Statistics Button
-    else if (185<=x && x<=285 && 50<=y && y<=100)
-    {
-    menu.showStats();
+    // //Statistics Button
+    // else if (185<=x && x<=285 && 50<=y && y<=100)
+    // {
+    // menu.showStats();
 
-    waitForInput(x,y);
-    } //end if for statistics button
+    // waitForInput(x,y);
+    // } //end if for statistics button
 
-    //Instructions Button
-    else if (40<=x && x<=140 && 145<=y && y<=195)
-    {
-      menu.showInstructions();
-        waitForInput(x,y);
-    } //end else if for Instructions Button
+    // //Instructions Button
+    // else if (40<=x && x<=140 && 145<=y && y<=195)
+    // {
+    //   menu.showInstructions();
+    //     waitForInput(x,y);
+    // } //end else if for Instructions Button
 
-    //************************************************
-    //Credits Button
-    else if (185<=x && x<=285 && 145<=y && y<=195)
-    {
-    menu.showCredits();
-    waitForInput(x,y);
+    // //************************************************
+    // //Credits Button
+    // else if (185<=x && x<=285 && 145<=y && y<=195)
+    // {
+    // menu.showCredits();
+    // waitForInput(x,y);
 
-    } //end else if for Credits Button
+    // } //end else if for Credits Button
+
 }
 
 
@@ -136,9 +153,76 @@ void waitForInput(int *x, int *y){
 
 
 
+Menu::Menu()
+//Constructor
+//Set menu_state to 0
+:menu_state(0)
+{}
+
+
+bool Menu::checkTouchLocation(int x, int y){
+    //Adam Exley
+
+    if (!menu_state){ //In main Menu
+        //Check each button location in main menu
+
+        if (40<=x && x<=140 && 50<=y && y<=100){//Play Button
+            showPlay();
+            return true;
+        }
+        else if (185<=x && x<=285 && 50<=y && y<=100){//Statistics Button
+            showStats();
+            return true;
+        }
+        else if (40<=x && x<=140 && 145<=y && y<=195){//Instructions Button
+            showInstructions();
+            return true;
+        }
+        else if (185<=x && x<=285 && 145<=y && y<=195){//Credits Button
+            showCredits();
+            return true;
+        }
+        else{//No Button on Main Menu was hit
+            return true;
+        }
+
+    }else{//Not in main menu
+        //All other menus feature "Return" and "Exit" buttons
+        //Check these buttons first
+
+        if (10<=x && x<=140 && 210<=y && y<=234){//Return button
+            //As of now, all screens return to main menu
+            showMain();
+            return true;
+        }
+        else if (210<=x && x<=300 && 210<=y && y<=234){//Exit button
+
+            showExit();
+            return false;
+        }
+        else{//All other buttons
+            //So far, only the play menu has other options
+
+            /**********************Add in here*/
+            return true;
+
+        }
+        
+    }
+    
+}
+
+
+
+
+
 
 void Menu::showMain(){
+    //Lauren Pokonosky
 
+    menu_state = 0; //Set menu_state to main menu
+
+    //Clear screen
     LCD.Clear();
 
     LCD.SetDrawColor(LCD.Scarlet);
@@ -166,6 +250,9 @@ void Menu::showMain(){
 
 
 void Menu::showPlay(){
+    //Lauren Pokonosky
+
+    menu_state = 1; //Set menu_state to play menu
     LCD.Clear();
 
     LCD.SetDrawColor(LCD.Scarlet);
@@ -194,6 +281,10 @@ void Menu::showPlay(){
 }
 
 void Menu::showStats(){
+    //Lauren Pokonosky
+
+    menu_state = 3; //Set menu_state to stats menu
+
     LCD.Clear();
 
     LCD.WriteAt("Statistics Data", 100, 20);
@@ -209,6 +300,10 @@ void Menu::showStats(){
 }
 
 void Menu::showCredits(){
+    //Lauren Pokonosky
+
+    menu_state = 4; //Set menu_state to credits menu
+
     LCD.Clear();
 
     LCD.WriteAt("Game Created By:", 0, 0);
@@ -227,6 +322,10 @@ void Menu::showCredits(){
 }
 
 void Menu::showInstructions(){
+    //Lauren Pokonosky
+
+    menu_state = 3; //Set menu_state to instructions menu
+
     LCD.Clear();
 
     LCD.WriteAt("Connect Four Rules:", 0, 0);
@@ -245,6 +344,10 @@ void Menu::showInstructions(){
 }
 
 void Menu::showExit(){
+    //Lauren Pokonosky
+
+    menu_state = 5; //Set menu_state to exit screen
+
     LCD.Clear();
     LCD.WriteAt("Thank you for playing!", 80, 115);
 }
