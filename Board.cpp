@@ -14,55 +14,62 @@ Board::Board(){
             game_state[r][c] = 0;
         }
     }
-	game_state[0][0] = 1;
-	game_state[1][0] = 2;
-
+	
 }
 
 
 
-void Board::DrawNewBoard(){
+void Board::DrawBoard(){
 	//Written by Adam Exley
 
     // Draw the full game board
     // start at bottom of the screen, justifying the board to the right
 
-    LCD.Clear(); //clear screen
+	LCD.SetDrawColor(BLUE); //set game board color to be blue
 
-    for(int r = BOARD_ROWS - 1, y = 239 - SQUARE_SIDE; r >= 0; r--, y = y - SQUARE_SIDE){
-        //draw BOARD_ROWS rows starting from bottom
+	//Draw large rectangle for game board
+	//Determine size and location based on rows, columns, and size of the tiles
+	LCD.FillRectangle((320 - BOARD_COLUMNS * SQUARE_SIDE), 0, SQUARE_SIDE * BOARD_COLUMNS, SQUARE_SIDE * BOARD_ROWS);
 
-        for(int c = 0, x = (320 - BOARD_COLUMNS * SQUARE_SIDE); c < BOARD_COLUMNS; c++, x = x + SQUARE_SIDE){
-            // draw BOARD_COLUMNS columns starting from left
-
-            //Game tiles
-            LCD.SetDrawColor(BLUE); //set game board color to be blue
-            LCD.FillRectangle(x, y, SQUARE_SIDE, SQUARE_SIDE);
-            
-            //Tile Holes
-				    switch (game_state[r][c]){
-            	case 0:
-								//Set holes to be black (empty)
-			    			LCD.SetDrawColor(LCD.Black);
-								break;
-								
-		  			  case 1:
-								//Set holes to be scarlet for player 1
-								LCD.SetDrawColor(RED);
-								break;
-								
-							case 2:
-								//Set holes to be gray for player 2
-								LCD.SetDrawColor(YELLOW);
-			    			break;
-			    }
-            LCD.FillCircle(x + SQUARE_SIDE/2, y + SQUARE_SIDE/2, HOLE_RADIUS);
-        }
-
-    }
-
+	//Draw the chips in the board
+	DrawChips();
 
 }
+
+
+void Board::DrawChips(){
+
+ for(int r = BOARD_ROWS - 1, y = 239 - SQUARE_SIDE; r >= 0; r--, y = y - SQUARE_SIDE){
+        //draw BOARD_ROWS rows of chips starting from bottom
+
+        for(int c = 0, x = (320 - BOARD_COLUMNS * SQUARE_SIDE); c < BOARD_COLUMNS; c++, x = x + SQUARE_SIDE){
+            // draw BOARD_COLUMNS columns of chips starting from left
+
+            //Chip Colors
+			switch (game_state[r][c]){
+				//Use int stored in game_state to determine if a chip is in place. 
+
+            	case 0:
+					//Set holes to be black (empty)
+			    	LCD.SetDrawColor(LCD.Black);
+					break;
+								
+		  		case 1:
+					//Set holes to be red for player 1
+					LCD.SetDrawColor(RED);
+					break;
+								
+				case 2:
+					//Set holes to be gray for player 2
+					LCD.SetDrawColor(YELLOW);
+			    	break;
+			}
+			//Draw circle in the middle of the rectangle with specified color.
+            LCD.FillCircle(x + SQUARE_SIDE/2, y + SQUARE_SIDE/2, HOLE_RADIUS);
+        }
+    }
+}
+
 
 
 

@@ -31,10 +31,13 @@ class Board {
       Initializes game_state array to all 0's
     */
 
-    void DrawNewBoard(); 
+    void DrawBoard(); 
     /*Draw the entire game board, square by square
-      Ideally, only use to initally draw board
-      Clears screen before drawing board
+    */
+
+   void DrawChips();
+   /*Draw only the chips on the board.
+    Skips redrawing the board itself.
     */
 
    int checkWin();
