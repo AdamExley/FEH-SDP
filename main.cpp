@@ -59,7 +59,7 @@ int main() {
     if (40<=x && x<=140 && 50<=y && y<=100)
     {
         menu.showPlay();
-
+        waitForInput();
         //single player mode statement
         if (40<=x && x<=150 && 150<=y && y<=200)
         {
