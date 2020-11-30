@@ -55,18 +55,10 @@ int main() {
 
     menu.showMain();
 
-    while(!LCD.Touch(&x, &y))
-    {
-    } //end while loop
-
     //Play Button
     if (40<=x && x<=140 && 50<=y && y<=100)
     {
         menu.showPlay();
-
-        while(!LCD.Touch(&x, &y))
-        {
-        } //end while loop
 
         //single player mode statement
         if (40<=x && x<=150 && 150<=y && y<=200)
@@ -100,28 +92,20 @@ int main() {
     {
     menu.showStats();
 
-    while(!LCD.Touch(&x, &y))
-    {
-    } //end while loop
+
     } //end if for statistics button
 
     //Instructions Button
     else if (40<=x && x<=140 && 145<=y && y<=195)
     {
       menu.showInstructions();
-        while(!LCD.Touch(&x, &y))
-        {
-        } //end while loop
+
     } //end else if for Instructions Button
 
-    //************************************************
     //Credits Button
     else if (185<=x && x<=285 && 145<=y && y<=195)
     {
     menu.showCredits();
-    while(!LCD.Touch(&x, &y))
-    {
-    } //end while loop
 
     } //end else if for Credits Button
 }
