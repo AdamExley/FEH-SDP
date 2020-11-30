@@ -108,18 +108,20 @@ int main() {
     Board board;
     Menu menu;
 
-    board.DrawBoard();
-
     int x, y;
 
+    //show main menu at beginning of game
     menu.showMain();
 
     do{
-
+        //get touch location
         waitForInput(x, y); 
 
+        //execute command associated with location based on menu state
+        //loop until a selection is chosen that requires a menu to not be displayed
     }while(menu.checkTouchLocation(x, y));
 
+    return 0;
 }
 
 
