@@ -3,3 +3,6 @@ simulator_firmware/
 game
 game.exe
 *.exe
+.vs/
+docs/
+Doxyfile

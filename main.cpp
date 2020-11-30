@@ -1,14 +1,28 @@
+/**************************************************/
+/* FEH SDP                                        */
+/* Adam Exley, Lauren Pokonosky, Pietro Lavezzo   */
+/* Connect 4                                      */
+/* Clingan 8:00     10/30/20                      */
+/* Menu Performance Test                          */
+/* Ver 0.1                                        */
+/**************************************************/
+
+
 #include "FEHLCD.h"
+#include "FEHUtility.h"
+#include "FEHRandom.h"
+#include "FEHSD.h"
+
+//Include class headers
 #include "AI.h"
 #include "Chip.h"
 #include "Board.h"
 
-/*
-screen is 320 by 240
-*/
 
-#define BUTTON_COLOR LCD.Scarlet
-#define TEXT_COLOR LCD.White
+#define BUTTON_COLOR LCD.Scarlet    //Background color for all menu buttons
+#define TEXT_COLOR LCD.White        //Text color for all menu buttons
+
+/*************************************************** General Prototypes *****************/
 
 /**
  * @brief Makes program idle until a touch is detected
@@ -24,6 +38,8 @@ void waitForInput(int *x, int *y);
  * @returns Nothing
  * */
 void waitForInput(int &x, int &y);
+
+/*************************************************** Menu Class *****************/
 
 /** Displays all menus for game
  *  Stores current menu state
@@ -94,7 +110,7 @@ class Menu{
 };
 
 
-
+/*************************************************** Main *****************/
 
 /**
  * Entry point to the application.
@@ -124,7 +140,7 @@ int main() {
     return 0;
 }
 
-
+/*************************************************** Definitions *****************/
 
 
 void waitForInput(int &x, int &y){
