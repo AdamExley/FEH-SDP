@@ -7,46 +7,91 @@
 screen is 320 by 240
 */
 
-
 #define BUTTON_COLOR LCD.Scarlet
 #define TEXT_COLOR LCD.White
 
-
+/**
+ * @brief Makes program idle until a touch is detected
+ * @param x address to store x coord of touch
+ * @param y address to store y coord of touch
+ * @returns Nothing
+ * */
 void waitForInput(int *x, int *y);
+/** 
+ * @brief Makes program idle until a touch is detected
+ * @param x variable to store x coord of touch
+ * @param y variable to store y coord of touch
+ * @returns Nothing
+ * */
 void waitForInput(int &x, int &y);
-/*Makes program idle until a touch is detected.
-  Returns x and y coords of a touch.
-  Overloaded to accept variables or addresses of variables
-*/
 
+/** Displays all menus for game
+ *  Stores current menu state
+ * */
 class Menu{
     private:
-        //menu_state: Stores current menu
-        /*  0 - Main
-            1 - Play
-            2 - Stats
-            3 - Instructions
-            4 - Credits
-            5 - Exit
-        */
+        /** Stores current menu state
+         *  
+         *  0 - Main
+         *  1 - Play
+         *  2 - Stats
+         *  3 - Instructions
+         *  4 - Credits
+         *  5 - Exit
+         * */
         int menu_state;
+
+        /** @author Lauren Pokonosky
+         *  @brief Draws return and exit buttons
+         * */
         void drawReturnExit();
 
     public:
+
+        /** @author Adam Exley
+         *  @brief Constructs a Menu object. Sets menu_state to be 0.
+         * */
         Menu();
+
+        /** @author Lauren Pokonosky
+         *  @brief Displays main menu
+         * */
         void showMain();
+
+        /** @author Lauren Pokonosky
+         *  @brief Displays game selection menu
+         * */
         void showPlay();
+
+        /** @author Lauren Pokonosky
+         *  @brief Displays statistics on screen
+         * */
         void showStats();
+
+        /** @author Lauren Pokonosky
+         *  @brief Displays game instructions
+         * */
         void showInstructions();
+
+        /** @author Lauren Pokonosky
+         *  @brief Displays the credits for the game
+         * */
         void showCredits();
+
+        /** @author Lauren Pokonosky
+         *  @brief Displays an exit screen thanking the user for playing
+         * */
         void showExit();
+
+        /** @author Adam Exley
+         *  @brief Executes the function associated with a certain touch location
+         *  @param x X-location of touch
+         *  @param y Y-location of touch
+         *  @returns True/false corresponding as to if the menu selection should continue looping
+         * */
         bool checkTouchLocation(int x, int y);
-        //Returns whether the menu should look for more inputs
 
 };
-
-
-
 
 
 
@@ -63,7 +108,7 @@ int main() {
     Board board;
     Menu menu;
 
-    //board.DrawNewBoard();
+    board.DrawBoard();
 
     int x, y;
 
@@ -88,7 +133,7 @@ void waitForInput(int &x, int &y){
 }
 
 void waitForInput(int *x, int *y){
-    //Written by Adam Exley
+    //Adam Exley
     //Version for address input
     //Do nothing until touch is registered
     while(!LCD.Touch(x, y)); 
@@ -97,7 +142,7 @@ void waitForInput(int *x, int *y){
 
 
 Menu::Menu()
-//Constructor
+//Adam Exley
 //Set menu_state to 0
 :menu_state(0)
 {}

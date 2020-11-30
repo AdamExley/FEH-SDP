@@ -1,8 +1,8 @@
 #pragma once //don't include multiple copies in final compilation
-/*
-Board header file
-Contains the class definition and prototypes for the Board class
-*/
+/**
+ * @file Board.h
+ * @brief Contains the class definition and prototypes for the Board class
+ * */
 
 #include "FEHLCD.h"
 #include "FEHUtility.h"
@@ -10,40 +10,52 @@ Contains the class definition and prototypes for the Board class
 #include "FEHSD.h"
 
 
-#define SQUARE_SIDE 40 //side length of each board tile
-#define HOLE_RADIUS 15 //radius of the hole of each tile
-#define BOARD_ROWS 6
-#define BOARD_COLUMNS 7
+#define SQUARE_SIDE 40  //Side length of each board tile
+#define HOLE_RADIUS 15  //Radius of the hole of each tile
+#define BOARD_ROWS 6    //Rows of the game board
+#define BOARD_COLUMNS 7 //Columns in the game board
 
+/**
+ * @brief Stores and dislays game state 
+ * */
 class Board {
 
   private:
-
+    /**
+     * Array representing the current game state
+     * Uses different integers to correspond to different player's chips
+     * */
     int game_state[BOARD_ROWS][BOARD_COLUMNS];
-    /*Array representing the current game state
-      Uses different integers to correspond to different player's chips
-    */
-  
+
   public:
 
+    /**
+     * @brief Constructs an object of the Board class
+     * Initializes all elements of the game_state array to 0.
+     * */
     Board();
-    /*Constructor
-      Initializes game_state array to all 0's
-    */
 
+    /** @author Adam Exley
+     *  @brief Draws entire game board with chips
+     *  @public A
+     *  @return Nothing
+     * */
     void DrawBoard(); 
-    /*Draw the entire game board, square by square
-    */
 
-   void DrawChips();
-   /*Draw only the chips on the board.
-    Skips redrawing the board itself.
-    */
+    /** @author Adam Exley
+     *  @brief Draws only the chips of the game. Skips redrawing board.
+     *  @return Nothing
+     * */
+    void DrawChips();
 
-   int checkWin();
-   /*Takes the array representing the state of the game
-     Checks for 4 of any integer in a row
-     If found, returns said integer, otherwise returns 0
-   */
+
+    /** @author Adam Exley
+     *  @brief Determines if a player has won
+     *  Tests all possible orientations and positions of getting 4 in a row.
+     *  If a win is found: 
+     *  @returns The ID of the winning player (1 or 2). Otherwise returns 0.
+     * */
+    int checkWin();
+
   
 };
