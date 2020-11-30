@@ -14,6 +14,8 @@ Board::Board(){
             game_state[r][c] = 0;
         }
     }
+	game_state[0][0] = 1;
+	game_state[1][0] = 2;
 
 }
 
@@ -30,7 +32,7 @@ void Board::DrawNewBoard(){
     for(int r = BOARD_ROWS - 1, y = 239 - SQUARE_SIDE; r >= 0; r--, y = y - SQUARE_SIDE){
         //draw BOARD_ROWS rows starting from bottom
 
-        for(int c = BOARD_COLUMNS, x = ((320 - BOARD_COLUMNS * SQUARE_SIDE) / 2) - 1; c >= 0; c--, x = x + SQUARE_SIDE){
+        for(int c = 0, x = ((320 - BOARD_COLUMNS * SQUARE_SIDE) / 2) - 1; c < BOARD_COLUMNS; c++, x = x + SQUARE_SIDE){
             // draw BOARD_COLUMNS columns starting from left
 
             //Game tiles
