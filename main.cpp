@@ -8,6 +8,10 @@ screen is 320 by 240
 */
 
 
+#define BUTTON_COLOR LCD.Scarlet
+#define TEXT_COLOR LCD.White
+
+
 void waitForInput(int *x, int *y);
 void waitForInput(int &x, int &y);
 /*Makes program idle until a touch is detected.
@@ -26,6 +30,7 @@ class Menu{
             5 - Exit
         */
         int menu_state;
+        void drawReturnExit();
 
     public:
         Menu();
@@ -66,71 +71,9 @@ int main() {
 
     do{
 
-    waitForInput(x, y); 
+        waitForInput(x, y); 
 
     }while(menu.checkTouchLocation(x, y));
-    
-
-
-
-
-    // //Play Button
-    // if (40<=x && x<=140 && 50<=y && y<=100)
-    // {
-    //     menu.showPlay();
-
-    //     waitForInput(x,y);
-
-    //     //single player mode statement
-    //     if (40<=x && x<=150 && 150<=y && y<=200)
-    //     {
-    //     //Code for Single Player mode
-    //     } //end if for single player
-
-    //     //multi-player mode statement
-    //     else if (185<=x && x<=296 && 150<=y && y<=200)
-    //     {
-    //     //code for Multi Player mode
-    //     }//end if for multi player
-
-    //     //code for Exit Button
-    //     else if (210<=x && x<=300 && 210<=y && y<=234)
-    //     {
-    //     menu.showExit();
-    //     }//end else if for Exit Button
-
-    //     //code for return button
-    //     else if (10<=x && x<=140 && 210<=y && y<=234)
-    //     {
-    //     //Code for return button
-    //     }//end else if for return button
-
-    // } //end if for Play Button
-
- 
-    // //Statistics Button
-    // else if (185<=x && x<=285 && 50<=y && y<=100)
-    // {
-    // menu.showStats();
-
-    // waitForInput(x,y);
-    // } //end if for statistics button
-
-    // //Instructions Button
-    // else if (40<=x && x<=140 && 145<=y && y<=195)
-    // {
-    //   menu.showInstructions();
-    //     waitForInput(x,y);
-    // } //end else if for Instructions Button
-
-    // //************************************************
-    // //Credits Button
-    // else if (185<=x && x<=285 && 145<=y && y<=195)
-    // {
-    // menu.showCredits();
-    // waitForInput(x,y);
-
-    // } //end else if for Credits Button
 
 }
 
@@ -225,27 +168,25 @@ void Menu::showMain(){
     //Clear screen
     LCD.Clear();
 
-    LCD.SetDrawColor(LCD.Scarlet);
+    LCD.SetDrawColor(BUTTON_COLOR);
+    LCD.SetFontColor(TEXT_COLOR);
 
     //Play Rectangle
     LCD.FillRectangle(40,50,100,50);
+    LCD.WriteAt("Play", 75, 55);
+    LCD.WriteAt("Game Here", 45, 78);
 
     //Statistics Rectangle
     LCD.FillRectangle(185,50,100,50);
+    LCD.WriteAt("Statistics", 200, 65);
 
     //Instructions Rectangle
     LCD.FillRectangle(40,145,100,50);
+    LCD.WriteAt("Instructions", 45, 165);
 
     //Credits Rectangle
     LCD.FillRectangle(185,145,100,50);
-
-    LCD.SetFontColor(LCD.White);
-    LCD.WriteAt("Play", 75, 55);
-    LCD.WriteAt("Game Here", 45, 78);
-    LCD.WriteAt("Statistics", 200, 65);
-    LCD.WriteAt("Instructions", 45, 165);
     LCD.WriteAt("Credits", 210, 165);
-
 }
 
 
@@ -255,7 +196,7 @@ void Menu::showPlay(){
     menu_state = 1; //Set menu_state to play menu
     LCD.Clear();
 
-    LCD.SetDrawColor(LCD.Scarlet);
+    LCD.SetDrawColor(BUTTON_COLOR);
 
     //Single Player Rectangle
     LCD.FillRectangle(40,110,110,50);
@@ -264,19 +205,13 @@ void Menu::showPlay(){
     LCD.FillRectangle(185,110,110,50);
 
     //Writing button names
-    LCD.SetFontColor(LCD.White);
+    LCD.SetFontColor(TEXT_COLOR);
     LCD.WriteAt("Choose a game mode:", 80, 20);
     LCD.WriteAt("Single Player", 45, 125);
     LCD.WriteAt("Multi Player", 195, 125);
 
-    //Return and Exit Button
-    LCD.SetDrawColor(LCD.Scarlet);
-
-    LCD.FillRectangle(10, 210, 130, 24); //Return Button
-    LCD.FillRectangle(210, 210, 90, 24); //Exit Button
-
-    LCD.WriteAt("Return to Menu", 13, 213);
-    LCD.WriteAt("Exit Game", 215, 213);
+    //Draws Return and Exit buttons 
+    drawReturnExit();
 
 }
 
@@ -287,16 +222,26 @@ void Menu::showStats(){
 
     LCD.Clear();
 
+    LCD.SetFontColor(TEXT_COLOR);
+
     LCD.WriteAt("Statistics Data", 100, 20);
+
+    LCD.WriteAt("Against AI:", 10, 50);
+        LCD.WriteAt("Wins: ", 35, 70);
+            LCD.WriteAt("0", 125, 70);
+        LCD.WriteAt("Losses: ", 35, 90);
+            LCD.WriteAt("0", 125, 90);
+        LCD.WriteAt("Fastest Win:", 35, 110);
+            LCD.WriteAt("10", 140, 110);
+            LCD.WriteAt("   Moves", 155, 110);
+    
+    LCD.WriteAt("2 Player:", 10, 140);
+        LCD.WriteAt("Player 1 Wins:", 35, 160);
+        LCD.WriteAt("Player 2 Wins:", 35, 180);
   
-    //Return and Exit Button
-    LCD.SetDrawColor(LCD.Scarlet);
-
-    LCD.FillRectangle(10, 210, 130, 24); //Return Button
-    LCD.FillRectangle(210, 210, 90, 24); //Exit Button
-
-    LCD.WriteAt("Return to Menu", 13, 213);
-    LCD.WriteAt("Exit Game", 215, 213);
+  
+    //Draws Return and Exit buttons 
+    drawReturnExit();
 }
 
 void Menu::showCredits(){
@@ -311,14 +256,8 @@ void Menu::showCredits(){
     LCD.WriteAt("Adam Exley", 0, 60);
     LCD.WriteAt("Lauren Pokonosky", 0, 90);
   
-    //Return and Exit Button
-    LCD.SetDrawColor(LCD.Scarlet);
-
-    LCD.FillRectangle(10, 210, 130, 24); //Return Button
-    LCD.FillRectangle(210, 210, 90, 24); //Exit Button
-
-    LCD.WriteAt("Return to Menu", 13, 213);
-    LCD.WriteAt("Exit Game", 215, 213);
+    //Draws Return and Exit buttons 
+    drawReturnExit();
 }
 
 void Menu::showInstructions(){
@@ -329,20 +268,16 @@ void Menu::showInstructions(){
     LCD.Clear();
 
     LCD.WriteAt("Connect Four Rules:", 0, 0);
-    LCD.WriteAt("The object of the game is to be the first", 0, 30);
-    LCD.WriteAt("player to place chips that make a", 0, 60);
-    LCD.WriteAt("perfect row or diagonal line of four.", 0, 90); 
-    LCD.WriteAt("Take turns clicking the column that", 0, 120);
-    LCD.WriteAt("you want to drop the chip into.", 0, 150);
+    LCD.WriteAt("The object of the game is to be the first", 0, 20);
+    LCD.WriteAt("player to place chips that make a", 0, 40);
+    LCD.WriteAt("perfect row or diagonal line of four", 0, 60); 
 
-    //Return and Exit Button
-    LCD.SetDrawColor(LCD.Scarlet);
+    LCD.WriteAt("Take turns clicking anywhere in the", 0, 90);
+    LCD.WriteAt("column that you want to drop your chip", 0, 110);
+    LCD.WriteAt("in to try to win!", 0, 130);
 
-    LCD.FillRectangle(10, 210, 130, 24); //Return Button
-    LCD.FillRectangle(210, 210, 90, 24); //Exit Button
-
-    LCD.WriteAt("Return to Menu", 13, 213);
-    LCD.WriteAt("Exit Game", 215, 213);
+    //Draws Return and Exit buttons 
+    drawReturnExit();
 }
 
 void Menu::showExit(){
@@ -353,3 +288,19 @@ void Menu::showExit(){
     LCD.Clear();
     LCD.WriteAt("Thank you for playing!", 80, 115);
 }
+
+
+void Menu::drawReturnExit(){
+    //Lauren Pokonosky
+
+    //Draws Return and Exit buttons 
+    LCD.SetDrawColor(BUTTON_COLOR);
+    LCD.SetFontColor(TEXT_COLOR);
+
+    LCD.FillRectangle(10, 210, 130, 24); //Return Button
+    LCD.FillRectangle(210, 210, 90, 24); //Exit Button
+
+    LCD.WriteAt("Return to Menu", 13, 213);
+    LCD.WriteAt("Exit Game", 215, 213);
+}
+
