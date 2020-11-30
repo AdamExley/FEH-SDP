@@ -15,6 +15,23 @@ void waitForInput(int &x, int &y);
   Overloaded to accept variables or addresses of variables
 */
 
+class Menu{
+    private:
+        int menu_state;
+
+    public:
+      void showMain();
+      void showStats();
+      void showInstructions();
+      void showCredits();
+
+
+};
+
+
+
+
+
 
 
 /**
