@@ -19,7 +19,8 @@ Board::Board(){
 
 
 
-void Board::DrawNewBoard(){ 
+void Board::DrawNewBoard(){
+	//Written by Adam Exley
 
     // Draw the full game board
     // start at bottom of the screen, centering the board.
@@ -50,6 +51,10 @@ void Board::DrawNewBoard(){
 
 
 int Board::checkWin() {
+	//Written by Adam Exley
+
+	//Check for 4 chips in a row in any orientation
+
 	/*************** Vertical ********************/
 
 	//Use starting points in upper half of board

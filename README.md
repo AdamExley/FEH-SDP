@@ -41,7 +41,7 @@ Header files are used, [here's a reference on how they work.](https://www.learnc
 - ***playerSelect()***
 
 ### Class-less Functions
-- ***waitForInput()***
+- **waitForInput(int *x, int *y OR int &x, int &y)** - Waits for and returns location of a touch on the screen
 - ***displayWin()***
 - ***displayloss()***
 - ***switchPlayer()***

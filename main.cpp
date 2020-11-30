@@ -8,6 +8,13 @@ screen is 320 by 240
 */
 
 
+void waitForInput(int *x, int *y);
+void waitForInput(int &x, int &y);
+/*Makes program idle until a touch is detected.
+  Returns x and y coords of a touch.
+  Overloaded to accept variables or addresses of variables
+*/
+
 
 
 /**
@@ -29,4 +36,21 @@ int main() {
     }
     return 0;
     
+}
+
+
+
+
+void waitForInput(int &x, int &y){
+    //Written by Adam Exley
+    //Version for variable input
+    //Do nothing until touch is registered
+    while(!LCD.Touch(&x, &y)); 
+}
+
+void waitForInput(int *x, int *y){
+    //Written by Adam Exley
+    //Version for address input
+    //Do nothing until touch is registered
+    while(!LCD.Touch(x, y)); 
 }
