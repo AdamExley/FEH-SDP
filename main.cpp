@@ -25,6 +25,7 @@ class Menu{
       void showStats();
       void showInstructions();
       void showCredits();
+      void showExit();
 
 
 };
@@ -57,7 +58,6 @@ int main() {
     while(!LCD.Touch(&x, &y))
     {
     } //end while loop
-    // *********************************************** Initial Board
 
     //Play Button
     if (40<=x && x<=140 && 50<=y && y<=100)
@@ -83,8 +83,7 @@ int main() {
         //code for Exit Button
         else if (210<=x && x<=300 && 210<=y && y<=234)
         {
-        LCD.Clear();
-        LCD.WriteAt("Thank you for playing!", 80, 115);
+        menu.showExit();
         }//end else if for Exit Button
 
         //code for return button
@@ -95,77 +94,34 @@ int main() {
 
     } //end if for Play Button
 
-    //**************************************************
+ 
     //Statistics Button
     else if (185<=x && x<=285 && 50<=y && y<=100)
     {
-    LCD.Clear();
-
-    LCD.WriteAt("Statistics Data", 100, 20);
+    menu.showStats();
 
     while(!LCD.Touch(&x, &y))
     {
     } //end while loop
+    } //end if for statistics button
 
-    //Return and Exit Button
-    LCD.SetDrawColor(LCD.Scarlet);
-
-    LCD.FillRectangle(10, 210, 130, 24); //Return Button
-    LCD.FillRectangle(210, 210, 90, 24); //Exit Button
-
-    LCD.WriteAt("Return to Menu", 13, 213);
-    LCD.WriteAt("Exit Game", 215, 213);
-    } //end else if for Statistics Button
-
-
-    //*****************************************************
     //Instructions Button
     else if (40<=x && x<=140 && 145<=y && y<=195)
     {
-    LCD.Clear();
-
-    LCD.WriteAt("Connect Four Rules:", 0, 0);
-    LCD.WriteAt("The object of the game is to be the first player", 0, 30);
-    LCD.WriteAt("to place four chips that make a perfect row or diagonal", 0, 60);
-    LCD.WriteAt("line.", 0, 90); //Edit rules later
-
+      menu.showInstructions();
         while(!LCD.Touch(&x, &y))
         {
         } //end while loop
-
-    //Return and Exit Button
-    LCD.SetDrawColor(LCD.Scarlet);
-
-    LCD.FillRectangle(10, 210, 130, 24); //Return Button
-    LCD.FillRectangle(210, 210, 90, 24); //Exit Button
-
-    LCD.WriteAt("Return to Menu", 13, 213);
-    LCD.WriteAt("Exit Game", 215, 213);
     } //end else if for Instructions Button
 
     //************************************************
     //Credits Button
     else if (185<=x && x<=285 && 145<=y && y<=195)
     {
-    LCD.Clear();
-
-    LCD.WriteAt("Game Created By:", 0, 0);
-    LCD.WriteAt("Pietro Lavezzo", 0, 30);
-    LCD.WriteAt("Adam Exley", 0, 60);
-    LCD.WriteAt("Lauren Pokonosky", 0, 90);
-
+    menu.showCredits();
     while(!LCD.Touch(&x, &y))
     {
     } //end while loop
-
-    //Return and Exit Button
-    LCD.SetDrawColor(LCD.Scarlet);
-
-    LCD.FillRectangle(10, 210, 130, 24); //Return Button
-    LCD.FillRectangle(210, 210, 90, 24); //Exit Button
-
-    LCD.WriteAt("Return to Menu", 13, 213);
-    LCD.WriteAt("Exit Game", 215, 213);
 
     } //end else if for Credits Button
 }
@@ -244,4 +200,60 @@ void Menu::showPlay(){
     LCD.WriteAt("Return to Menu", 13, 213);
     LCD.WriteAt("Exit Game", 215, 213);
 
+}
+
+void Menu::showStats(){
+    LCD.Clear();
+
+    LCD.WriteAt("Statistics Data", 100, 20);
+  
+    //Return and Exit Button
+    LCD.SetDrawColor(LCD.Scarlet);
+
+    LCD.FillRectangle(10, 210, 130, 24); //Return Button
+    LCD.FillRectangle(210, 210, 90, 24); //Exit Button
+
+    LCD.WriteAt("Return to Menu", 13, 213);
+    LCD.WriteAt("Exit Game", 215, 213);
+}
+
+void Menu::showCredits(){
+    LCD.Clear();
+
+    LCD.WriteAt("Game Created By:", 0, 0);
+    LCD.WriteAt("Pietro Lavezzo", 0, 30);
+    LCD.WriteAt("Adam Exley", 0, 60);
+    LCD.WriteAt("Lauren Pokonosky", 0, 90);
+  
+    //Return and Exit Button
+    LCD.SetDrawColor(LCD.Scarlet);
+
+    LCD.FillRectangle(10, 210, 130, 24); //Return Button
+    LCD.FillRectangle(210, 210, 90, 24); //Exit Button
+
+    LCD.WriteAt("Return to Menu", 13, 213);
+    LCD.WriteAt("Exit Game", 215, 213);
+}
+
+void Menu::showInstructions(){
+    LCD.Clear();
+
+    LCD.WriteAt("Connect Four Rules:", 0, 0);
+    LCD.WriteAt("The object of the game is to be the first", 0, 30);
+    LCD.WriteAt("player to place four chips that make a", 0, 60);
+    LCD.WriteAt("perfect row or diagonal line.", 0, 90); //Edit rules later
+
+    //Return and Exit Button
+    LCD.SetDrawColor(LCD.Scarlet);
+
+    LCD.FillRectangle(10, 210, 130, 24); //Return Button
+    LCD.FillRectangle(210, 210, 90, 24); //Exit Button
+
+    LCD.WriteAt("Return to Menu", 13, 213);
+    LCD.WriteAt("Exit Game", 215, 213);
+}
+
+void Menu::showExit(){
+    LCD.Clear();
+    LCD.WriteAt("Thank you for playing!", 80, 115);
 }
