@@ -44,32 +44,14 @@ int main() {
     AI ai;
     Chip chip;
     Board board;
+    Menu menu;
 
     //board.DrawNewBoard();
 
   
     int x, y;
 
-    LCD.SetDrawColor(LCD.Scarlet);
-
-    //Play Rectangle
-    LCD.FillRectangle(40,50,100,50);
-
-    //Statistics Rectangle
-    LCD.FillRectangle(185,50,100,50);
-
-    //Instructions Rectangle
-    LCD.FillRectangle(40,145,100,50);
-
-    //Credits Rectangle
-    LCD.FillRectangle(185,145,100,50);
-
-    LCD.SetFontColor(LCD.White);
-    LCD.WriteAt("Play", 75, 55);
-    LCD.WriteAt("Game Here", 45, 78);
-    LCD.WriteAt("Statistics", 200, 65);
-    LCD.WriteAt("Instructions", 45, 165);
-    LCD.WriteAt("Credits", 210, 165);
+    menu.showMain();
 
     while(!LCD.Touch(&x, &y))
     {
@@ -225,4 +207,31 @@ void waitForInput(int *x, int *y){
     //Version for address input
     //Do nothing until touch is registered
     while(!LCD.Touch(x, y)); 
+}
+
+void Menu::showMain(){
+
+    LCD.Clear();
+
+    LCD.SetDrawColor(LCD.Scarlet);
+
+    //Play Rectangle
+    LCD.FillRectangle(40,50,100,50);
+
+    //Statistics Rectangle
+    LCD.FillRectangle(185,50,100,50);
+
+    //Instructions Rectangle
+    LCD.FillRectangle(40,145,100,50);
+
+    //Credits Rectangle
+    LCD.FillRectangle(185,145,100,50);
+
+    LCD.SetFontColor(LCD.White);
+    LCD.WriteAt("Play", 75, 55);
+    LCD.WriteAt("Game Here", 45, 78);
+    LCD.WriteAt("Statistics", 200, 65);
+    LCD.WriteAt("Instructions", 45, 165);
+    LCD.WriteAt("Credits", 210, 165);
+
 }
