@@ -27,10 +27,10 @@ void Board::DrawNewBoard(){
 
     LCD.Clear(); //clear screen
 
-    for(int r = 0, y = 239 - SQUARE_SIDE; r < BOARD_ROWS; r++, y = y - SQUARE_SIDE){
+    for(int r = BOARD_ROWS - 1, y = 239 - SQUARE_SIDE; r >= 0; r--, y = y - SQUARE_SIDE){
         //draw BOARD_ROWS rows starting from bottom
 
-        for(int c = 0, x = ((320 - BOARD_COLUMNS * SQUARE_SIDE) / 2) - 1; c < BOARD_COLUMNS; c++, x = x + SQUARE_SIDE){
+        for(int c = BOARD_COLUMNS, x = ((320 - BOARD_COLUMNS * SQUARE_SIDE) / 2) - 1; c >= 0; c--, x = x + SQUARE_SIDE){
             // draw BOARD_COLUMNS columns starting from left
 
             //Game tiles
@@ -38,7 +38,22 @@ void Board::DrawNewBoard(){
             LCD.FillRectangle(x, y, SQUARE_SIDE, SQUARE_SIDE);
             
             //Tile Holes
-            LCD.SetDrawColor(LCD.Black); //set tile holes to be black
+				    switch (game_state[r][c]){
+            	case 0:
+								//Set holes to be black (empty)
+			    			LCD.SetDrawColor(LCD.Black);
+								break;
+								
+		  			  case 1:
+								//Set holes to be scarlet for player 1
+								LCD.SetDrawColor(LCD.Scarlet);
+								break;
+								
+							case 2:
+								//Set holes to be gray for player 2
+								LCD.SetDrawColor(LCD.Gray);
+			    			break;
+			    }
             LCD.FillCircle(x + SQUARE_SIDE/2, y + SQUARE_SIDE/2, HOLE_RADIUS);
         }
 
