@@ -8,12 +8,10 @@
 #include "FEHUtility.h"
 #include "FEHRandom.h"
 #include "FEHSD.h"
+#include "config.h"
 
 
-#define SQUARE_SIDE 40  //Side length of each board tile
-#define HOLE_RADIUS 15  //Radius of the hole of each tile
-#define BOARD_ROWS 6    //Rows of the game board
-#define BOARD_COLUMNS 7 //Columns in the game board
+
 
 /**
  * @brief Stores and dislays game state 

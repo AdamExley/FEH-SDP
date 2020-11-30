@@ -1,12 +1,14 @@
-/*
-Board.cpp
-This contains all the definitions for the Board class.
-Declarations are in Board.h
-*/
+/** @file Board.cpp
+ * This contains all the definitions for the Board class.
+ * Declarations are in Board.h
+ * */
 
 #include "Board.h"
 
 Board::Board(){
+	//Adam Exley
+
+	//Constuct Board object, setting the game to have 0 Chips in play.
 
     //Set all elements of game_state to 0
     for (int r = 0; r < BOARD_ROWS; r++){
@@ -18,9 +20,8 @@ Board::Board(){
 }
 
 
-
 void Board::DrawBoard(){
-	//Written by Adam Exley
+	// Exley
 
     // Draw the full game board
     // start at bottom of the screen, justifying the board to the right
@@ -38,6 +39,12 @@ void Board::DrawBoard(){
 
 
 void Board::DrawChips(){
+	//Adam Exley
+
+	//Draw the chips of the board
+	//Black  -> Empty slot
+	//Red    -> Player 1
+	//Yellow -> Player 2
 
  for(int r = BOARD_ROWS - 1, y = 239 - SQUARE_SIDE; r >= 0; r--, y = y - SQUARE_SIDE){
         //draw BOARD_ROWS rows of chips starting from bottom
