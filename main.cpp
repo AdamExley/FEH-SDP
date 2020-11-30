@@ -330,8 +330,10 @@ void Menu::showInstructions(){
 
     LCD.WriteAt("Connect Four Rules:", 0, 0);
     LCD.WriteAt("The object of the game is to be the first", 0, 30);
-    LCD.WriteAt("player to place four chips that make a", 0, 60);
-    LCD.WriteAt("perfect row or diagonal line.", 0, 90); //Edit rules later
+    LCD.WriteAt("player to place chips that make a", 0, 60);
+    LCD.WriteAt("perfect row or diagonal line of four.", 0, 90); 
+    LCD.WriteAt("Take turns clicking the column that", 0, 120);
+    LCD.WriteAt("you want to drop the chip into.", 0, 150);
 
     //Return and Exit Button
     LCD.SetDrawColor(LCD.Scarlet);
