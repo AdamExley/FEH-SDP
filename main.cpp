@@ -20,13 +20,14 @@ class Menu{
         int menu_state;
 
     public:
-      void showMain();
-      void showPlay();
-      void showStats();
-      void showInstructions();
-      void showCredits();
-      void showExit();
-
+        Menu();
+        void showMain();
+        void showPlay();
+        void showStats();
+        void showInstructions();
+        void showCredits();
+        void showExit();
+        void checkTouchLocation(int x, int y);
 
 };
 
@@ -55,11 +56,15 @@ int main() {
 
     menu.showMain();
 
+    waitForInput(x,y);
+
     //Play Button
     if (40<=x && x<=140 && 50<=y && y<=100)
     {
         menu.showPlay();
-        waitForInput();
+
+        waitForInput(x,y);
+
         //single player mode statement
         if (40<=x && x<=150 && 150<=y && y<=200)
         {
@@ -92,20 +97,22 @@ int main() {
     {
     menu.showStats();
 
-
+    waitForInput(x,y);
     } //end if for statistics button
 
     //Instructions Button
     else if (40<=x && x<=140 && 145<=y && y<=195)
     {
       menu.showInstructions();
-
+        waitForInput(x,y);
     } //end else if for Instructions Button
 
+    //************************************************
     //Credits Button
     else if (185<=x && x<=285 && 145<=y && y<=195)
     {
     menu.showCredits();
+    waitForInput(x,y);
 
     } //end else if for Credits Button
 }
