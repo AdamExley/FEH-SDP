@@ -254,8 +254,16 @@ void Board::updateGameState(int column, int player){
 	game_state[r][column] = player;
 }
 
+void Board::isValidMove
+{
+if  (game_state[6][current_column] != 0) {      //Checking if the last row of the pressed columns is full 
+    return 1;                                  //If so, return 1
+}
+else if (game_state[6][current_column] == 0) {   //Checking if the last row of the pressed column is empty
+    return 0;                                   //If so, return 0
+}
 
-
+}
 
 
 
