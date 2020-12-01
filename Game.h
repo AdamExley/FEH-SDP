@@ -1,7 +1,7 @@
 #pragma once
 
 /** @file Game.h
- *  @brief Contains functions in use throughout the entire game
+ *  @brief Contains declarations of functions in use throughout the entire game
  * */
 
 #include "FEHLCD.h"

@@ -1,6 +1,6 @@
 /** @file Menu.cpp
- * Contains all the definitions for the Menu class.
- * Declarations are in Menu.h
+ *  @brief Contains all the definitions for the Menu class.
+ * Declarations are in Menu.h.
  * */
 
 #include "Menu.h"

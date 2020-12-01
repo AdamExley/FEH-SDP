@@ -26,7 +26,8 @@ void Board::DrawBoard(){
     // Draw the full game board
     // start at bottom of the screen, justifying the board to the right
 
-	LCD.SetDrawColor(BLUE); //set game board color to be blue
+	//Set draw color to the specified board color
+	LCD.SetDrawColor(BOARD_COLOR);
 
 	//Draw large rectangle for game board
 	//Determine size and location based on rows, columns, and size of the tiles
@@ -42,9 +43,7 @@ void Board::DrawChips(){
 	//Adam Exley
 
 	//Draw the chips of the board
-	//Black  -> Empty slot
-	//Red    -> Player 1
-	//Yellow -> Player 2
+	//Use constants in config.h to determine the color of holes
 
  for(int r = BOARD_ROWS - 1, y = 239 - SQUARE_SIDE; r >= 0; r--, y = y - SQUARE_SIDE){
         //draw BOARD_ROWS rows of chips starting from bottom
@@ -57,18 +56,18 @@ void Board::DrawChips(){
 				//Use int stored in game_state to determine if a chip is in place. 
 
             	case 0:
-					//Set holes to be black (empty)
-			    	LCD.SetDrawColor(LCD.Black);
+					//Set holes to be background color
+			    	LCD.SetDrawColor(BOARD_BACKGROUND_COLOR);
 					break;
 								
 		  		case 1:
-					//Set holes to be red for player 1
-					LCD.SetDrawColor(RED);
+					//Set holes to be player 1's color
+					LCD.SetDrawColor(PLAYER_1_COLOR);
 					break;
 								
 				case 2:
-					//Set holes to be gray for player 2
-					LCD.SetDrawColor(YELLOW);
+					//Set holes to be player 2's color
+					LCD.SetDrawColor(PLAYER_2_COLOR);
 			    	break;
 			}
 			//Draw circle in the middle of the rectangle with specified color.
@@ -269,6 +268,8 @@ void Board::updateGameState(int player){
 
 bool Board::isValidMove(){
 	//Pietro Lavezzo
+
+	//Checks to see if a move in the current_column is valid
 
 	if  (game_state[0][current_column] != 0) {      //Checking if the top row of the pressed column is full 
 		return 0;                                  //If so, return 0

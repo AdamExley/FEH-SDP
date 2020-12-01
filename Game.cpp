@@ -1,5 +1,8 @@
+/** @file Game.cpp
+ *  @brief Contains definitions of functions in use throughout the entire game
+ * 
+ * */
 #include "Game.h"
-
 
 
 void waitForInput(int &x, int &y){

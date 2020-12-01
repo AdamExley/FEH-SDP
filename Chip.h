@@ -1,4 +1,5 @@
-#pragma once //don't include multiple copies in final compilation
+#pragma once
+
 /** @file Chip.h
  *  @brief Contains the class definition and prototypes for the Chip class
  * */
