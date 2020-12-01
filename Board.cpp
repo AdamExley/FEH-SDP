@@ -218,10 +218,14 @@ int Board::checkWin() {
 }
 
 void Board::updateGameState(int column, int player){
-	int r;
-	//decrement r until the row r is empty
-	for(r = BOARD_ROWS - 1; game_state[r][column] != 0; r --);
+	//Adam Exley
 	
+	int r; //integer for row
+
+	//decrement r until the spot in row r and column column is empty
+	for(r = BOARD_ROWS - 1; game_state[r][column] != 0; r--);
+	
+	//set the target location to have a value of player
 	game_state[r][column] = player;
 }
 
