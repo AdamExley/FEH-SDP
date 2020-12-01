@@ -216,3 +216,18 @@ int Board::checkWin() {
 	//no win found 
 	return 0;
 }
+
+void Board::updateGameState(int column, int player){
+	int r;
+	//decrement r until the row r is empty
+	for(r = BOARD_ROWS - 1; game_state[r][column] != 0; r --);
+	
+	game_state[r][column] = player;
+}
+
+
+
+
+
+
+

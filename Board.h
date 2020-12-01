@@ -55,5 +55,8 @@ class Board {
      * */
     int checkWin();
 
+
+    void updateGameState(int column, int player);
+
   
 };
