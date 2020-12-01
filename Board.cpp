@@ -78,7 +78,36 @@ void Board::DrawChips(){
 }
 
 
-
+int Board::CurrentColumn() {
+	//Lauren Pokonosky
+	waitForInput(x, y); //Waits for user to click a location on the board
+	
+		if (0<=x && x<=40) {
+			current_column = 0;
+		}
+		else if (40<x && x<=80) {
+			current_column = 1;
+		}
+		else if (80<x && x<=120) {
+			current_column = 2;
+		}
+		else if (120<x && x<=160) {
+			current_column = 3;
+		}
+		else if (160<x && x<=200) {
+			current_column = 4;
+		}
+		else if (200<x && x<=240) {
+			current_column = 5;
+		}
+		else if (240<x && x<=280) {
+			current_column = 6;
+		}
+		else if (280<x && x<=320) {
+			current_column = 7;
+		}
+	return current_column;
+}
 
 
 int Board::checkWin() {
@@ -217,16 +246,12 @@ int Board::checkWin() {
 	return 0;
 }
 
-void Board::updateGameState(int player){
-	//Adam Exley
+void Board::updateGameState(int column, int player){
+	int r;
+	//decrement r until the row r is empty
+	for(r = BOARD_ROWS - 1; game_state[r][column] != 0; r --);
 	
-	int r; //integer for row
-
-	//decrement r until the spot in row r and current_column column is empty
-	for(r = BOARD_ROWS - 1; game_state[r][current_column] != 0; r--);
-	
-	//set the target location to have a value of player
-	game_state[r][current_column] = player;
+	game_state[r][column] = player;
 }
 
 
