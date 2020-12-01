@@ -9,3 +9,12 @@
 #define HOLE_RADIUS 15  //Radius of the hole of each tile
 #define BOARD_ROWS 6    //Rows of the game board
 #define BOARD_COLUMNS 7 //Columns in the game board
+
+
+
+
+
+
+
+
+

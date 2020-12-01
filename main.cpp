@@ -19,20 +19,6 @@
 #include "Menu.h"
 
 
-/**
- * @brief Makes program idle until a touch is detected
- * @param x address to store x coord of touch
- * @param y address to store y coord of touch
- * @returns Nothing
- * */
-void waitForInput(int *x, int *y);
-/** 
- * @brief Makes program idle until a touch is detected
- * @param x variable to store x coord of touch
- * @param y variable to store y coord of touch
- * @returns Nothing
- * */
-void waitForInput(int &x, int &y);
 
 
 /*************************************************** Main *****************/
@@ -64,21 +50,3 @@ int main() {
 
     return 0;
 }
-
-/*************************************************** Definitions *****************/
-
-
-void waitForInput(int &x, int &y){
-    //Written by Adam Exley
-    //Version for variable input
-    //Do nothing until touch is registered
-    while(!LCD.Touch(&x, &y)); 
-}
-
-void waitForInput(int *x, int *y){
-    //Adam Exley
-    //Version for address input
-    //Do nothing until touch is registered
-    while(!LCD.Touch(x, y)); 
-}
-

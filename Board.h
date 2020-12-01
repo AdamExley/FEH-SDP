@@ -9,6 +9,7 @@
 #include "FEHRandom.h"
 #include "FEHSD.h"
 #include "config.h"
+#include "Game.h"
 
 
 
@@ -73,6 +74,9 @@ class Board {
      *  @returns True/false of if said move can be performed
      * */
     bool isValidMove();
+
+
+    int getCurrentColumn();
 
   
 };

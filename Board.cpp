@@ -78,34 +78,39 @@ void Board::DrawChips(){
 }
 
 
-int Board::CurrentColumn() {
+int Board::getCurrentColumn() {
 	//Lauren Pokonosky
+	int x, y;
+	
 	waitForInput(x, y); //Waits for user to click a location on the board
 	
-		if (0<=x && x<=40) {
-			current_column = 0;
-		}
-		else if (40<x && x<=80) {
-			current_column = 1;
-		}
-		else if (80<x && x<=120) {
-			current_column = 2;
-		}
-		else if (120<x && x<=160) {
-			current_column = 3;
-		}
-		else if (160<x && x<=200) {
-			current_column = 4;
-		}
-		else if (200<x && x<=240) {
-			current_column = 5;
-		}
-		else if (240<x && x<=280) {
-			current_column = 6;
-		}
-		else if (280<x && x<=320) {
-			current_column = 7;
-		}
+	if (0<=x && x<=40) {
+		current_column = 0;
+	}
+	else if (40<x && x<=80) {
+		current_column = 1;
+	}
+	else if (80<x && x<=120) {
+		current_column = 2;
+	}
+	else if (120<x && x<=160) {
+		current_column = 3;
+	}
+	else if (160<x && x<=200) {
+		current_column = 4;
+	}
+	else if (200<x && x<=240) {
+		current_column = 5;
+	}
+	else if (240<x && x<=280) {
+		current_column = 6;
+	}
+	else if (280<x && x<=320) {
+		current_column = 7;
+	}
+
+	current_column--;
+
 	return current_column;
 }
 
