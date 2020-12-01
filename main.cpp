@@ -18,6 +18,8 @@
 #include "Board.h"
 #include "Menu.h"
 
+#include "connect4img.c"
+
 
 
 
@@ -34,6 +36,7 @@ int main() {
     Chip chip;
     Board board;
     Menu menu;
+
 
     int x, y;
 

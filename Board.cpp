@@ -21,7 +21,7 @@ Board::Board(){
 
 
 void Board::DrawBoard(){
-	// Exley
+	//Adam Exley
 
     // Draw the full game board
     // start at bottom of the screen, justifying the board to the right
@@ -81,7 +81,7 @@ void Board::DrawChips(){
 int Board::getCurrentColumn() {
 	//Lauren Pokonosky
 	int x, y;
-	
+
 	waitForInput(x, y); //Waits for user to click a location on the board
 	
 	if (0<=x && x<=40) {
@@ -251,6 +251,8 @@ int Board::checkWin() {
 	return 0;
 }
 
+
+
 void Board::updateGameState(int player){
 	//Adam Exley
 
@@ -263,10 +265,12 @@ void Board::updateGameState(int player){
 }
 
 
+
+
 bool Board::isValidMove(){
 	//Pietro Lavezzo
 
-	if  (game_state[0][current_column] != 0) {      //Checking if the top row of the pressed columns is full 
+	if  (game_state[0][current_column] != 0) {      //Checking if the top row of the pressed column is full 
 		return 0;                                  //If so, return 0
 	}
 	else if (game_state[0][current_column] == 0) {   //Checking if the top row of the pressed column is empty

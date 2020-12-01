@@ -75,7 +75,11 @@ class Board {
      * */
     bool isValidMove();
 
-
+    /** @author Lauren Pokonosky
+     *  @brief Waits for a touch and returns the value of the column that was touched.
+     *  Also stores this value in the current_column variable.
+     *  @returns A column value, -1 to 6, with -1 corresponding to the menu.
+     * */
     int getCurrentColumn();
 
   
