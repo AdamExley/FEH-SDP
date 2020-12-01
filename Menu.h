@@ -9,8 +9,7 @@
 #include "FEHSD.h"
 #include "config.h"
 
-/** Displays all menus for game
- *  Stores current menu state
+/** @brief Displays all menus for game and stores current menu state.
  * */
 class Menu{
     private:
