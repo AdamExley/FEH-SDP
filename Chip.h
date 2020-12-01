@@ -11,10 +11,12 @@
 
 class Chip {
   private: //private variables, etc.
-    //int example_var
+    int chip_x;
+    int chip_y;
+    int column;
   
   public: //function prototypes, etc.
-    //void exmple_function();
+    void Drop(int column);
   
 };
 
