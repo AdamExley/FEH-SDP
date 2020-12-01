@@ -67,5 +67,12 @@ class Board {
      * */
     void updateGameState(int player);
 
+    /** @author Pietro Lavezzo
+     *  @brief Checks if making a move in current_column is valid by seeing
+     *  if the top row of current_column is occupied.
+     *  @returns True/false of if said move can be performed
+     * */
+    bool isValidMove();
+
   
 };

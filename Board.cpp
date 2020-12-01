@@ -246,22 +246,27 @@ int Board::checkWin() {
 	return 0;
 }
 
-void Board::updateGameState(int column, int player){
+void Board::updateGameState(int player){
+	//Adam Exley
+
 	int r;
 	//decrement r until the row r is empty
-	for(r = BOARD_ROWS - 1; game_state[r][column] != 0; r --);
+	for(r = BOARD_ROWS - 1; game_state[r][current_column] != 0; r--);
 	
-	game_state[r][column] = player;
+	//In the lowest empty row, place the chip with value "player"
+	game_state[r][current_column] = player;
 }
 
-void Board::isValidMove
-{
-if  (game_state[6][current_column] != 0) {      //Checking if the last row of the pressed columns is full 
-    return 1;                                  //If so, return 1
-}
-else if (game_state[6][current_column] == 0) {   //Checking if the last row of the pressed column is empty
-    return 0;                                   //If so, return 0
-}
+
+bool Board::isValidMove(){
+	//Pietro Lavezzo
+
+	if  (game_state[0][current_column] != 0) {      //Checking if the top row of the pressed columns is full 
+		return 0;                                  //If so, return 0
+	}
+	else if (game_state[0][current_column] == 0) {   //Checking if the top row of the pressed column is empty
+		return 1;                                   //If so, return 1
+	}
 
 }
 
