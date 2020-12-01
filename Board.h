@@ -19,11 +19,15 @@
 class Board {
 
   private:
-    /**
-     * Array representing the current game state
-     * Uses different integers to correspond to different player's chips
+    /** Array representing the current game state
+     *  Uses different integers to correspond to different player's chips
      * */
     int game_state[BOARD_ROWS][BOARD_COLUMNS];
+
+    /** Column that the board is currently manipulating
+     * */
+    int current_column;
+
 
   public:
 
@@ -62,7 +66,7 @@ class Board {
      *  @param column Column to put the new chip in
      *  @param player Integer value (1 or 2) to set the array cell as
      * */
-    void updateGameState(int column, int player);
+    void updateGameState(int player);
 
   
 };
