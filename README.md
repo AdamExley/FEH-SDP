@@ -25,7 +25,7 @@ Header files are used, [here's a reference on how they work.](https://www.learnc
 - **Board()** - Constructs the board with all spaces set to be blank
 - **DrawNewBoard()** - Draws an empty board
 - **checkWin()** - Using the game_state array, checks if any 4 chips are in a row
-- **updateGameState(** column, player **)** - Adds a chip to the game_state array with value "player" in the given column
+- **updateGameState(** player **)** - Adds a chip to the game_state array with value "player" in the given column
 - ***isValidMove(*** column ***)***
 
 ### Chip
