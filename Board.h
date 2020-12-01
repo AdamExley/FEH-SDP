@@ -55,7 +55,13 @@ class Board {
      * */
     int checkWin();
 
-
+    /** @author Adam Exley
+     *  @brief Updates the game_state array to contain a new chip
+     *  in a certain column. Uses the player paramater as the value in 
+     *  the array 
+     *  @param column Column to put the new chip in
+     *  @param player Integer value (1 or 2) to set the array cell as
+     * */
     void updateGameState(int column, int player);
 
   
