@@ -25,7 +25,7 @@ Header files are used, [here's a reference on how they work.](https://www.learnc
 - **Board()** - Constructs the board with all spaces set to be blank
 - **DrawNewBoard()** - Draws an empty board
 - **checkWin()** - Using the game_state array, checks if any 4 chips are in a row
-- ***updateGameState(*** column ***)***
+- **updateGameState(** column, player **)** - Adds a chip to the game_state array with value "player" in the given column
 - ***isValidMove(*** column ***)***
 
 ### Chip
@@ -33,13 +33,13 @@ Header files are used, [here's a reference on how they work.](https://www.learnc
 - ***drop(*** column ***)***
 
 ### *Menu* 
-- **Menu()**
-- **showMain()**
-- **showPlay()**
-- **showStats()**
-- **showInstructions()**
-- **showCredits()**
-- ***playerSelect()***
+- **Menu()** - Constructs menu and sets menu state to be the main menu
+- **showMain()** - Draws main menu
+- **showPlay()** - Draws game selection menu
+- **showStats()** - Draws statistics screen
+- **showInstructions()** - Shows game instructions
+- **showCredits()** - Shows game credits
+- ***AISelect()***
 
 ### Class-less Functions
 - **waitForInput(** int *x, int *y ***OR*** int &x, int &y **)** - Waits for and returns location of a touch on the screen
