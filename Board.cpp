@@ -51,7 +51,7 @@ void Board::DrawChips(){
             // draw BOARD_COLUMNS columns of chips starting from left
 
             //Chip Colors
-			switch (game_state[r][c]){
+			switch (board_state[r][c]){
 				//Use int stored in game_state to determine if a chip is in place. 
 
             	case 0:

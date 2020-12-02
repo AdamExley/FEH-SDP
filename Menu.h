@@ -9,6 +9,7 @@
 #include "FEHRandom.h"
 #include "FEHSD.h"
 #include "config.h"
+#include "Game.h"
 
 /** @brief Displays all menus for game and stores current menu state.
  * */

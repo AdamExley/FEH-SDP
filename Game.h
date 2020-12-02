@@ -9,15 +9,21 @@
 #include "FEHRandom.h"
 #include "FEHSD.h"
 #include "config.h"
+#include "Menu.h"
 
 class Game{
 
     private:
         bool Ai_game;
         int current_player;
+        bool singleplayer;
+
+
+        
 
     public:
         bool SinglePlayer();
+        
         bool MultiPlayer();
 
         int getCurrentPlayer();
@@ -25,6 +31,7 @@ class Game{
         bool isAIGame();
 
         bool isPlayerTurn();
+
 
 
 };

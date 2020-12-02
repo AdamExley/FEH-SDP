@@ -41,7 +41,7 @@ int main() {
     Chip chip;
     Board board(game_state);
     Menu menu;
-    //Game game;
+    Game game;
 
     int enabled[] = {WHITE, RED, MAROON, BLACK, YELLOW};
     Img connect4logo(enabled, 5);

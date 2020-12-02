@@ -56,11 +56,11 @@ bool Menu::checkTouchLocation(int x, int y){
         }
         else if (40<=x && x<=150 && 110<=y && y<=160) {//Single Player Button
             showDifficulty();
-            game.SinglePlayer();
+            //SinglePlayer();
             return true;
         }
         else if (185<=x && x<=295 && 110<=y && y<=160) {//Multi Player Button
-            game.MultiPlayer();
+            //MultiPlayer();
             return true;
         }
 
