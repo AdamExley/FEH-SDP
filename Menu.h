@@ -15,8 +15,7 @@
  * */
 class Menu{
     private:
-      /** Stores current menu state
-       *  
+      /** Stores current menu state:
        *  0 - Main
        *  1 - Player Selection
        *  2 - Stats
@@ -27,8 +26,13 @@ class Menu{
        * */
       int menu_state;
 
+      
+      /** Stores if player selects a singleplayer game
+       * */
       bool singleplayer;
 
+      /** Stores difficulty selected by player in a singleplayer game
+       * */
       bool difficulty;
 
       /** @author Lauren Pokonosky
@@ -71,16 +75,14 @@ class Menu{
       /** @author Lauren Pokonosky
        *  @brief Displays an exit screen thanking the user for playing
        * */
-    
       void showDifficulty();
         
       /** @author Lauren Pokonosky
        *  @brief Displays the option of choosing Easy or Hard gameplay in single player mode
        * */
-    
       void showExit();
 
-      /** @author Adam Exley
+      /** @authors Adam Exley, Lauren Pokonosky
        *  @brief Executes the function associated with a certain touch location
        *  @param x X-location of touch
        *  @param y Y-location of touch

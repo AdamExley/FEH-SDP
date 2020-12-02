@@ -22,9 +22,6 @@ class Game{
         
 
     public:
-        bool SinglePlayer();
-        
-        bool MultiPlayer();
 
         int getCurrentPlayer();
 

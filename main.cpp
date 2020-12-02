@@ -65,7 +65,7 @@ int main() {
 
     //after menu is done executing, begin playing game
 
-    // if(game.isAIgame){
+    // if(game.isSingleplayer){
     //     ai.setDifficulty(game.getAIdifficulty());
     // }
 
