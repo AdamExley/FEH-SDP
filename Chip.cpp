@@ -26,10 +26,10 @@ void Chip::Drop() {
     chip_y = (current_row) * 40;
 
     //Set the height to a reasonable height for a Connect Four Board so the chips being dropped to the bottom don't go too fast
-    height_change = chip_y / conversion_constant;
+    //height_change = chip_y / conversion_constant;
 
     //This will redraw the circle at a faster rate as it goes down the screen
-    for (current_height = 0; current_height <= height_change; current_height = (g*pow(time,2) + current_height) )
+    for (current_height = 0; current_height <= chip_y; current_height = (g*pow(time,2) + current_height) )
     {
         LCD.DrawCircle(x_position, current_height, 15);
         Sleep(time_delay);  
