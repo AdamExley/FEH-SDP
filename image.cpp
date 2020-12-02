@@ -68,8 +68,10 @@ int Img::lookupColor(const uint_fast32_t image_array[], int x) {
     //Convert the hex string values for each channel into numbers 0-255
 	red = (int)strtol(red_string, NULL, 16);
 	green = (int)strtol(green_string, NULL, 16);
-	blue = (int)strtol(blue_string, NULL, 16);
+    blue = (int)strtol(blue_string, NULL, 16);
 
+    int color;
+    double min_difference, temp;
 	min_difference = temp = 1000;
 
 	for (int i = 0; i < 22; i++) {

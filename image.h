@@ -7,8 +7,20 @@
 #include <cmath>
 #include "FEHSD.h"
 
+/** Arbitrary value to set a color's RGB values to when disabled.
+ * */
 #define DISABLE_VALUE 4000
+
+/** @brief Optimization Constant.
+ *  @details The number of pixels required padding a region of pixels in order to
+ *  replace the region with the surrounding color. 
+ * */
 #define PER_SIDE 5
+
+/** @brief Optimization Constant.
+ *  @details The number of pixels in a row to attempt to change to another color if
+ *  appropriately surounded by other pixels of consatnt color.
+ * */
 #define OPTIMIZE_WIDTH 4
 
 /** @author Adam Exley
@@ -33,11 +45,9 @@ class Img{
          * */
         char red_string[3], green_string[3], blue_string[3];
 
-        /** @brief Store the integer values of the color channel for the current color being converted.
+        /** @brief Stores the integer values of the color channel for the current color being converted.
          * */
         int red, green, blue;
-        double min_difference, temp;
-        int color;
 
     public:
         /** @author Adam Exley
