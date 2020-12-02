@@ -38,6 +38,7 @@ int main() {
     Chip chip;
     Board board;
     Menu menu;
+    //Game game;
 
     int enabled[] = {WHITE, RED, MAROON, BLACK, YELLOW};
     Img connect4logo(enabled, 5);
@@ -58,6 +59,33 @@ int main() {
         //execute command associated with location based on menu state
         //loop until a selection is chosen that requires a menu to not be displayed
     }while(menu.checkTouchLocation(x, y));
+
+    //after menu is done executing, begin playing game
+
+    // if(game.isAIgame){
+    //     ai.setDifficulty(game.getAIdifficulty());
+    // }
+
+    // do{
+    //     if(game.isPlayerTurn()){
+
+    //         do{
+    //             board.getCurrentColumn();
+    //         }while(!board.isValidMove());
+            
+    //         board.updateGameState(game.getCurrentPlayer());
+
+    //     }
+    //     else{
+    //         ai.PickMove(board.getGameState());
+
+    //         board.updateGameState(2);
+
+    //     }
+
+    // }while(!board.checkWin());
+
+
 
     return 0;
 }
