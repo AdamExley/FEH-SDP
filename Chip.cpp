@@ -10,7 +10,7 @@ Declarations are in Chip.h
 #include "Chip.h"
 #include "math.h"
 
-#define G 9.81;
+#define G 9.81
 
 void Chip::Drop() {
     int current_row;
@@ -29,7 +29,7 @@ void Chip::Drop() {
     //height_change = chip_y / conversion_constant;
 
     //This will redraw the circle at a faster rate as it goes down the screen
-    for (current_height = 0; current_height <= chip_y; current_height = (g*pow(time,2) + current_height) )
+    for (current_height = 0; current_height <= chip_y; current_height = (G * pow(time,2) + current_height) )
     {
         LCD.DrawCircle(x_position, current_height, 15);
         Sleep(time_delay);  
