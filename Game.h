@@ -13,11 +13,17 @@
 class Game{
 
     private:
-        bool isAi;
+        bool Ai_game;
         int current_player;
 
     public:
         int PlayerNumber();
+
+        int getCurrentPlayer();
+
+        bool isAIGame();
+
+        bool isPlayerTurn();
 
 
 };

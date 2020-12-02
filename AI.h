@@ -10,11 +10,13 @@ It contains all class code and functions for the AI class
 #include "FEHSD.h"
 
 class AI {
-  private: //private variables, etc.
-    //int example_var
+  private: 
+
+    int difficulty;
   
-  public: //function prototypes, etc.
-    //void example_function();
+  public: 
+
+    int pickMove(const int game_state_array[]);
   
 };
 

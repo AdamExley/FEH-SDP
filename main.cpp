@@ -34,6 +34,9 @@
  */
 
 int main() {
+
+    int game_state[BOARD_ROWS][BOARD_COLUMNS];
+
     AI ai;
     Chip chip;
     Board board;

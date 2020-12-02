@@ -82,5 +82,10 @@ class Board {
      * */
     int getCurrentColumn();
 
+
+    int* getGameState();
+
+    
+
   
 };
