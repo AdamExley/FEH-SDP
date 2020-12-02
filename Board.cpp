@@ -18,6 +18,19 @@ Board::Board(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
 
 }
 
+void Board::DrawBoardMenu(){ //Drawing the menu that will display on the left of the board
+	//Lauren Pokonosky
+	
+	LCD.SetDrawColor(BUTTON_COLOR);
+	
+	LCD.FillRectangle(5, 10, 30, 30);
+	LCD.FillRectangle(5, 200, 30, 30);
+	
+	LCD.SetFontColor(TEXT_COLOR);
+	
+	LCD.WriteAt("Home", 6, 12);
+	LCD.WriteAt("Quit", 6, 202);	
+}
 
 void Board::DrawBoard(){
 	//Adam Exley
