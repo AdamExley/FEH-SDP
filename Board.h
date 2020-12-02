@@ -20,10 +20,9 @@
 class Board {
 
   private:
-    /** Array representing the current game state
-     *  Uses different integers to correspond to different player's chips
-     * */
-    int game_state[BOARD_ROWS][BOARD_COLUMNS];
+
+
+    int board_state[BOARD_ROWS][BOARD_COLUMNS];
 
     /** Column that the board is currently manipulating
      * */
@@ -82,10 +81,9 @@ class Board {
      * */
     int getCurrentColumn();
 
+    void copyGameState(const int game_state[BOARD_ROWS][BOARD_COLUMNS]);
 
-    int* getGameState();
 
-    
 
   
 };

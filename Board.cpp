@@ -6,17 +6,14 @@
 #include "Board.h"
 
 Board::Board(){
-	//Adam Exley
 
-	//Constuct Board object, setting the game to have 0 Chips in play.
 
-    //Set all elements of game_state to 0
-    for (int r = 0; r < BOARD_ROWS; r++){
-        for(int c = 0; c < BOARD_COLUMNS; c++){
-            game_state[r][c] = 0;
-        }
-    }
-	
+	for(int r = 0; r < BOARD_ROWS; r++){
+		for (int c = 0; c < BOARD_COLUMNS; c++){
+			board_state[r][c] = 0;
+		}
+	}
+
 }
 
 
