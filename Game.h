@@ -17,7 +17,8 @@ class Game{
         int current_player;
 
     public:
-        int PlayerNumber();
+        int SinglePlayer();
+        int MultiPlayer();
 
 
 };
