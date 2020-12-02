@@ -2,6 +2,11 @@
 FEH Software Design Project - Connect4
 
 Pietro Lavezzo, Adam Exley, Lauren Pokonosky
+# TODO
+- Make "Game" class
+- Add switchPlayer function under game class
+- Add ability to choose between player/AI versions (selectAI function in game class)
+- Keep track of AI/Player turns in Game class
 
 ## File Structure
 
