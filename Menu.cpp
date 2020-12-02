@@ -4,6 +4,7 @@
  * */
 
 #include "Menu.h"
+#include "Game.h"
 
 
 Menu::Menu()
@@ -55,17 +56,16 @@ bool Menu::checkTouchLocation(int x, int y){
         }
         else if (40<=x && x<=150 && 110<=y && y<=160) {//Single Player Button
             showDifficulty();
-            SinglePlayer();
+            game.SinglePlayer();
             return true;
         }
         else if (185<=x && x<=295 && 110<=y && y<=160) {//Multi Player Button
-            MultiPlayer();
+            game.MultiPlayer();
             return true;
         }
 
-        }
-        
     }
+
     
 }
 

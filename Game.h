@@ -17,8 +17,8 @@ class Game{
         int current_player;
 
     public:
-        int SinglePlayer();
-        int MultiPlayer();
+        bool SinglePlayer();
+        bool MultiPlayer();
 
         int getCurrentPlayer();
 

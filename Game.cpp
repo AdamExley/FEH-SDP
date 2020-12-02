@@ -4,10 +4,10 @@
  * */
 #include "Game.h"
 
-Game::SinglePlayer(){//AI will be used 
+bool Game::SinglePlayer(){//AI will be used 
     return true;
 }
-Game::MultiPlayer(){//AI is not necessary
+bool Game::MultiPlayer(){//AI is not necessary
     return false;
 }
 
