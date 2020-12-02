@@ -54,6 +54,7 @@ bool Menu::checkTouchLocation(int x, int y){
             return false;
         }
         else if (40<=x && x<=150 && 110<=y && y<=160) {//Single Player Button
+            showDifficulty();
             SinglePlayer();
             return true;
         }
@@ -215,4 +216,27 @@ void Menu::drawReturnExit(){
 
     LCD.WriteAt("Return to Menu", 13, 213);
     LCD.WriteAt("Exit Game", 215, 213);
+}
+
+void Menu::showDifficulty(){
+    
+    menu_state = 1; //Set menu_state to play menu
+    LCD.Clear();
+
+    LCD.SetDrawColor(BUTTON_COLOR);
+
+    //Easy Rectangle
+    LCD.FillRectangle(40,110,110,50);
+
+    //Hard Rectangle
+    LCD.FillRectangle(185,110,110,50);
+
+    //Writing button names
+    LCD.SetFontColor(TEXT_COLOR);
+    LCD.WriteAt("Choose a game difficulty:", 70, 20);
+    LCD.WriteAt("Easy", 45, 125);
+    LCD.WriteAt("Hard", 195, 125);
+    
+    //Draws Return and Exit buttons 
+    drawReturnExit();
 }
