@@ -35,11 +35,11 @@
 
 int main() {
 
-    int game_state[BOARD_ROWS][BOARD_COLUMNS] = {0};
+    int game_state[BOARD_ROWS][BOARD_COLUMNS];
 
     AI ai;
     Chip chip;
-    Board board;
+    Board board(game_state);
     Menu menu;
     //Game game;
 

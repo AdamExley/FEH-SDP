@@ -5,7 +5,7 @@
 
 #include "Board.h"
 
-Board::Board(){
+Board::Board(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
 
 
 	for(int r = 0; r < BOARD_ROWS; r++){
@@ -13,6 +13,8 @@ Board::Board(){
 			board_state[r][c] = 0;
 		}
 	}
+
+	pushGameState(game_state);
 
 }
 
@@ -199,7 +201,7 @@ int Board::checkWin() {
 					if (board_state[r + 2][c + 2] == board_state[r + 3][c + 3]) {
 
 						//Check that top left and bottom right segs are equal
-						if (game_state[r][c] == game_state[r + 2][c + 2]) {
+						if (board_state[r][c] == board_state[r + 2][c + 2]) {
 
 							//There is a win
 							//Return the value that won

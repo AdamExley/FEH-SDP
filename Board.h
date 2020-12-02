@@ -21,23 +21,30 @@ class Board {
 
   private:
 
-
+    /** Local master array storing the game as a grid of integers representing chips and spaces.
+     * */
     int board_state[BOARD_ROWS][BOARD_COLUMNS];
 
     /** Column that the board is currently manipulating
      * */
     int current_column;
 
-
+    /** @author Adam Exley
+     *  @brief Pushes contents of board_state into game_state
+     *  @details Called as a part of other functions, namely Board() and updateGameState() in order to
+     *  sync game_state with board_state when needed.
+     *  @param game_state Array to push contents board_state into
+     * */
     void pushGameState(int game_state[BOARD_ROWS][BOARD_COLUMNS]);
 
   public:
 
-    /**
-     * @brief Constructs an object of the Board class
-     * Initializes all elements of the game_state array to 0.
+    /** @author Adam Exley
+     * @brief Constructs an object of the Board class, setting local and global arrays.
+     * @details Initializes all elements of the board_state array to 0. Then pushes the contents of board_state to game_state.
+     * @param game_state Array to push contents board_state into
      * */
-    Board();
+    Board(int game_state[BOARD_ROWS][BOARD_COLUMNS]);
 
     /** @author Adam Exley
      *  @brief Draws entire game board with chips
@@ -66,6 +73,7 @@ class Board {
      *  in a certain column. Uses the player paramater as the value in 
      *  the array 
      *  @param player Integer value (1 or 2) to set the array cell as
+     *  @param game_state Array to update
      * */
     void updateGameState(int player, int game_state[BOARD_ROWS][BOARD_COLUMNS]);
 
@@ -83,11 +91,5 @@ class Board {
      * */
     int getCurrentColumn();
 
-    void copyGameState(const int game_state[BOARD_ROWS][BOARD_COLUMNS]);
 
-
-
-
-
-  
 };
