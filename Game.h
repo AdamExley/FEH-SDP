@@ -10,6 +10,18 @@
 #include "FEHSD.h"
 #include "config.h"
 
+class Game{
+
+    private:
+        bool isAi;
+        int current_player;
+
+    public:
+
+
+
+};
+
 
 /**
  * @brief Makes program idle until a touch is detected
