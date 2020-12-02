@@ -14,14 +14,13 @@
 class Game{
 
     private:
-        bool Ai_game;
         int current_player;
         bool singleplayer;
 
 
-        
-
     public:
+
+        Game(bool singleplayer);
 
         int getCurrentPlayer();
 

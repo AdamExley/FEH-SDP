@@ -4,12 +4,9 @@
  * */
 #include "Game.h"
 
-bool Game::SinglePlayer(){//AI will be used 
-    return true;
-}
-bool Game::MultiPlayer(){//AI is not necessary
-    return false;
-}
+Game::Game(bool single)
+:singleplayer(single), current_player(1)
+{}
 
 void waitForInput(int &x, int &y){
     //Written by Adam Exley
