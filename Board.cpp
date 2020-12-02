@@ -126,20 +126,20 @@ int Board::checkWin() {
 		for (int c = 0; c < BOARD_COLUMNS; c++){
 
 			//Check if the starting point is nonzero
-			if (game_state[r][c]) {
+			if (board_state[r][c]) {
 
 				//Check if top 2 values are equal
-				if (game_state[r][c] == game_state[r + 1][c]) {
+				if (board_state[r][c] == board_state[r + 1][c]) {
 
 					//Check if bottom 2 values are equal
-					if (game_state[r+2][c] == game_state[r+3][c]){
+					if (board_state[r+2][c] == board_state[r+3][c]){
 
 						//Check that both top and bottom sets are equal
-						if (game_state[r][c] == game_state[r+2][c]){
+						if (board_state[r][c] == board_state[r+2][c]){
 
 							//There is a win
 							//Return the value that won
-							return game_state[r][c];
+							return board_state[r][c];
 						}
 					}
 				}
@@ -158,20 +158,20 @@ int Board::checkWin() {
 		for (int r = 0; r < BOARD_ROWS; r++) {
 
 			//Check if the starting point is nonzero
-			if (game_state[r][c]) {
+			if (board_state[r][c]) {
 
 				//Check if left 2 values are equal
-				if (game_state[r][c] == game_state[r][c + 1]) {
+				if (board_state[r][c] == board_state[r][c + 1]) {
 
 					//Check if right 2 values are equal
-					if (game_state[r][c + 2] == game_state[r][c + 3]) {
+					if (board_state[r][c + 2] == board_state[r][c + 3]) {
 
 						//Check that both left and right sets are equal
-						if (game_state[r][c] == game_state[r][c + 2]) {
+						if (board_state[r][c] == board_state[r][c + 2]) {
 
 							//There is a win
 							//Return the value that won
-							return game_state[r][c];
+							return board_state[r][c];
 						}
 					}
 				}
@@ -190,20 +190,20 @@ int Board::checkWin() {
 		for (int c = 0; c < BOARD_COLUMNS - 3; c++) {
 
 			//Check that top left value is nonzero
-			if (game_state[r][c]) {
+			if (board_state[r][c]) {
 
 				//Check that top left 2 values are equal
-				if (game_state[r][c] == game_state[r + 1][c + 1]) {
+				if (board_state[r][c] == board_state[r + 1][c + 1]) {
 
 					//Check that bottom right 2 values are equal
-					if (game_state[r + 2][c + 2] == game_state[r + 3][c + 3]) {
+					if (board_state[r + 2][c + 2] == board_state[r + 3][c + 3]) {
 
 						//Check that top left and bottom right segs are equal
 						if (game_state[r][c] == game_state[r + 2][c + 2]) {
 
 							//There is a win
 							//Return the value that won
-							return game_state[r][c];
+							return board_state[r][c];
 						}
 					}
 				}
@@ -221,20 +221,20 @@ int Board::checkWin() {
 		for (int c = 0; c < BOARD_COLUMNS - 3; c++) {
 
 			//Check that bottom left value is nonzero
-			if (game_state[r][c]) {
+			if (board_state[r][c]) {
 
 				//Check that bottom left 2 values are equal
-				if (game_state[r][c] == game_state[r - 1][c + 1]) {
+				if (board_state[r][c] == board_state[r - 1][c + 1]) {
 
 					//Check that top right 2 values are equal
-					if (game_state[r - 2][c + 2] == game_state[r - 3][c + 3]) {
+					if (board_state[r - 2][c + 2] == board_state[r - 3][c + 3]) {
 
 						//Check that top right and bottom left segs are equal
-						if (game_state[r][c] == game_state[r - 2][c + 2]) {
+						if (board_state[r][c] == board_state[r - 2][c + 2]) {
 
 							//There is a win
 							//Return the value that won
-							return game_state[r][c];
+							return board_state[r][c];
 						}
 					}
 				}
@@ -249,15 +249,17 @@ int Board::checkWin() {
 
 
 
-void Board::updateGameState(int player){
+void Board::updateGameState(int player, int game_state[BOARD_ROWS][BOARD_COLUMNS]){
 	//Adam Exley
 
 	int r;
 	//decrement r until the row r is empty
-	for(r = BOARD_ROWS - 1; game_state[r][current_column] != 0; r--);
+	for(r = BOARD_ROWS - 1; board_state[r][current_column] != 0; r--);
 	
 	//In the lowest empty row, place the chip with value "player"
-	game_state[r][current_column] = player;
+	board_state[r][current_column] = player;
+
+	pushGameState(game_state);
 }
 
 
@@ -268,15 +270,25 @@ bool Board::isValidMove(){
 
 	//Checks to see if a move in the current_column is valid
 
-	if  (game_state[0][current_column] != 0) {      //Checking if the top row of the pressed column is full 
+	if  (board_state[0][current_column] != 0) {      //Checking if the top row of the pressed column is full 
 		return 0;                                  //If so, return 0
 	}
-	else if (game_state[0][current_column] == 0) {   //Checking if the top row of the pressed column is empty
+	else if (board_state[0][current_column] == 0) {   //Checking if the top row of the pressed column is empty
 		return 1;                                   //If so, return 1
 	}
 
 }
 
 
+void Board::pushGameState(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
 
+	for(int r = 0; r < BOARD_ROWS; r++){
+		for(int c = 0; c < BOARD_COLUMNS; c++){
+			game_state[r][c] = board_state[r][c];
+		}
+
+	}
+
+
+}
 

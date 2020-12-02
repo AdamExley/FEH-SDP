@@ -29,6 +29,8 @@ class Board {
     int current_column;
 
 
+    void pushGameState(int game_state[BOARD_ROWS][BOARD_COLUMNS]);
+
   public:
 
     /**
@@ -65,7 +67,7 @@ class Board {
      *  the array 
      *  @param player Integer value (1 or 2) to set the array cell as
      * */
-    void updateGameState(int player);
+    void updateGameState(int player, int game_state[BOARD_ROWS][BOARD_COLUMNS]);
 
     /** @author Pietro Lavezzo
      *  @brief Checks if making a move in current_column is valid by seeing
@@ -82,6 +84,8 @@ class Board {
     int getCurrentColumn();
 
     void copyGameState(const int game_state[BOARD_ROWS][BOARD_COLUMNS]);
+
+
 
 
 

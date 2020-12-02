@@ -80,7 +80,7 @@ int main() {
 
     //     }
     //     else{
-    //         ai.PickMove(board.getGameState());
+    //         ai.PickMove(game_state);
 
     //         board.updateGameState(2);
 
