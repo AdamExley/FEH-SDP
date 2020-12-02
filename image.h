@@ -15,13 +15,13 @@
  *  @details The number of pixels required padding a region of pixels in order to
  *  replace the region with the surrounding color. 
  * */
-#define PER_SIDE 5
+#define PER_SIDE 6
 
 /** @brief Optimization Constant.
  *  @details The number of pixels in a row to attempt to change to another color if
  *  appropriately surounded by other pixels of consatnt color.
  * */
-#define OPTIMIZE_WIDTH 4
+#define OPTIMIZE_WIDTH 3
 
 /** @author Adam Exley
  *  @brief This class displays images exported from https://www.piskelapp.com
@@ -64,9 +64,9 @@ class Img{
 
         int lookupColor(const uint_fast32_t image_array[], int x);
 
-        void PlotImg(const uint_fast32_t image_array[], int width, int height, const int scale = 1);
+        void PlotImg(const uint_fast32_t image_array[], int width, int height, const int scale = 1, int background = BLACK);
 
-        void Draw(const uint_fast32_t image_array[], int width, int height, int scale = 1);
+        void Draw(const uint_fast32_t image_array[], int width, int height, int scale = 1, int background = BLACK);
 
         void HorizLineOptimize(uint_fast32_t image_color_array[], int width, int height);
 

@@ -75,6 +75,12 @@ int Img::lookupColor(const uint_fast32_t image_array[], int x) {
 	min_difference = temp = 1000;
 
 	for (int i = 0; i < 22; i++) {
+
+        //If this color is disabled, skip trying to find it
+        if (lookup_table[0][i] == DISABLE_VALUE){
+            continue;
+        }
+
         temp = abs(red - lookup_table[0][i]) + abs(green - lookup_table[1][i]) + abs(blue - lookup_table[2][i]);
 		//temp = pow((pow((red - lookup_table[0][i]), 2) + pow((green - lookup_table[1][i]), 2) + pow((blue - lookup_table[2][i]), 2)), 0.5);
 		if (temp < min_difference) {
@@ -89,12 +95,12 @@ int Img::lookupColor(const uint_fast32_t image_array[], int x) {
 
 
 
-void Img::PlotImg(const uint_fast32_t image_array[], int width, int height, int scale){
+void Img::PlotImg(const uint_fast32_t image_array[], int width, int height, int scale, int background){
     int min,r,c;
     for(unsigned int color = 0; color < 22; color++){
 
         //If this color is disabled, skip trying to draw it
-        if (lookup_table[0][color] == DISABLE_VALUE){
+        if (color == background || lookup_table[0][color] == DISABLE_VALUE){
             continue;
         }
 
@@ -123,7 +129,7 @@ void Img::PlotImg(const uint_fast32_t image_array[], int width, int height, int 
 
 
 
-void Img::Draw(const uint_fast32_t image_array[], int width, int height, int scale){
+void Img::Draw(const uint_fast32_t image_array[], int width, int height, int scale, int background){
 
     uint_fast32_t *color_array = new uint_fast32_t[width*height];
 
@@ -131,7 +137,7 @@ void Img::Draw(const uint_fast32_t image_array[], int width, int height, int sca
         color_array[i] = lookupColor(image_array,i);
     }
     HorizLineOptimize(color_array, width, height);
-    PlotImg(color_array, width, height, scale);
+    PlotImg(color_array, width, height, scale, background);
 }
 
 
@@ -141,6 +147,12 @@ void Img::HorizLineOptimize(uint_fast32_t image_color_array[], int width, int he
     bool cont;
 
     for(int color = 0; color < 22; color++){
+
+        //If this color is disabled, skip trying to optimize it
+        if (lookup_table[0][color] == DISABLE_VALUE){
+            continue;
+        }
+
         for(int row = 0; row < height; row++){
             for(int column = 0; column < width - (PER_SIDE*2 + OPTIMIZE_WIDTH); column++){
                 cont = true;

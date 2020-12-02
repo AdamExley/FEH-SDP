@@ -21,6 +21,8 @@
 #include "image.h"
 
 #include "connect_4_logo.c"
+#include "logo_a.c"
+#include "logo_b.c"
 
 
 
@@ -46,6 +48,14 @@ int main() {
     //Img connect4logo(enabled, 5);
     //connect4logo.Draw(connect_4_logo, 320, 106);
     //Sleep(5.0);
+
+    LCD.Clear(WHITE);
+
+    int enabled[] = {WHITE, RED, BLACK, YELLOW};
+    Img connect4logo(enabled, 4);
+    //connect4logo.Draw(logo_2, 320, 101);
+    connect4logo.Draw(logo_2b, 160, 51, 2, WHITE);
+    Sleep(5.0);
 
     int x, y;
 
