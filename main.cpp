@@ -18,7 +18,9 @@
 #include "Board.h"
 #include "Menu.h"
 
-#include "connect4img.c"
+#include "scream.c"
+#include "image.h"
+#include "connect_4_logo.c"
 
 
 
@@ -36,6 +38,12 @@ int main() {
     Chip chip;
     Board board;
     Menu menu;
+
+    int enabled[] = {WHITE, RED, MAROON, BLACK, YELLOW};
+    Img connect4logo(enabled, 5);
+
+    connect4logo.Draw(connect_4_logo, 320, 106);
+    Sleep(5.0);
 
 
     int x, y;
