@@ -66,7 +66,7 @@ class Img{
 
         void PlotImg(const uint_fast32_t image_array[], int width, int height, const int scale = 1, int background = BLACK);
 
-        void Draw(const uint_fast32_t image_array[], int width, int height, int scale = 1, int background = BLACK);
+        void Draw(const uint_fast32_t image_array[], int width, int height, int scale = 1, int background = BLACK, bool optimize = true);
 
         void HorizLineOptimize(uint_fast32_t image_color_array[], int width, int height);
 

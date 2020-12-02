@@ -129,14 +129,18 @@ void Img::PlotImg(const uint_fast32_t image_array[], int width, int height, int 
 
 
 
-void Img::Draw(const uint_fast32_t image_array[], int width, int height, int scale, int background){
+void Img::Draw(const uint_fast32_t image_array[], int width, int height, int scale, int background, bool optimize){
 
     uint_fast32_t *color_array = new uint_fast32_t[width*height];
 
     for (int i = 0; i < width * height; i++){
         color_array[i] = lookupColor(image_array,i);
     }
-    HorizLineOptimize(color_array, width, height);
+    
+    if (optimize){
+        HorizLineOptimize(color_array, width, height);
+    }
+    
     PlotImg(color_array, width, height, scale, background);
 }
 

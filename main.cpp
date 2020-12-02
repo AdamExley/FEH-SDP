@@ -20,8 +20,7 @@
 #include "Game.h"
 #include "image.h"
 
-#include "connect_4_logo.c"
-#include "logo_a.c"
+#include "bailey.c"
 #include "logo_b.c"
 
 
@@ -44,17 +43,16 @@ int main() {
     Board board(game_state);
     Menu menu;
     
-    //int enabled[] = {WHITE, RED, MAROON, BLACK, YELLOW};
-    //Img connect4logo(enabled, 5);
-    //connect4logo.Draw(connect_4_logo, 320, 106);
-    //Sleep(5.0);
+    // int bailey_enable[] = {BLACK, WHITE, MAROON, GRAY, OLIVE, BROWN};
+    // Img bailey(bailey_enable, 6);
+    // bailey.Draw(bailey_data, 167, 240, 1, BLACK);
+    // Sleep(500.0);
 
     LCD.Clear(WHITE);
 
-    int enabled[] = {WHITE, RED, BLACK, YELLOW};
-    Img connect4logo(enabled, 4);
-    //connect4logo.Draw(logo_2, 320, 101);
-    connect4logo.Draw(logo_2b, 160, 51, 2, WHITE);
+    int enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
+    Img connect4logo(enabled, 5);
+    connect4logo.Draw(logo_2b, 160, 51, 2, WHITE, false);
     Sleep(5.0);
 
     int x, y;
