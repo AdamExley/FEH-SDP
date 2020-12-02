@@ -53,11 +53,14 @@ bool Menu::checkTouchLocation(int x, int y){
             showExit();
             return false;
         }
-        else{//All other buttons
-            //So far, only the play menu has other options
-
-            /**********************Add in here*/
+        else if (40<=x && x<=150 && 110<=y && y<=160) {//Single Player Button
+            SinglePlayer();
             return true;
+        }
+        else if (185<=x && x<=295 && 110<=y && y<=160) {//Multi Player Button
+            MultiPlayer();
+            return true;
+        }
 
         }
         
