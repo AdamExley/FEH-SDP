@@ -52,6 +52,13 @@ class Board {
      *  @return Nothing
      * */
     void DrawBoard(); 
+  
+      /** @author Lauren Pokonosky
+     *  @brief Draws the options menu to the left of the gameboard
+     *  @public A
+     *  @return Nothing
+     * */
+    void DrawBoardMenu();
 
     /** @author Adam Exley
      *  @brief Draws only the chips of the game. Skips redrawing board.
