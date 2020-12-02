@@ -65,6 +65,13 @@ class Menu{
       /** @author Lauren Pokonosky
        *  @brief Displays an exit screen thanking the user for playing
        * */
+    
+      void showDifficulty();
+        
+      /** @author Lauren Pokonosky
+       *  @brief Displays the option of choosing Easy or Hard gameplay in single player mode
+       * */
+    
       void showExit();
 
       /** @author Adam Exley
