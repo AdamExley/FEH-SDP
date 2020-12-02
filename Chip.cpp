@@ -14,9 +14,10 @@ Declarations are in Chip.h
 
 void Chip::Drop() {
     int current_row;
-    float hip_velocity, conversion_constant, current_column, time;
+    float chip_velocity, conversion_constant, time, x_position;
     int height_change, current_height;
-
+    
+    x_position = (current_clumn*40) +60
     conversion_constant = 20;
     time_delay = 100;
 
@@ -30,7 +31,7 @@ void Chip::Drop() {
     //This will redraw the circle at a faster rate as it goes down the screen
     for (current_height = 0; current_height <= height_change; current_height = (g*pow(time,2) + current_height) )
     {
-        LCD.DrawCircle(current_column, current_height, 15);
+        LCD.DrawCircle(x_position, current_height, 15);
         Sleep(time_delay);  
     }
 }
