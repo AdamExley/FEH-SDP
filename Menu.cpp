@@ -72,6 +72,7 @@ bool Menu::checkTouchLocation(int x, int y){
                     //Easy
                     difficulty = false; //set difficulty
 
+                    LCD.Clear(); //clear screen
                     return false; //stop looping menu
                 }
                 
@@ -82,13 +83,15 @@ bool Menu::checkTouchLocation(int x, int y){
                     //Single Player Button
                     
                     singleplayer = false; //set singleplayer state
-                    
+
+                    LCD.Clear(); //clear screen
                     return false; //stop looping menu
 
                 }else if (menu_state == 6){ //Difficulty Selection
                     //Easy
                     difficulty = true; //set difficulty to hard
 
+                    LCD.Clear(); //clear screen
                     return false; //stop looping menu
                 }
             }
@@ -261,8 +264,8 @@ void Menu::showDifficulty(){
     //Writing button names
     LCD.SetFontColor(TEXT_COLOR);
     LCD.WriteAt("Choose a game difficulty:", 70, 20);
-    LCD.WriteAt("Easy", 45, 125);
-    LCD.WriteAt("Hard", 195, 125);
+    LCD.WriteAt("Easy", 75, 125);
+    LCD.WriteAt("Hard", 220, 125);
     
     //Draws Return and Exit buttons 
     drawReturnExit();
