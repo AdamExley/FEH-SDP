@@ -40,18 +40,6 @@ class Menu{
        * */
       void drawReturnExit();
 
-    public:
-
-      /** @author Adam Exley
-       *  @brief Constructs a Menu object. Sets menu_state to be 0.
-       * */
-      Menu();
-
-      /** @author Lauren Pokonosky
-       *  @brief Displays main menu
-       * */
-      void showMain();
-
       /** @author Lauren Pokonosky
        *  @brief Displays game selection menu
        * */
@@ -75,15 +63,38 @@ class Menu{
       /** @author Lauren Pokonosky
        *  @brief Displays an exit screen thanking the user for playing
        * */
-      void showDifficulty();
+      void showExit();
         
       /** @author Lauren Pokonosky
        *  @brief Displays the option of choosing Easy or Hard gameplay in single player mode
        * */
-      void showExit();
+      void showDifficulty();
+
+
+
+
+    public:
+
+      /** @author Adam Exley
+       *  @brief Constructs a Menu object. Sets menu_state to be 0.
+       * */
+      Menu();
+
+      /** @author Lauren Pokonosky
+       *  @brief Displays main menu
+       * */
+      void showMain();
+
+      /** @returns Value of difficulty variable
+       * */
+      bool getDifficulty();
+
+      /** @returns Value of singleplayer variable
+       * */
+      bool getSingleplayer();
 
       /** @authors Adam Exley, Lauren Pokonosky
-       *  @brief Executes the function associated with a certain touch location
+       *  @brief Executes the menu function associated with a certain touch location
        *  @param x X-location of touch
        *  @param y Y-location of touch
        *  @returns True/false corresponding as to if the menu selection should continue looping

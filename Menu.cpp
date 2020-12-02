@@ -270,3 +270,15 @@ void Menu::showDifficulty(){
     //Draws Return and Exit buttons 
     drawReturnExit();
 }
+
+
+
+
+bool Menu::getDifficulty(){
+    return difficulty;
+}
+
+bool Menu::getSingleplayer(){
+    return singleplayer;
+}
+

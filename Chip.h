@@ -17,7 +17,7 @@ class Chip {
     int column;
   
   public: //function prototypes, etc.
-    void Drop(int column);
+    void Drop();
   
 };
 

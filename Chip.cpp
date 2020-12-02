@@ -10,7 +10,7 @@ Declarations are in Chip.h
 #include "Chip.h"
 #include "math.h"
 
-#DEFINE G 9.81;
+#define G 9.81;
 
 void Chip::Drop() {
     int current_row;

@@ -9,8 +9,10 @@
 #include "FEHRandom.h"
 #include "FEHSD.h"
 #include "config.h"
-#include "Menu.h"
 
+/** @brief Controls flow of the game once in play.
+ *  @details Keeps track of AI/Player turns, 
+ * */
 class Game{
 
     private:
@@ -27,10 +29,9 @@ class Game{
         bool isAIGame();
 
         bool isPlayerTurn();
-
-
-
 };
+
+
 
 
 /**

@@ -1,8 +1,8 @@
-#pragma once //don't include multiple copies in final compilation
-/*
-This is the AI Header File
-It contains all class code and functions for the AI class
-*/
+#pragma once
+
+/** @file AI.h
+ *  @brief Contains declarations of AI class functions
+ * */
 
 #include "FEHLCD.h"
 #include "FEHUtility.h"
@@ -11,10 +11,16 @@ It contains all class code and functions for the AI class
 
 class AI {
   private: 
-
-    int difficulty;
+    /** Correpsonds to the selected difficulty of AI.
+     *  False is easy, true is hard.
+     * */
+    bool difficulty;
   
   public: 
+
+    /** @brief Sets difficulty variable of AI object
+     * */
+    void setDifficulty(bool diff);
 
     int pickMove(const int game_state_array[]);
   

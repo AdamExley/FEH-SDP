@@ -17,9 +17,9 @@
 #include "Chip.h"
 #include "Board.h"
 #include "Menu.h"
-
-#include "scream.c"
+#include "Game.h"
 #include "image.h"
+
 #include "connect_4_logo.c"
 
 
@@ -41,14 +41,11 @@ int main() {
     Chip chip;
     Board board(game_state);
     Menu menu;
-    Game game;
-
-    int enabled[] = {WHITE, RED, MAROON, BLACK, YELLOW};
-    Img connect4logo(enabled, 5);
-
+    
+    //int enabled[] = {WHITE, RED, MAROON, BLACK, YELLOW};
+    //Img connect4logo(enabled, 5);
     //connect4logo.Draw(connect_4_logo, 320, 106);
     //Sleep(5.0);
-
 
     int x, y;
 
@@ -65,9 +62,16 @@ int main() {
 
     //after menu is done executing, begin playing game
 
-    // if(game.isSingleplayer){
-    //     ai.setDifficulty(game.getAIdifficulty());
-    // }
+    //create game, setting it to if the user selected single or multiplayer
+    Game game(menu.getSingleplayer());
+
+    //if in a singleplayer game, set the AI difficulty
+    if(menu.getSingleplayer()){
+        ai.setDifficulty(menu.getDifficulty());
+    }
+
+    //Do inital draw of board
+    board.DrawBoard();
 
     // do{
     //     if(game.isPlayerTurn()){
@@ -87,6 +91,8 @@ int main() {
     //     }
 
     // }while(!board.checkWin());
+    // Show win/loss screen
+    // delete game; //destruct game instance
 
 
 
