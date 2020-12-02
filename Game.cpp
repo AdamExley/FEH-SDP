@@ -4,6 +4,12 @@
  * */
 #include "Game.h"
 
+Game::SinglePlayer(){//AI will be used 
+    return true;
+}
+Game::MultiPlayer(){//AI is not necessary
+    return false;
+}
 
 void waitForInput(int &x, int &y){
     //Written by Adam Exley
