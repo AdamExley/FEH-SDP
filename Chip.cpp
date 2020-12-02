@@ -14,7 +14,7 @@ Declarations are in Chip.h
 
 void Chip::Drop() {
     int current_row;
-    float chip_y, chip_velocity, conversion_constant, current_column, time;
+    float hip_velocity, conversion_constant, current_column, time;
     int height_change, current_height;
 
     conversion_constant = 20;
