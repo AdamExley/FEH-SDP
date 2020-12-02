@@ -54,19 +54,46 @@ bool Menu::checkTouchLocation(int x, int y){
             showExit();
             return false;
         }
-        else if (40<=x && x<=150 && 110<=y && y<=160) {//Single Player Button
-            showDifficulty();
-            //SinglePlayer();
-            return true;
-        }
-        else if (185<=x && x<=295 && 110<=y && y<=160) {//Multi Player Button
-            //MultiPlayer();
-            return true;
-        }
 
+        if(menu_state == 1 || menu_state == 6){
+            //Player and difficulty selection screens have different buttons at the same locations
+
+            if (40<=x && x<=150 && 110<=y && y<=160) {//Left Button
+
+                if(menu_state == 1){ //Player selection
+                    //Single Player Button
+                    
+                    singleplayer = true; //set singleplayer state
+                    showDifficulty(); //go to difficulty selection screen
+                    
+                    return true; //continue looping menu
+
+                }else if (menu_state == 6){ //Difficulty Selection
+                    //Easy
+                    difficulty = false; //set difficulty
+
+                    return false; //stop looping menu
+                }
+                
+            }
+            else if (185<=x && x<=295 && 110<=y && y<=160) {//Right Button
+            
+                if(menu_state == 1){ //Player selection
+                    //Single Player Button
+                    
+                    singleplayer = false; //set singleplayer state
+                    
+                    return false; //stop looping menu
+
+                }else if (menu_state == 6){ //Difficulty Selection
+                    //Easy
+                    difficulty = true; //set difficulty to hard
+
+                    return false; //stop looping menu
+                }
+            }
+        }
     }
-
-    
 }
 
 
@@ -220,7 +247,7 @@ void Menu::drawReturnExit(){
 
 void Menu::showDifficulty(){
     
-    menu_state = 1; //Set menu_state to play menu
+    menu_state = 6; //Set menu_state to difficulty selection
     LCD.Clear();
 
     LCD.SetDrawColor(BUTTON_COLOR);

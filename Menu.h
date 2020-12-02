@@ -18,13 +18,18 @@ class Menu{
       /** Stores current menu state
        *  
        *  0 - Main
-       *  1 - Play
+       *  1 - Player Selection
        *  2 - Stats
        *  3 - Instructions
        *  4 - Credits
        *  5 - Exit
+       *  6 - Difficulty Selection
        * */
       int menu_state;
+
+      bool singleplayer;
+
+      bool difficulty;
 
       /** @author Lauren Pokonosky
        *  @brief Draws return and exit buttons
