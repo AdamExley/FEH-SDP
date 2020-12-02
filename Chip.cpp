@@ -17,9 +17,9 @@ void Chip::Drop() {
     float chip_velocity, conversion_constant, time, x_position;
     int height_change, current_height;
     
-    x_position = (current_clumn*40) +60
+    x_position = (current_column*40) + 60;
     conversion_constant = 20;
-    time_delay = 100;
+    int time_delay = 100;
 
     time = time_delay/1000;
     //Understand which pixel the top of the chip is

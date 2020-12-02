@@ -14,7 +14,7 @@ class Chip {
   private: //private variables, etc.
     int chip_x;
     int chip_y;
-    int column;
+    int current_column;
   
   public: //function prototypes, etc.
     void Drop();
