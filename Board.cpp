@@ -21,15 +21,22 @@ Board::Board(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
 void Board::DrawBoardMenu(){ //Drawing the menu that will display on the left of the board
 	//Lauren Pokonosky
 	
-	LCD.SetDrawColor(BUTTON_COLOR);
+  	LCD.SetDrawColor(BUTTON_COLOR);
 	
-	LCD.FillRectangle(5, 10, 30, 30);
-	LCD.FillRectangle(5, 200, 30, 30);
+	LCD.FillRectangle(5, 10, 30, 70);
+	LCD.FillRectangle(5, 150, 30, 73);
 	
 	LCD.SetFontColor(TEXT_COLOR);
 	
-	LCD.WriteAt("Home", 6, 12);
-	LCD.WriteAt("Quit", 6, 202);	
+	LCD.WriteAt("H", 13, 12);
+   	LCD.WriteAt("o", 13, 30);
+   	LCD.WriteAt("m", 13, 48);
+   	LCD.WriteAt("e", 13, 66);
+
+  	LCD.WriteAt("Q", 13, 152);
+    	LCD.WriteAt("u", 15, 170);
+    	LCD.WriteAt("i", 17, 188);
+    	LCD.WriteAt("t", 16, 206);	
 }
 
 void Board::DrawBoard(){
