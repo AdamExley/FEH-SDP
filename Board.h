@@ -89,7 +89,7 @@ class Board {
     /** @author Lauren Pokonosky
      *  @brief Waits for a touch and returns the value of the column that was touched.
      *  Also stores this value in the current_column variable.
-     *  @returns A column value, -1 to 6, with -1 corresponding to the menu.
+     *  @returns A column value, or MAIN_MENU_CALL_VALUE or EXIT_CALL_VALUE 
      * */
     int getCurrentColumn();
 

@@ -105,10 +105,10 @@ int Board::getCurrentColumn() {
 	if (0<=x && x<=40) {
 		current_column = 0;
 			if (5<=x && x<=35 && 10<=y && y<=70) { //if statement for Home Button
-				menu.showMain();
+				return MAIN_MENU_CALL_VALUE; //return the call value for main menu
 			}
 			else if (5<=x && x<=35 && 150<=y && y<=223) { //else if for Quit Button
-				menu.showExit();
+				return EXIT_CALL_VALUE; //return exit call value
 			}	
 	}
 	else if (40<x && x<=80) {

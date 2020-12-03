@@ -26,6 +26,8 @@ class Game{
 
         int getCurrentPlayer();
 
+        void switchPlayer();
+
         bool isPlayerTurn();
 };
 

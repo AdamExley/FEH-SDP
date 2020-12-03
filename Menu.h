@@ -60,10 +60,7 @@ class Menu{
        * */
       void showCredits();
 
-      /** @author Lauren Pokonosky
-       *  @brief Displays an exit screen thanking the user for playing
-       * */
-      void showExit();
+
         
       /** @author Lauren Pokonosky
        *  @brief Displays the option of choosing Easy or Hard gameplay in single player mode
@@ -84,6 +81,11 @@ class Menu{
        *  @brief Displays main menu
        * */
       void showMain();
+
+      /** @author Lauren Pokonosky
+       *  @brief Displays an exit screen thanking the user for playing
+       * */
+      void showExit();
 
       /** @returns Value of difficulty variable
        * */

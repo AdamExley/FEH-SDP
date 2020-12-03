@@ -50,22 +50,21 @@ int main() {
     Menu menu;
 
 
-    chip.Drop();
+    // LCD.Clear(WHITE);
 
-    Sleep(5.0);
+    // int enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
+    // Img connect4logo(enabled, 5);
+    // connect4logo.Draw(logo_2b, 160, 51, 2, WHITE, false);
 
-    LCD.Clear(WHITE);
-
-    int enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
-    Img connect4logo(enabled, 5);
-    connect4logo.Draw(logo_2b, 160, 51, 2, WHITE, false);
-
-    Sleep(5.0);
+    // Sleep(5.0);
 
     int x, y;
 
     //show main menu at beginning of game
     menu.showMain();
+
+
+    while(true){
 
     do{
         //get touch location
@@ -89,28 +88,47 @@ int main() {
     board.DrawBoard();
     board.DrawBoardMenu();
 
-    // do{
-    //     if(game.isPlayerTurn()){
+    //initialize a temporary variable
+    int temp;
 
-    //         do{
-    //             board.getCurrentColumn();
-    //         }while(!board.isValidMove());
+    do{
+        if(game.isPlayerTurn()){
+
+            do{
+                temp = board.getCurrentColumn();
+
+                if(temp == MAIN_MENU_CALL_VALUE || temp == EXIT_CALL_VALUE){
+                    break;
+                }
+
+            }while(!board.isValidMove());
+
+            if(temp == MAIN_MENU_CALL_VALUE || temp == EXIT_CALL_VALUE){
+                break;
+            }
             
-    //         board.updateGameState(game.getCurrentPlayer());
+            board.updateGameState(game.getCurrentPlayer(), game_state);
+            
 
-    //     }
-    //     else{
-    //         ai.PickMove(game_state);
+        }
+        else{
+            // ai.PickMove(game_state);
 
-    //         board.updateGameState(2);
+            // board.updateGameState(2);
 
-    //     }
+        }
+        board.DrawChips();
+        game.switchPlayer();
+    }while(!board.checkWin());
+    //Show win/loss screen
+    delete (&game); //destruct game instance
 
-    // }while(!board.checkWin());
-    // Show win/loss screen
-    // delete game; //destruct game instance
+    if(temp == MAIN_MENU_CALL_VALUE){
+        menu.showMain();
+    }else if(temp == EXIT_CALL_VALUE){
+        menu.showExit();
+    }
 
-
-
+    }
     return 0;
 }
