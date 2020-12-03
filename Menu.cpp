@@ -4,14 +4,12 @@
  * */
 
 #include "Menu.h"
-#include "Game.h"
-
 
 
 Menu::Menu()
 //Adam Exley
-//Set menu_state to 0
-:menu_state(0)
+//Set menu_state and all stats to 0
+:menu_state(0), single_player_wins(0), AI_wins(0), multi_player_1_wins(0), multi_player_2_wins(0)
 {}
 
 
@@ -162,8 +160,6 @@ void Menu::showPlay(){
 
 void Menu::showStats(){
     //Lauren Pokonosky
-    
-        int single_player_wins = 0, AI_wins = 0, multi_player_1_wins = 0, multi_player_2_wins = 0;
 
     menu_state = 3; //Set menu_state to stats menu
 
@@ -173,19 +169,7 @@ void Menu::showStats(){
 
     LCD.WriteAt("Statistics Data", 100, 20);
         
-            if (singleplayer = true && board.checkWin() = 1){ //single player win
-                single_player_wins = single_player_wins + 1;
-            }
-            else if (singleplayer = true && board.checkWin() = 2){ //single player loss
-                AI_wins = AI_wins + 1;
-            }
-            else if (singleplayer != true && board.checkWin() = 1){ //multi player player 1 win
-                multi_player_1_wins = multi_player_1_wins + 1;
-            }
-            else if (singleplayer != true && board.checkWin() = 2){ //multi player player 2 win
-                multi_player_2_wins = multi_player_2_wins + 1;
-            }
-    
+
     LCD.WriteAt("Against AI:", 10, 50);
         LCD.WriteAt("Wins: ", 35, 70);
         LCD.WriteAt(single_player_wins, 125, 70);
@@ -295,8 +279,6 @@ void Menu::showDifficulty(){
 }
 
 
-
-
 bool Menu::getDifficulty(){
     return difficulty;
 }
@@ -305,3 +287,112 @@ bool Menu::getSingleplayer(){
     return singleplayer;
 }
 
+
+
+void Menu::showWinLoss(int winner){
+    //Lauren Pokonosky
+
+    if (singleplayer == true && winner == 1){ //single player win screen
+        LCD.Clear();
+        LCD.WriteAt("You Won!", 195, 20);
+        displayTA();
+        LCD.WriteAt("is very proud of you.", 160, 75);
+        
+        drawReturnExit();
+    }
+    else if (singleplayer == true && winner == 2){ //single player loss screen
+        LCD.Clear();
+        LCD.WriteAt("You Lost...", 195, 20);
+        displayTA();
+        LCD.WriteAt("is disappointed in you.", 160, 75);
+
+        drawReturnExit();
+    }
+    else if (singleplayer != true && winner == 1){ //multi player player 1 win screen
+        LCD.Clear();
+        LCD.WriteAt("Player 1 Wins!", 190, 20);
+        displayTA();
+        LCD.WriteAt("is proud of you,", 170, 75);
+        LCD.WriteAt("Player 1,", 205, 100);
+        LCD.WriteAt("and disappointed in", 160, 125);
+        LCD.WriteAt("you, Player 2.", 185, 150);
+        
+        drawReturnExit();
+    }
+    else if (singleplayer != true && winner == 2){ //multi player player 2 win screen
+        LCD.Clear();
+        LCD.WriteAt("Player 2 Wins!", 195, 20);
+        displayTA();
+        LCD.WriteAt("is proud of you,", 170, 75);
+        LCD.WriteAt("Player 2,", 205, 100);
+        LCD.WriteAt("and disappointed in", 160, 125);
+        LCD.WriteAt("you, Player 1.", 185, 150);
+        
+        drawReturnExit();
+    }
+
+}
+
+
+void Menu::displayTA(){//this function randomizes the TA image that will show up for the win/loss screen
+    //Lauren Pokonosky
+    int rand_int = RandInt();
+    int TA;
+    TA = rand_int % 6;
+        switch (TA){
+            case 1:{ //display Bridgette
+                LCD.WriteAt("Bridgette", 210, 50);
+                int bridgette_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
+                Img bridgette(bridgette_enable, 5);
+                bridgette.Draw(bridgette_data, BRIDGETTE_FRAME_WIDTH, BRIDGETTE_FRAME_HEIGHT, 1, BLACK);
+                    break;
+            }
+            case 2:{ //display Jane
+                LCD.WriteAt("Jane", 210, 50);
+                int jane_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
+                Img jane(jane_enable, 6);
+                jane.Draw(jane_data, JANE_FRAME_WIDTH, JANE_FRAME_HEIGHT, 1, BLACK);
+                    break;
+            }
+            case 3:{ //display Bailey
+                LCD.WriteAt("Bailey", 210, 50);
+                int bailey_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
+                Img bailey(bailey_enable, 5);
+                bailey.Draw(bailey_data, BAILEY_FRAME_WIDTH, BAILEY_FRAME_HEIGHT, 1, BLACK);
+                    break;
+            }
+            case 4:{ //display Alex
+                LCD.WriteAt("Alex", 210, 50);
+                int alex_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, BLUE};
+                Img alex(alex_enable, 6);
+                alex.Draw(alex_data, ALEX_FRAME_WIDTH, ALEX_FRAME_HEIGHT, 1, BLACK);
+                    break;
+            }
+            case 5:{ //display Jamie
+                LCD.WriteAt("Jamie", 210, 50);
+                int jamie_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
+                Img jamie(jamie_enable, 6);
+                jamie.Draw(jamie_data, JAMIE_FRAME_WIDTH, JAMIE_FRAME_HEIGHT, 1, BLACK);
+                    break;
+            }
+        }
+}
+
+
+
+void Menu::updateStats(int winner){
+
+    if (singleplayer == true && winner == 1){ //single player win
+        single_player_wins = single_player_wins + 1;
+    }
+    else if (singleplayer == true && winner == 2){ //single player loss
+        AI_wins = AI_wins + 1;
+    }
+    else if (singleplayer != true && winner == 1){ //multi player player 1 win
+        multi_player_1_wins = multi_player_1_wins + 1;
+    }
+    else if (singleplayer != true && winner == 2){ //multi player player 2 win
+        multi_player_2_wins = multi_player_2_wins + 1;
+    }
+
+}

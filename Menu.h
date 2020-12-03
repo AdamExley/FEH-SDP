@@ -10,6 +10,15 @@
 #include "FEHSD.h"
 #include "config.h"
 #include "Game.h"
+#include "image.h"
+
+
+#include "bridgette.c"
+#include "bailey.c"
+#include "alex.c"
+#include "jamie.c"
+#include "jane.c"
+#include "paul.c"
 
 /** @brief Displays all menus for game and stores current menu state.
  * */
@@ -25,7 +34,6 @@ class Menu{
        *  6 - Difficulty Selection
        * */
       int menu_state;
-
       
       /** Stores if player selects a singleplayer game
        * */
@@ -34,6 +42,12 @@ class Menu{
       /** Stores difficulty selected by player in a singleplayer game
        * */
       bool difficulty;
+
+
+      int single_player_wins;
+      int AI_wins;
+      int multi_player_1_wins;
+      int multi_player_2_wins;
 
       /** @author Lauren Pokonosky
        *  @brief Draws return and exit buttons
@@ -60,14 +74,10 @@ class Menu{
        * */
       void showCredits();
 
-
-        
       /** @author Lauren Pokonosky
        *  @brief Displays the option of choosing Easy or Hard gameplay in single player mode
        * */
       void showDifficulty();
-
-
 
 
     public:
@@ -102,5 +112,11 @@ class Menu{
        *  @returns True/false corresponding as to if the menu selection should continue looping
        * */
       bool checkTouchLocation(int x, int y);
+
+      void showWinLoss(int winner);
+
+      void displayTA();
+
+      void updateStats(int winner);
 
 };

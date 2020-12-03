@@ -25,7 +25,9 @@
 
 /** @author Adam Exley
  *  @brief This class displays images exported from https://www.piskelapp.com
- *  @details Includes functions to convert and then display complex images. Honestly it's just a party trick
+ *  @details Includes functions to convert and then display complex images. Honestly it's just a party trick.
+ *  A majority of the hexadecimal conversion code had been written before this project in order to try to display images,
+ *  only to realize that the Proteus was unable (at the time) to reproduce more than 7 colors.
  * */
 class Img{
     private:

@@ -14,18 +14,12 @@
 
 //Include class headers
 #include "AI.h"
-#include "Chip.h"
 #include "Board.h"
 #include "Menu.h"
 #include "Game.h"
 #include "image.h"
 
-#include "bridgette.c"
-#include "bailey.c"
-#include "alex.c"
-#include "jamie.c"
-#include "jane.c"
-#include "paul.c"
+
 
 #include "logo_b.c"
 
@@ -45,14 +39,13 @@ int main() {
     int game_state[BOARD_ROWS][BOARD_COLUMNS];
 
     AI ai;
-    Chip chip;
     Board board(game_state);
     Menu menu;
     Game game;
     void displayTA();
 
     board.DrawBoard();
-    chip.Drop(1);
+    board.DropChip(1);
     Sleep(5.0);
 
     // LCD.Clear(WHITE);
@@ -130,51 +123,17 @@ int main() {
 
             }
 
-            chip.Drop()
+            board.DropChip(game.getCurrentPlayer());
 
             board.DrawChips();
             game.switchPlayer();
-        }while(!board.checkWin());
-        
-        //Show win/loss screen
-            if (singleplayer = true && board.checkWin() = 1){ //single player win screen
-                LCD.Clear();
-                LCD.WriteAt("You Won!", 195, 20);
-                displayTA();
-                LCD.WriteAt("is very proud of you.", 160, 75);
-                
-                menu.drawReturnExit();
-            }
-            else if (singleplayer = true && board.checkWin() = 2){ //single player loss screen
-                LCD.Clear();
-                LCD.WriteAt("You Lost...", 195, 20);
-                displayTA();
-                LCD.WriteAt("is disappointed in you.", 160, 75);
 
-                menu.drawReturnExit();
-            }
-            else if (singleplayer != true && board.checkWin() = 1){ //multi player player 1 win screen
-                LCD.Clear();
-                LCD.WriteAt("Player 1 Wins!", 190, 20);
-                displayTA();
-                LCD.WriteAt("is proud of you,", 170, 75);
-                LCD.WriteAt("Player 1,", 205, 100);
-                LCD.WriteAt("and disappointed in", 160, 125);
-                LCD.WriteAt("you, Player 2.", 185, 150);
-                
-                menu.drawReturnExit();
-            }
-            else if (singleplayer != true && board.checkWin() = 2){ //multi player player 2 win screen
-                LCD.Clear();
-                LCD.WriteAt("Player 2 Wins!", 195, 20);
-                displayTA();
-                LCD.WriteAt("is proud of you,", 170, 75);
-                LCD.WriteAt("Player 2,", 205, 100);
-                LCD.WriteAt("and disappointed in", 160, 125);
-                LCD.WriteAt("you, Player 1.", 185, 150);
-                
-                menu.drawReturnExit():
-            }
+        }while(!board.checkWin());
+
+        //update in-game statistics
+        menu.updateStats(board.checkWin());
+        //Show win/loss screen
+        menu.showWinLoss(board.checkWin());
         
         menu.checkTouchLocation(x, y); //Player either clicks Exit or Return button
        
@@ -190,46 +149,3 @@ int main() {
     return 0;
 }
 
-void displayTA(){//this function randomizes the TA image that will show up for the win/loss screen
-    //Lauren Pokonosky
-    int rand_int = RandInt();
-    int TA;
-    TA = rand_int % 6;
-        switch (TA){
-            case 1:{ //display Bridgette
-                LCD.WriteAt("Bridgette", 210, 50);
-                int bridgette_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
-                Img bridgette(bridgette_enable, 5);
-                bridgette.Draw(bridgette_data, BRIDGETTE_FRAME_WIDTH, BRIDGETTE_FRAME_HEIGHT, 1, BLACK);
-                    break;
-            }
-            case 2:{ //display Jane
-                LCD.WriteAt("Jane", 210, 50);
-                int jane_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
-                Img jane(jane_enable, 6);
-                jane.Draw(jane_data, JANE_FRAME_WIDTH, JANE_FRAME_HEIGHT, 1, BLACK);
-                    break;
-            }
-            case 3:{ //display Bailey
-                LCD.WriteAt("Bailey", 210, 50);
-                int bailey_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
-                Img bailey(bailey_enable, 5);
-                bailey.Draw(bailey_data, BAILEY_FRAME_WIDTH, BAILEY_FRAME_HEIGHT, 1, BLACK);
-                    break;
-            }
-            case 4:{ //display Alex
-                LCD.WriteAt("Alex", 210, 50);
-                int alex_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, BLUE};
-                Img alex(alex_enable, 6);
-                alex.Draw(alex_data, ALEX_FRAME_WIDTH, ALEX_FRAME_HEIGHT, 1, BLACK);
-                    break;
-            }
-            case 5:{ //display Jamie
-                LCD.WriteAt("Jamie", 210, 50);
-                int jamie_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
-                Img jamie(jamie_enable, 6);
-                jamie.Draw(jamie_data, JAMIE_FRAME_WIDTH, JAMIE_FRAME_HEIGHT, 1, BLACK);
-                    break;
-            }
-        }
-}
