@@ -50,7 +50,6 @@ int main() {
     Menu menu;
     Game game;
 
-
     board.DrawBoard();
     chip.Drop(1);
     Sleep(5.0);
@@ -101,30 +100,37 @@ int main() {
 
         do{
             if(game.isPlayerTurn()){
+                //if it's a player's turn, execute this
 
                 do{
+                    //Wait for the user to touch a location of the board
                     temp = board.getCurrentColumn();
 
+                    //if the location was the main menu or exit buttons, break out of the game loop
                     if(temp == MAIN_MENU_CALL_VALUE || temp == EXIT_CALL_VALUE){
                         break;
                     }
 
                 }while(!board.isValidMove());
 
+                //if the location was the main menu or exit buttons, break out of the game loop pt. 2
                 if(temp == MAIN_MENU_CALL_VALUE || temp == EXIT_CALL_VALUE){
                     break;
                 }
                 
+                //update the game state with where the move was made
                 board.updateGameState(game.getCurrentPlayer(), game_state);
-                
 
             }
-            else{
-                // ai.PickMove(game_state);
+            else{ //if it's not a player's turn, let the AI pick a move
 
+                // ai.PickMove(game_state);
                 // board.updateGameState(2);
 
             }
+
+            chip.Drop()
+
             board.DrawChips();
             game.switchPlayer();
         }while(!board.checkWin());
