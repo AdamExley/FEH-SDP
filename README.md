@@ -3,11 +3,15 @@ FEH Software Design Project - Connect4
 
 Pietro Lavezzo, Adam Exley, Lauren Pokonosky
 # TODO
-### Make "Game" class
-- Add switchPlayer function under game class
-- Keep track of AI/Player turns in Game class
+### Game class
+- Add switchPlayer function. If current player is 1 it makes it 2 and vice versa.
+- isPlayerTurn. Returns true if the game isn't singleplayer or if it's singleplayer and curren_player is 1.
 ### Make "Statistics" class
-- Add functions to increase/decrease each stat and reset
+- singleplayerPlayerWin increase that stat
+- singleplayerAIwin increase that stat
+- multiplayerPlayer1Win() incrase that stat
+- multiplayerPlayer2Win() increase that stat
+- minMoves(moves) if moves is less than the stored number, replace it
 
 ## File Structure
 
