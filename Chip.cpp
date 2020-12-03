@@ -10,20 +10,19 @@ Declarations are in Chip.h
 #include "Chip.h"
 #include "math.h"
 
-#define G 9.81
+#DEFINE G 9.81
 
 void Chip::Drop() {
-    int current_row;
     float chip_velocity, conversion_constant, time, x_position;
     int height_change, current_height;
     
-    x_position = (current_column*40) + 60;
+    x_position = (BOARD_COLUMNS*40) + 60;
     conversion_constant = 20;
     int time_delay = 100;
 
     time = time_delay/1000;
     //Understand which pixel the top of the chip is
-    chip_y = (current_row) * 40;
+    chip_y = (BOARD_ROWS) * 40;
 
     //Set the height to a reasonable height for a Connect Four Board so the chips being dropped to the bottom don't go too fast
     //height_change = chip_y / conversion_constant;
