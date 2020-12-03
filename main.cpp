@@ -42,11 +42,6 @@ int main() {
     Board board(game_state);
     Menu menu;
     Game game;
-    void displayTA();
-
-    board.DrawBoard();
-    board.DropChip(1);
-    Sleep(5.0);
 
     // LCD.Clear(WHITE);
 
@@ -63,6 +58,9 @@ int main() {
 
 
     while(true){
+
+        //Clear Proteus Touch buffer
+        LCD.ClearBuffer();
 
         do{
             //get touch location
@@ -93,6 +91,9 @@ int main() {
         int temp;
 
         do{
+            //Clear Proteus Touch buffer
+            LCD.ClearBuffer();
+            
             if(game.isPlayerTurn()){
                 //if it's a player's turn, execute this
 
@@ -111,7 +112,7 @@ int main() {
                 if(temp == MAIN_MENU_CALL_VALUE || temp == EXIT_CALL_VALUE){
                     break;
                 }
-                
+
                 //update the game state with where the move was made
                 board.updateGameState(game.getCurrentPlayer(), game_state);
 

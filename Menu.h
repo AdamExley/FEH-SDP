@@ -32,6 +32,7 @@ class Menu{
        *  4 - Credits
        *  5 - Exit
        *  6 - Difficulty Selection
+       *  7 - Win/Loss Screen
        * */
       int menu_state;
       

@@ -4,6 +4,12 @@
  * */
 #include "Game.h"
 
+
+Game::Game()
+// Construct, setting current player to 1
+:current_player(1)
+{}
+
 void Game::setSingleplayer(bool single){
     singleplayer = single;
 }

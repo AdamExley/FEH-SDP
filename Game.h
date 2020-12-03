@@ -22,6 +22,8 @@ class Game{
 
     public:
 
+        Game();
+
         void setSingleplayer(bool single);
 
         int getCurrentPlayer();

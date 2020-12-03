@@ -14,7 +14,7 @@ Menu::Menu()
 
 
 bool Menu::checkTouchLocation(int x, int y){
-    //Adam Exley
+    //Adam Exley and Lauren Pokonosky
 
     if (!menu_state){ //In main Menu
         //Check each button location in main menu
@@ -297,6 +297,8 @@ bool Menu::getSingleplayer(){
 
 void Menu::showWinLoss(int winner){
     //Lauren Pokonosky
+
+    menu_state = 7; //set menu state to win/loss screen
 
     if (singleplayer == true && winner == 1){ //single player win screen
         LCD.Clear();
