@@ -49,18 +49,12 @@ int main() {
     Board board(game_state);
     Menu menu;
 
-    double temp;
-
-    
-
     LCD.Clear(WHITE);
-    LCD.SetFontColor(BLACK);
 
-    temp = TimeNow();
     int enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
     Img connect4logo(enabled, 5);
     connect4logo.Draw(logo_2b, 160, 51, 2, WHITE, false);
-    LCD.Write(TimeNow() - temp);
+
     Sleep(5.0);
 
     int x, y;
