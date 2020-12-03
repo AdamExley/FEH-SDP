@@ -50,7 +50,6 @@ int main() {
     Menu menu;
 
 
-    board.DrawBoard();
     chip.Drop();
 
     Sleep(5.0);
