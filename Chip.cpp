@@ -14,25 +14,35 @@ Declarations are in Chip.h
 
 void Chip::Drop() {
     float chip_velocity, conversion_constant, time, x_position;
-    int height_change, current_height;
+    int current_height, time_delay = 100;
     
+    //Set the x position of the chip based on the column that was deicded by user/AI
     x_position = (current_column*40) + 60;
-    conversion_constant = 20;
-    int time_delay = 100;
 
-    time = time_delay/1000;
+    //Set a variable for time used in the current_height equation
+    time = time_delay/time_delay;
+   
     //Understand which pixel the top of the chip is
     chip_y = (BOARD_ROWS) * 40;
 
-    //Set the height to a reasonable height for a Connect Four Board so the chips being dropped to the bottom don't go too fast
-    //height_change = chip_y / conversion_constant;
-
     //This will redraw the circle at a faster rate as it goes down the screen
-    for (current_height = 0; current_height <= chip_y; current_height = (G * pow(1,2) + current_height) )
+    for (current_height = 0; current_height <= chip_y; current_height = (G * pow(time,2) + current_height) )
     {
-        LCD.SetDrawColor(YELLOW);
+        //If structure to decide which color to draw the chip  
+        if (current_player == 1)
+        {
+           LCD.SetDrawColor(PLAYER_1_COLOR);
+        }  //player 1 IF
+        if (current_player == 2)
+        {
+            LCD.SetDrawColor(PLAYER_2_COLOR);
+        } //player 2 IF
+      
+        LCD.FillCircle(x_position, current_height, 15);           //Draw the chip in a spceicif (x,y) coordinate
+        Sleep(time_delay);                                        //Keep the chip in that location for 0.1 seconds
+        LCD.SetDrawColor(BLACK);                                  //Redraw a black chip over it, "earasing" the earlier chip.
         LCD.FillCircle(x_position, current_height, 15);
-        Sleep(time_delay); 
+        time = time + 0.1;                                        //Change the time in the current_height function to better simulate gravity
 
     }
 }
