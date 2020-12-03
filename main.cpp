@@ -125,7 +125,7 @@ int main() {
 
             board.DropChip(game.getCurrentPlayer());
 
-            board.DrawChips();
+            board.DrawBoard();
             game.switchPlayer();
 
         }while(!board.checkWin());

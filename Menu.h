@@ -1,18 +1,17 @@
 #pragma once
 
 /** @file Menu.h
- *  @brief Contains the class definition and prototypes for the Menu class
+ *  @brief Contains the class definition and prototypes for the Menu class.
  * */
 
 #include "FEHLCD.h"
 #include "FEHUtility.h"
 #include "FEHRandom.h"
-#include "FEHSD.h"
 #include "config.h"
 #include "Game.h"
 #include "image.h"
 
-
+//Include data for TA/Instructor images.
 #include "bridgette.c"
 #include "bailey.c"
 #include "alex.c"
@@ -21,6 +20,7 @@
 #include "paul.c"
 
 /** @brief Displays all menus for game and stores current menu state.
+ *  @details Also displays win/loss screens and statistics.
  * */
 class Menu{
     private:
@@ -43,10 +43,24 @@ class Menu{
        * */
       bool difficulty;
 
-
+      /** @brief Statistic
+       *  @details The number of single player wins
+       * */
       int single_player_wins;
+
+      /** @brief Statistic
+       *  @details The number of single player losses
+       * */
       int AI_wins;
+
+      /** @brief Statistic
+       *  @details The number of multi player player 1 wins
+       * */
       int multi_player_1_wins;
+
+      /** @brief Statistic
+       *  @details The number of multi player player 2 wins
+       * */
       int multi_player_2_wins;
 
       /** @author Lauren Pokonosky
@@ -113,10 +127,24 @@ class Menu{
        * */
       bool checkTouchLocation(int x, int y);
 
+      /** @author Lauren Pokonosky
+       *  @brief Shows win or loss screens with messages and a random TA.
+       *  @details 
+       *  @param winner Integer correspondng to winning player (1 or 2)
+       * */
       void showWinLoss(int winner);
 
+      /** @author Lauren Pokonosky
+       *  @brief Displays a random TA image.
+       *  @details Picks a random integer and then uses Img class to display a TA image.
+       *  Called by showWinLoss().
+       * */
       void displayTA();
-
+      
+      /** @author Lauren Pokonosky
+       *  @brief Updates the stats stored in the menu object
+       *  @param winner Integer correspondng to winning player (1 or 2)
+       * */
       void updateStats(int winner);
 
 };

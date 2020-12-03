@@ -301,38 +301,38 @@ void Menu::showWinLoss(int winner){
     if (singleplayer == true && winner == 1){ //single player win screen
         LCD.Clear();
         LCD.WriteAt("You Won!", 195, 20);
-        displayTA();
         LCD.WriteAt("is very proud of you.", 160, 75);
+        displayTA();
         
         drawReturnExit();
     }
     else if (singleplayer == true && winner == 2){ //single player loss screen
         LCD.Clear();
         LCD.WriteAt("You Lost...", 195, 20);
-        displayTA();
         LCD.WriteAt("is disappointed in you.", 160, 75);
+        displayTA();
 
         drawReturnExit();
     }
     else if (singleplayer != true && winner == 1){ //multi player player 1 win screen
         LCD.Clear();
         LCD.WriteAt("Player 1 Wins!", 190, 20);
-        displayTA();
         LCD.WriteAt("is proud of you,", 170, 75);
         LCD.WriteAt("Player 1,", 205, 100);
         LCD.WriteAt("and disappointed in", 160, 125);
         LCD.WriteAt("you, Player 2.", 185, 150);
+        displayTA();
         
         drawReturnExit();
     }
     else if (singleplayer != true && winner == 2){ //multi player player 2 win screen
         LCD.Clear();
         LCD.WriteAt("Player 2 Wins!", 195, 20);
-        displayTA();
         LCD.WriteAt("is proud of you,", 170, 75);
         LCD.WriteAt("Player 2,", 205, 100);
         LCD.WriteAt("and disappointed in", 160, 125);
         LCD.WriteAt("you, Player 1.", 185, 150);
+        displayTA();
         
         drawReturnExit();
     }
@@ -387,6 +387,9 @@ void Menu::displayTA(){//this function randomizes the TA image that will show up
 
 
 void Menu::updateStats(int winner){
+    //Lauren Pokonosky
+
+    //Updates game statistics
 
     if (singleplayer == true && winner == 1){ //single player win
         single_player_wins = single_player_wins + 1;
