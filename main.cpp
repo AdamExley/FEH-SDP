@@ -142,6 +142,8 @@ int main() {
                 LCD.WriteAt("You Won!", 195, 20);
                 displayTA();
                 LCD.WriteAt("is very proud of you.", 160, 75);
+                
+                menu.drawReturnExit();
             }
             else if (singleplayer = true && board.checkWin() = 2){ //single player loss screen
                 LCD.Clear();
@@ -149,6 +151,7 @@ int main() {
                 displayTA();
                 LCD.WriteAt("is disappointed in you.", 160, 75);
 
+                menu.drawReturnExit();
             }
             else if (singleplayer != true && board.checkWin() = 1){ //multi player player 1 win screen
                 LCD.Clear();
@@ -158,6 +161,8 @@ int main() {
                 LCD.WriteAt("Player 1,", 205, 100);
                 LCD.WriteAt("and disappointed in", 160, 125);
                 LCD.WriteAt("you, Player 2.", 185, 150);
+                
+                menu.drawReturnExit();
             }
             else if (singleplayer != true && board.checkWin() = 2){ //multi player player 2 win screen
                 LCD.Clear();
@@ -167,8 +172,11 @@ int main() {
                 LCD.WriteAt("Player 2,", 205, 100);
                 LCD.WriteAt("and disappointed in", 160, 125);
                 LCD.WriteAt("you, Player 1.", 185, 150);
+                
+                menu.drawReturnExit():
             }
         
+        menu.checkTouchLocation(x, y); //Player either clicks Exit or Return button
        
         
 
@@ -182,7 +190,7 @@ int main() {
     return 0;
 }
 
-void displayTA(){//this function randomnizes the TA image that will show up for the win/loss screen
+void displayTA(){//this function randomizes the TA image that will show up for the win/loss screen
     //Lauren Pokonosky
     int rand_int = RandInt();
     int TA;
