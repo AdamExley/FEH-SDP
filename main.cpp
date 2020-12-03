@@ -20,7 +20,13 @@
 #include "Game.h"
 #include "image.h"
 
+#include "bridgette.c"
 #include "bailey.c"
+#include "alex.c"
+#include "jamie.c"
+#include "jane.c"
+#include "paul.c"
+
 #include "logo_b.c"
 
 
@@ -42,17 +48,19 @@ int main() {
     Chip chip;
     Board board(game_state);
     Menu menu;
+
+    double temp;
+
     
-    // int bailey_enable[] = {BLACK, WHITE, MAROON, GRAY, OLIVE, BROWN};
-    // Img bailey(bailey_enable, 6);
-    // bailey.Draw(bailey_data, 167, 240, 1, BLACK);
-    // Sleep(500.0);
 
     LCD.Clear(WHITE);
+    LCD.SetFontColor(BLACK);
 
+    temp = TimeNow();
     int enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
     Img connect4logo(enabled, 5);
     connect4logo.Draw(logo_2b, 160, 51, 2, WHITE, false);
+    LCD.Write(TimeNow() - temp);
     Sleep(5.0);
 
     int x, y;
