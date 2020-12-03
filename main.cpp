@@ -86,8 +86,9 @@ int main() {
         ai.setDifficulty(menu.getDifficulty());
     }
 
-    //Do inital draw of board
+    //Do inital draw of board and board menu
     board.DrawBoard();
+    board.DrawBoardMenu();
 
     // do{
     //     if(game.isPlayerTurn()){
