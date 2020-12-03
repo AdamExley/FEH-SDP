@@ -22,7 +22,7 @@ class Game{
 
     public:
 
-        Game(bool singleplayer);
+        void setSingleplayer(bool single);
 
         int getCurrentPlayer();
 

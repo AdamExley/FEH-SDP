@@ -48,6 +48,7 @@ int main() {
     Chip chip;
     Board board(game_state);
     Menu menu;
+    Game game;
 
 
     // LCD.Clear(WHITE);
@@ -66,68 +67,70 @@ int main() {
 
     while(true){
 
-    do{
-        //get touch location
-        waitForInput(x, y); 
+        do{
+            //get touch location
+            waitForInput(x, y); 
 
-        //execute command associated with location based on menu state
-        //loop until a selection is chosen that requires a menu to not be displayed
-    }while(menu.checkTouchLocation(x, y));
+            //execute command associated with location based on menu state
+            //loop until a selection is chosen that requires a menu to not be displayed
+        }while(menu.checkTouchLocation(x, y));
 
-    //after menu is done executing, begin playing game
 
-    //create game, setting it to if the user selected single or multiplayer
-    Game game(menu.getSingleplayer());
 
-    //if in a singleplayer game, set the AI difficulty
-    if(menu.getSingleplayer()){
-        ai.setDifficulty(menu.getDifficulty());
-    }
 
-    //Do inital draw of board and board menu
-    board.DrawBoard();
-    board.DrawBoardMenu();
+        //after menu is done executing, begin playing game
 
-    //initialize a temporary variable
-    int temp;
+        //set game to if the user selected single or multiplayer
+        game.setSingleplayer(menu.getSingleplayer());
 
-    do{
-        if(game.isPlayerTurn()){
+        //if in a singleplayer game, set the AI difficulty
+        if(menu.getSingleplayer()){
+            ai.setDifficulty(menu.getDifficulty());
+        }
 
-            do{
-                temp = board.getCurrentColumn();
+        //Do inital draw of board and board menu
+        board.DrawBoard();
+        board.DrawBoardMenu();
+
+        //initialize a temporary variable
+        int temp;
+
+        do{
+            if(game.isPlayerTurn()){
+
+                do{
+                    temp = board.getCurrentColumn();
+
+                    if(temp == MAIN_MENU_CALL_VALUE || temp == EXIT_CALL_VALUE){
+                        break;
+                    }
+
+                }while(!board.isValidMove());
 
                 if(temp == MAIN_MENU_CALL_VALUE || temp == EXIT_CALL_VALUE){
                     break;
                 }
+                
+                board.updateGameState(game.getCurrentPlayer(), game_state);
+                
 
-            }while(!board.isValidMove());
-
-            if(temp == MAIN_MENU_CALL_VALUE || temp == EXIT_CALL_VALUE){
-                break;
             }
-            
-            board.updateGameState(game.getCurrentPlayer(), game_state);
-            
+            else{
+                // ai.PickMove(game_state);
 
+                // board.updateGameState(2);
+
+            }
+            board.DrawChips();
+            game.switchPlayer();
+        }while(!board.checkWin());
+        //Show win/loss screen
+
+        if(temp == MAIN_MENU_CALL_VALUE){
+            menu.showMain();
+        }else if(temp == EXIT_CALL_VALUE){
+            menu.showExit();
         }
-        else{
-            // ai.PickMove(game_state);
-
-            // board.updateGameState(2);
-
-        }
-        board.DrawChips();
-        game.switchPlayer();
-    }while(!board.checkWin());
-    //Show win/loss screen
-    delete (&game); //destruct game instance
-
-    if(temp == MAIN_MENU_CALL_VALUE){
-        menu.showMain();
-    }else if(temp == EXIT_CALL_VALUE){
-        menu.showExit();
-    }
 
     }
     return 0;

@@ -4,9 +4,10 @@
  * */
 #include "Game.h"
 
-Game::Game(bool single)
-:singleplayer(single), current_player(1)
-{}
+void Game::setSingleplayer(bool single){
+    singleplayer = single;
+}
+
 
 int Game::getCurrentPlayer(){
     return current_player;
