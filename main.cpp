@@ -50,6 +50,42 @@ int main() {
     Menu menu;
 
 
+    // int bailey_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
+    // Img bailey(bailey_enable, 5);
+    // bailey.Draw(bailey_data, BAILEY_FRAME_WIDTH, BAILEY_FRAME_HEIGHT, 1, BLACK);
+    // Sleep(5.0);
+    // LCD.Clear();
+
+    // int bridgette_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
+    // Img bridgette(bridgette_enable, 5);
+    // bridgette.Draw(bridgette_data, BRIDGETTE_FRAME_WIDTH, BRIDGETTE_FRAME_HEIGHT, 1, BLACK);
+    // Sleep(5.0);
+    // LCD.Clear();
+
+    // int alex_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, BLUE};
+    // Img alex(alex_enable, 6);
+    // alex.Draw(alex_data, ALEX_FRAME_WIDTH, ALEX_FRAME_HEIGHT, 1, BLACK);
+    // Sleep(5.0);
+    // LCD.Clear();
+
+    int paul_enable[] = {BLACK, WHITE, GRAY, OLIVE, MAROON, CYAN};
+    Img paul(paul_enable, 6);
+    paul.Draw(paul_data, PAUL_FRAME_WIDTH, PAUL_FRAME_HEIGHT, 1, BLACK, 0);
+    Sleep(5.0);
+    LCD.Clear();
+
+    int jamie_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
+    Img jamie(jamie_enable, 6);
+    jamie.Draw(jamie_data, JAMIE_FRAME_WIDTH, JAMIE_FRAME_HEIGHT, 1, BLACK);
+    Sleep(5.0);
+    LCD.Clear();
+
+    int jane_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
+    Img jane(jane_enable, 6);
+    jane.Draw(jane_data, JANE_FRAME_WIDTH, JANE_FRAME_HEIGHT, 1, BLACK);
+    Sleep(5.0);
+    LCD.Clear();
+
     // LCD.Clear(WHITE);
 
     // int enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
