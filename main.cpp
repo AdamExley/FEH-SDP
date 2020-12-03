@@ -49,6 +49,7 @@ int main() {
     Board board(game_state);
     Menu menu;
     Game game;
+    void displayTA();
 
     board.DrawBoard();
     chip.Drop(1);
@@ -134,7 +135,28 @@ int main() {
             board.DrawChips();
             game.switchPlayer();
         }while(!board.checkWin());
+        
         //Show win/loss screen
+            if (singleplayer = true && board.checkWin() = 1){ //single player win screen
+                LCD.Clear();
+                displayTA();
+            }
+            else if (singleplayer = true && board.checkWin() = 2){ //single player loss screen
+                LCD.Clear();
+                displayTA();
+            }
+            else if (singleplayer != true && board.checkWin() = 1){ //multi player player 1 win screen
+                LCD.Clear();
+                displayTA();
+            }
+            else if (singleplayer != true && board.checkWin() = 2){ //multi player player 2 win screen
+                LCD.Clear();
+                displayTA();
+            }
+        
+        
+        //////////////
+        
 
         if(temp == MAIN_MENU_CALL_VALUE){
             menu.showMain();
@@ -144,4 +166,42 @@ int main() {
 
     }
     return 0;
+}
+
+void displayTA(){//this function randomnizes the TA image that will show up for the win/loss screen
+    //Lauren Pokonosky
+    int rand_int = RandInt();
+    int TA;
+    TA = rand_int % 6;
+        switch (TA){
+            case 1: //display Bridgette
+                int bridgette_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
+                Img bridgette(bridgette_enable, 5);
+                bridgette.Draw(bridgette_data, BRIDGETTE_FRAME_WIDTH, BRIDGETTE_FRAME_HEIGHT, 1, BLACK);
+                    break;
+                
+            case 2: //display Jane
+                int jane_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
+                Img jane(jane_enable, 6);
+                jane.Draw(jane_data, JANE_FRAME_WIDTH, JANE_FRAME_HEIGHT, 1, BLACK);
+                    break;
+                
+            case 3: //display Bailey
+                int bailey_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
+                Img bailey(bailey_enable, 5);
+                bailey.Draw(bailey_data, BAILEY_FRAME_WIDTH, BAILEY_FRAME_HEIGHT, 1, BLACK);
+                    break;
+                
+            case 4: //display Alex
+                int alex_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, BLUE};
+                Img alex(alex_enable, 6);
+                alex.Draw(alex_data, ALEX_FRAME_WIDTH, ALEX_FRAME_HEIGHT, 1, BLACK);
+                    break;
+                
+            case 5: //display Jamie
+                int jamie_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
+                Img jamie(jamie_enable, 6);
+                jamie.Draw(jamie_data, JAMIE_FRAME_WIDTH, JAMIE_FRAME_HEIGHT, 1, BLACK);
+                    break;
+        }
 }
