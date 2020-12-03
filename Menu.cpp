@@ -247,9 +247,13 @@ void Menu::showExit(){
     //Lauren Pokonosky
 
     menu_state = 5; //Set menu_state to exit screen
-
+    
     LCD.Clear();
-    LCD.WriteAt("Thank you for playing!", 80, 115);
+    int paul_enable[] = {BLACK, WHITE, GRAY, OLIVE, MAROON, CYAN};
+    Img paul(paul_enable, 6);
+    paul.Draw(paul_data, PAUL_FRAME_WIDTH, PAUL_FRAME_HEIGHT, 1, BLACK, 0);
+  
+    LCD.WriteAt("Paul thanks you for playing!", 80, 115);
 }
 
 
