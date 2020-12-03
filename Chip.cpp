@@ -12,9 +12,9 @@ Declarations are in Chip.h
 
 #define G 9.81
 
-void Chip::Drop() {
+void Chip::Drop(int current_player) {
     float chip_velocity, conversion_constant, time, x_position;
-    int current_height, time_delay = 100, current_player;
+    int current_height, time_delay = 100;
     
     //Pass the current_player variable in the Chip function
     
