@@ -16,7 +16,7 @@ void Chip::Drop() {
     float chip_velocity, conversion_constant, time, x_position;
     int height_change, current_height;
     
-    x_position = (BOARD_COLUMNS*40) + 60;
+    x_position = (current_column*40) + 60;
     conversion_constant = 20;
     int time_delay = 100;
 
@@ -30,9 +30,12 @@ void Chip::Drop() {
     //This will redraw the circle at a faster rate as it goes down the screen
     for (current_height = 0; current_height <= chip_y; current_height = (G * pow(time,2) + current_height) )
     {
-        LCD.DrawCircle(x_position, current_height, 15);
+        LCD.SetDrawColor(YELLOW);
+        LCD.FillCircle(x_position, current_height, 15);
         Sleep(time_delay);  
     }
 }
 
-// void Chip::example_function(){   }
+Chip::Chip()
+:current_column(0)
+{}

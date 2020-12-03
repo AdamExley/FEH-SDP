@@ -18,6 +18,7 @@ class Chip {
   
   public: //function prototypes, etc.
     void Drop();
+    Chip();
   
 };
 
