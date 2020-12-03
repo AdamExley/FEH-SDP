@@ -51,6 +51,10 @@ int main() {
     Game game;
 
 
+    board.DrawBoard();
+    chip.Drop(1);
+    Sleep(5.0);
+
     // LCD.Clear(WHITE);
 
     // int enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
