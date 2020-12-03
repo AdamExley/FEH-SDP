@@ -26,8 +26,6 @@ class Game{
 
         int getCurrentPlayer();
 
-        bool isAIGame();
-
         bool isPlayerTurn();
 };
 
