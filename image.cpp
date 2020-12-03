@@ -32,7 +32,9 @@ Img::Img(const int enabled_colors[], const int num_enabled){
 
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 22; j++){
+
             lookup_table[i][j] = DISABLE_VALUE;
+            
             for(int k = 0; k < num_enabled; k++){
                 if (j == enabled_colors[k]){
                     lookup_table[i][j] = temp[i][j];

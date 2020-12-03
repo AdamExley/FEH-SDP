@@ -36,6 +36,8 @@
 
 int main() {
 
+    /** Shared game state array. Is updated by the Board class.
+     * */
     int game_state[BOARD_ROWS][BOARD_COLUMNS];
 
     AI ai;
@@ -43,13 +45,13 @@ int main() {
     Menu menu;
     Game game;
 
-    // LCD.Clear(WHITE);
+    LCD.Clear(WHITE);
 
-    // int enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
-    // Img connect4logo(enabled, 5);
-    // connect4logo.Draw(logo_2b, 160, 51, 2, WHITE, false);
+    int enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
+    Img connect4logo(enabled, 5);
+    connect4logo.Draw(logo_2b, 160, 51, 2, WHITE, false);
 
-    // Sleep(5.0);
+    Sleep(5.0);
 
     int x, y;
 
@@ -57,7 +59,7 @@ int main() {
     menu.showMain();
 
 
-    while(true){
+    while(true){ //Loop game forever
 
         //Clear Proteus Touch buffer
         LCD.ClearBuffer();
@@ -93,7 +95,7 @@ int main() {
         do{
             //Clear Proteus Touch buffer
             LCD.ClearBuffer();
-            
+
             if(game.isPlayerTurn()){
                 //if it's a player's turn, execute this
 
@@ -120,7 +122,14 @@ int main() {
             else{ //if it's not a player's turn, let the AI pick a move
 
                 // ai.PickMove(game_state);
-                // board.updateGameState(2);
+
+                do{
+                  
+                    board.getAIMove(ai.easyMove());
+
+                }while(!board.isValidMove());
+                
+                board.updateGameState(2, game_state);
 
             }
 
@@ -147,6 +156,7 @@ int main() {
         }
 
     }
+
     return 0;
 }
 

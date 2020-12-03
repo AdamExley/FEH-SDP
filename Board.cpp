@@ -359,3 +359,9 @@ void Board::DropChip(int current_player) {
 
     }
 }
+
+
+
+void Board::getAIMove(int column){
+	current_column = column;
+}

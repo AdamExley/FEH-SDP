@@ -23,6 +23,8 @@ class AI {
     void setDifficulty(bool diff);
 
     int pickMove(const int game_state_array[]);
+
+    int easyMove();
   
 };
 

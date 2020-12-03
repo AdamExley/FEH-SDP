@@ -99,5 +99,9 @@ class Board {
 
     void DropChip(int current_player);
 
+    void getAIMove(int column);
+
+
+
 
 };

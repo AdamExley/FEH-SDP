@@ -11,8 +11,13 @@ void AI::setDifficulty(bool diff){
     difficulty = diff;
 }
 
+int AI::easyMove(){
+
 int rand = RandInt();
 int easy_move = rand % 7;
+return easy_move;
+}
+
 
 
 
