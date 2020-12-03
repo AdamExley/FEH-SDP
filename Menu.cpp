@@ -173,16 +173,16 @@ void Menu::showStats(){
 
     LCD.WriteAt("Statistics Data", 100, 20);
         
-            if (singleplayer = true && Board.checkWin() = 1){ //single player win
+            if (singleplayer = true && board.checkWin() = 1){ //single player win
                 single_player_wins = single_player_wins + 1;
             }
-            else if (singleplayer = true && Board.checkWin() = 2){ //single player loss
+            else if (singleplayer = true && board.checkWin() = 2){ //single player loss
                 AI_wins = AI_wins + 1;
             }
-            else if (singleplayer != true && Board.checkWin() = 1){ //multi player player 1 win
+            else if (singleplayer != true && board.checkWin() = 1){ //multi player player 1 win
                 multi_player_1_wins = multi_player_1_wins + 1;
             }
-            else if (singleplayer != true && Board.checkWin() = 2){ //multi player player 2 win
+            else if (singleplayer != true && board.checkWin() = 2){ //multi player player 2 win
                 multi_player_2_wins = multi_player_2_wins + 1;
             }
     
