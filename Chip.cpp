@@ -10,7 +10,7 @@ Declarations are in Chip.h
 #include "Chip.h"
 #include "math.h"
 
-#DEFINE G 9.81
+#define G 9.81
 
 void Chip::Drop() {
     float chip_velocity, conversion_constant, time, x_position;
