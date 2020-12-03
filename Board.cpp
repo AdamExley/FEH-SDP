@@ -104,6 +104,12 @@ int Board::getCurrentColumn() {
 	
 	if (0<=x && x<=40) {
 		current_column = 0;
+			if (5<=x && x<=35 && 10<=y && y<=70) { //if statement for Home Button
+				menu.showMain();
+			}
+			else if (5<=x && x<=35 && 150<=y && y<=223) { //else if for Quit Button
+				menu.showExit();
+			}	
 	}
 	else if (40<x && x<=80) {
 		current_column = 1;
