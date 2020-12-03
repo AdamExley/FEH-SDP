@@ -14,7 +14,7 @@ Declarations are in Chip.h
 
 void Chip::Drop(int current_player) {
     float chip_velocity, conversion_constant, time, x_position;
-    int current_height, time_delay = 10;
+    int current_height, time_delay = 5;
     
     //Pass the current_player variable in the Chip function
     
@@ -45,7 +45,7 @@ void Chip::Drop(int current_player) {
         Sleep(time_delay);                                        //Keep the chip in that location for 0.1 seconds
         LCD.SetDrawColor(BLACK);                                  //Redraw a black chip over it, "earasing" the earlier chip.
         LCD.FillCircle(x_position, current_height, 15);
-        time = time + 0.1;                                        //Change the time in the current_height function to better simulate gravity
+        time = time + 0.01;                                        //Change the time in the current_height function to better simulate gravity
 
     }
 }

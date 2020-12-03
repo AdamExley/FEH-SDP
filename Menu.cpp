@@ -7,6 +7,7 @@
 #include "Game.h"
 
 
+
 Menu::Menu()
 //Adam Exley
 //Set menu_state to 0
@@ -161,6 +162,8 @@ void Menu::showPlay(){
 
 void Menu::showStats(){
     //Lauren Pokonosky
+    
+        int single_player_wins = 0, AI_wins = 0, multi_player_1_wins = 0, multi_player_2_wins = 0;
 
     menu_state = 3; //Set menu_state to stats menu
 
@@ -169,19 +172,35 @@ void Menu::showStats(){
     LCD.SetFontColor(TEXT_COLOR);
 
     LCD.WriteAt("Statistics Data", 100, 20);
-
+        
+            if (singleplayer = true && Board.checkWin() = 1){ //single player win
+                single_player_wins = single_player_wins + 1;
+            }
+            else if (singleplayer = true && Board.checkWin() = 2){ //single player loss
+                AI_wins = AI_wins + 1;
+            }
+            else if (singleplayer != true && Board.checkWin() = 1){ //multi player player 1 win
+                multi_player_1_wins = multi_player_1_wins + 1;
+            }
+            else if (singleplayer != true && Board.checkWin() = 2){ //multi player player 2 win
+                multi_player_2_wins = multi_player_2_wins + 1;
+            }
+    
     LCD.WriteAt("Against AI:", 10, 50);
         LCD.WriteAt("Wins: ", 35, 70);
-            LCD.WriteAt("0", 125, 70);
+        LCD.WriteAt(single_player_wins, 125, 70);
         LCD.WriteAt("Losses: ", 35, 90);
-            LCD.WriteAt("0", 125, 90);
+        LCD.WriteAt(AI_wins, 125, 90);
+    
         LCD.WriteAt("Fastest Win:", 35, 110);
             LCD.WriteAt("10", 140, 110);
             LCD.WriteAt("   Moves", 155, 110);
     
     LCD.WriteAt("2 Player:", 10, 140);
         LCD.WriteAt("Player 1 Wins:", 35, 160);
+        LCD.WriteAt(multi_player_1_wins, 150, 160); //THIS NEEDS TO BE CHANGED
         LCD.WriteAt("Player 2 Wins:", 35, 180);
+        LCD.WriteAt(multi_player_2_wins, 150, 180); //THIS NEEDS TO BE CHANGED
   
   
     //Draws Return and Exit buttons 
