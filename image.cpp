@@ -3,7 +3,7 @@
 Img::Img(){
 
     //RGB values of the 22 Proteus LCDColors.h colors
-    static const int temp[3][22] =
+    static const uint_fast32_t temp[3][22] =
         { {0,255,255,  0,  0,187,102,  0,  0,191,  0,146, 34, 64,128,128,186,135,143,144,165,255},
         {0,255,  0,255,  0,  0,102,  0,128,255,255,211,139,224,  0,  0,184,206, 21,238, 42,255},
         {0,255,  0,  0,255,  0,102,128,128,  0,255,202, 34,208,  0,128,108,235,  0,144, 42,  0}
@@ -24,13 +24,11 @@ Img::Img(){
 Img::Img(const int enabled_colors[], const int num_enabled){
 
     //RGB values of the 22 Proteus LCDColors.h colors
-    static const int temp[3][22] =
+    static const uint_fast32_t temp[3][22] =
         { {0,255,255,  0,  0,187,102,  0,  0,191,  0,146, 34, 64,128,128,186,135,143,144,165,255},
         {0,255,  0,255,  0,  0,102,  0,128,255,255,211,139,224,  0,  0,184,206, 21,238, 42,255},
         {0,255,  0,  0,255,  0,102,128,128,  0,255,202, 34,208,  0,128,108,235,  0,144, 42,  0}
     };
-
-    bool enable;
 
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 22; j++){
@@ -150,7 +148,7 @@ void Img::HorizLineOptimize(uint_fast32_t image_color_array[], int width, int he
 
     bool cont;
 
-    for(int color = 0; color < 22; color++){
+    for(unsigned int color = 0; color < 22; color++){
 
         //If this color is disabled, skip trying to optimize it
         if (lookup_table[0][color] == DISABLE_VALUE){

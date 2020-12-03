@@ -93,7 +93,7 @@ class Menu{
       void showMain();
 
       /** @author Lauren Pokonosky
-       *  @brief Displays an exit screen thanking the user for playing
+       *  @brief Displays an exit screen thanking the user for playing. Runs forever
        * */
       void showExit();
 

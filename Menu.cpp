@@ -233,11 +233,17 @@ void Menu::showExit(){
     menu_state = 5; //Set menu_state to exit screen
     
     LCD.Clear();
+    LCD.WriteAt("Paul thanks you", 190, 100);
+    LCD.WriteAt("for playing!", 190, 120);
+    Sleep(2.0);
+
     int paul_enable[] = {BLACK, WHITE, GRAY, OLIVE, MAROON, CYAN};
     Img paul(paul_enable, 6);
     paul.Draw(paul_data, PAUL_FRAME_WIDTH, PAUL_FRAME_HEIGHT, 1, BLACK, 0);
-  
-    LCD.WriteAt("Paul thanks you for playing!", 80, 115);
+
+    while(true){ //Run forever
+
+    }
 }
 
 
