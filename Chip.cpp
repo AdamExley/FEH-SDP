@@ -14,7 +14,10 @@ Declarations are in Chip.h
 
 void Chip::Drop() {
     float chip_velocity, conversion_constant, time, x_position;
-    int current_height, time_delay = 100;
+    int current_height, time_delay = 100, current_player;
+    
+    //Pass the current_player variable in the Chip function
+    
     
     //Set the x position of the chip based on the column that was deicded by user/AI
     x_position = (current_column*40) + 60;
@@ -28,15 +31,15 @@ void Chip::Drop() {
     //This will redraw the circle at a faster rate as it goes down the screen
     for (current_height = 0; current_height <= chip_y; current_height = (G * pow(time,2) + current_height) )
     {
-        // //If structure to decide which color to draw the chip  
-        // if (current_player == 1)
-        // {
-        //    LCD.SetDrawColor(PLAYER_1_COLOR);
-        // }  //player 1 IF
-        // if (current_player == 2)
-        // {
-        //     LCD.SetDrawColor(PLAYER_2_COLOR);
-        // } //player 2 IF
+        //If structure to decide which color to draw the chip  
+        if (current_player == 1)
+        {
+           LCD.SetDrawColor(PLAYER_1_COLOR);
+        }  //player 1 IF
+        if (current_player == 2)
+        {
+            LCD.SetDrawColor(PLAYER_2_COLOR);
+        } //player 2 IF
       
         LCD.FillCircle(x_position, current_height, 15);           //Draw the chip in a spceicif (x,y) coordinate
         Sleep(time_delay);                                        //Keep the chip in that location for 0.1 seconds
