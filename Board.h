@@ -10,6 +10,7 @@
 #include "FEHSD.h"
 #include "config.h"
 #include "Game.h"
+#include <cmath>
 
 
 
@@ -28,6 +29,9 @@ class Board {
     /** Column that the board is currently manipulating
      * */
     int current_column;
+
+    int chip_x;
+    int chip_y;
 
     /** @author Adam Exley
      *  @brief Pushes contents of board_state into game_state
@@ -92,6 +96,8 @@ class Board {
      *  @returns A column value, or MAIN_MENU_CALL_VALUE or EXIT_CALL_VALUE 
      * */
     int getCurrentColumn();
+
+    void DropChip(int current_player);
 
 
 };

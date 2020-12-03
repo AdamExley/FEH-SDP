@@ -19,6 +19,8 @@
 #define BOARD_ROWS 6    //Rows of the game board
 #define BOARD_COLUMNS 7 //Columns in the game board
 
+#define G 9.8
+
 
 //Menu Options
 #define MAIN_MENU_CALL_VALUE 10
