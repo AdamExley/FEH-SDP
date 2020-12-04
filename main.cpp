@@ -125,7 +125,7 @@ int main() {
 
                 do{
                   
-                    board.getAIMove(ai.easyMove());
+                    board.getAIMove(ai.pickMove(game_state));
 
                 }while(!board.isValidMove());
                 

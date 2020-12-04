@@ -25,3 +25,8 @@
 //Menu Options
 #define MAIN_MENU_CALL_VALUE 10
 #define EXIT_CALL_VALUE 11
+
+//AI Scoring Options
+#define TWO_IN_A_ROW 10
+#define THREE_IN_A_ROW 25
+#define FOUR_IN_A_ROW
