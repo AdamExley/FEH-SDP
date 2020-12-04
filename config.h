@@ -28,6 +28,8 @@
 
 //AI Scoring Options
 #define CENTER_WEIGHT 2 //Value to weight moves towards center of board
+
+#define ONE_PLAYABLE 5
 #define TWO_IN_A_ROW 15 //Value to give combonations of 2 in a row
 
 //Value to give combonations of 3 in a row above base. Base value will be 2 * TWO_IN_A_ROW

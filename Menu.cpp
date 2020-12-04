@@ -344,9 +344,10 @@ void Menu::showWinLoss(int winner){
 
 void Menu::displayTA(){//this function randomizes the TA image that will show up for the win/loss screen
     //Lauren Pokonosky
+
     int rand_int = RandInt();
     int TA;
-    TA = rand_int % 6;
+    TA = rand_int % 5 + 1;
         switch (TA){
             case 1:{ //display Bridgette
                 LCD.WriteAt("Bridgette", 210, 50);

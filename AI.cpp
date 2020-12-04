@@ -90,6 +90,7 @@ int AI::pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]){
             //change the move score based on analysis
 
             //Benefits to AI
+            move_score[move] += ONE_PLAYABLE * inARow(1, ai_id, test_game_state_2);
             move_score[move] += TWO_IN_A_ROW * inARow(2, ai_id, test_game_state_2);
             move_score[move] += THREE_IN_A_ROW * inARow(3, ai_id, test_game_state_2);
                 //Theoretically this should never occur, but covering bases
@@ -98,6 +99,7 @@ int AI::pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]){
             move_score[move] += CENTER_WEIGHT * fromCenter(player_id, test_game_state_2);
 
             //Benefits to player
+            move_score[move] -= ONE_PLAYABLE * inARow(1, player_id, test_game_state_2);
             move_score[move] -= TWO_IN_A_ROW * inARow(2, player_id, test_game_state_2);
             move_score[move] -= THREE_IN_A_ROW * inARow(3, player_id, test_game_state_2);
             move_score[move] -= FOUR_IN_A_ROW * inARow(4, player_id, test_game_state_2);
@@ -144,7 +146,8 @@ int AI::inARow(const int x, const int player, const int array[BOARD_ROWS][BOARD_
 
     /** Logical value that stores if values are equal to desired player
      * */
-    bool equal; 
+    bool equal;
+    bool playable;
 
 	/*************** Vertical ********************/
 
@@ -166,9 +169,35 @@ int AI::inARow(const int x, const int player, const int array[BOARD_ROWS][BOARD_
                 }
             }
 
-            //If all values were equal to player, increase count
+            //If all values were equal to player, check if playable
             if (equal){
-                count++;
+
+                //w is starting offset of a 4-chip row
+                for(int w = x - 4; w < 1; w++){
+                    //Make sure not out of bounds
+                    if((r + w < 0) || (r - w >= BOARD_ROWS)){
+                        continue;
+                    }
+
+                    playable = true; //assume it's playable
+
+                    //Check that a 4-chip sequence starting at the w offset can be made
+                    for(int z = 0; (z < 4) && equal; z++){
+                        
+                        //If not playable, change variable
+                        if(!(array[r + w + z][c] == 0 || array[r + w + z][c] == player)){
+                            playable = false;
+                        }
+
+                    }
+
+                    //if a 4-chip combo can be made off this piece location and size, increase count
+                    if(playable){
+                        count++;
+                    }
+
+                }
+
             }
 
 		}
@@ -197,7 +226,33 @@ int AI::inARow(const int x, const int player, const int array[BOARD_ROWS][BOARD_
 
             //If all values were equal to player, increase count
             if (equal){
-                count++;
+
+                //w is starting offset of a 4-chip combo
+                for(int w = x - 4; w < 1; w++){
+                    
+                    //Make sure not out of bounds
+                    if((c + w < 0) || (c - w >= BOARD_COLUMNS)){
+                        continue;
+                    }
+
+                    playable = true; //assume it's playable
+
+                    //Check that a 4-chip sequence starting at the w offset can be made
+                    for(int z = 0; (z < 4) && equal; z++){
+                        
+                        //If not playable, change variable
+                        if(!(array[r][c + w + z] == 0 || array[r][c + w + z] == player)){
+                            playable = false;
+                        }
+
+                    }
+
+                    //if a 4-chip combo can be made off this piece location and size, increase count
+                    if(playable){
+                        count++;
+                    }
+
+                }
             }
 		}
 	}
@@ -225,7 +280,33 @@ int AI::inARow(const int x, const int player, const int array[BOARD_ROWS][BOARD_
 
             //If all values were equal to player, increase count
             if (equal){
-                count++;
+
+                //w is starting offset of a 4-chip combo
+                for(int w = x - 4; w < 1; w++){
+
+                    //Make sure not out of bounds
+                    if(((c + w < 0) || (c - w >= BOARD_COLUMNS)) || ((r + w < 0) || (r - w >= BOARD_ROWS))){
+                        continue;
+                    }
+
+                    playable = true; //assume it's playable
+
+                    //Check that a 4-chip sequence starting at the w offset can be made
+                    for(int z = 0; (z < 4) && equal; z++){
+                        
+                        //If not playable, change variable
+                        if(!(array[r + w + z][c + w + z] == 0 || array[r + w + z][c + w + z] == player)){
+                            playable = false;
+                        }
+
+                    }
+
+                    //if a 4-chip combo can be made off this piece location and size, increase count
+                    if(playable){
+                        count++;
+                    }
+
+                }
             }
 		}
 	}
@@ -252,7 +333,33 @@ int AI::inARow(const int x, const int player, const int array[BOARD_ROWS][BOARD_
 
             //If all values were equal to player, increase count
             if (equal){
-                count++;
+
+                //w is starting offset of a 4-chip combo
+                for(int w = x - 4; w < 1; w++){
+
+                    //Make sure not out of bounds
+                    if(((c + w < 0) || (c - w >= BOARD_COLUMNS)) || ((r + w < 0) || (r - w >= BOARD_ROWS))){
+                        continue;
+                    }
+
+                    playable = true; //assume it's playable
+
+                    //Check that a 4-chip sequence starting at the w offset can be made
+                    for(int z = 0; (z < 4) && equal; z++){
+                        
+                        //If not playable, change variable
+                        if(!(array[r - (w + z)][c + w + z] == 0 || array[r - (w + z)][c + w + z] == player)){
+                            playable = false;
+                        }
+
+                    }
+
+                    //if a 4-chip combo can be made off this piece location and size, increase count
+                    if(playable){
+                        count++;
+                    }
+
+                }
             }
 		}
 	}
