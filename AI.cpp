@@ -26,11 +26,12 @@ int AI::pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]){
 
     //Array to store "scores" for each possible move
     int move_score[BOARD_COLUMNS] = {0};
+    int row; //used for dropping chips into valid spots
 
     //Copy game state to local variables for easier analysis
     for(int r = 0; r < BOARD_ROWS; r++){
         for(int c = 0; c < BOARD_COLUMNS; c++){
-            test_game_state[r][c] = game_state_array[r][c];
+            test_game_state_1[r][c] = game_state_array[r][c];
             game_state[r][c] = game_state_array[r][c];
         }
     }
@@ -45,32 +46,81 @@ int AI::pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]){
             continue; //Skip further analysis
         }
 
-        //reset test_game_state to current state
+        //reset test_game_state_1 to current state of board
         for(int r = 0; r < BOARD_ROWS; r++){
             for(int c = 0; c < BOARD_COLUMNS; c++){
-                test_game_state[r][c] = game_state[r][c];
+                test_game_state_1[r][c] = game_state[r][c];
             }
         }
 
-        //Drop chip into test_game_state at the move being analyzed
+        //Drop chip into test_game_state_1 at the move being analyzed
         //Taken from Board::updateGameState()
             //decrement r until the row r is empty
             //In the lowest empty row, place the chip with value of ai_id
-        int r;
-        for(r = BOARD_ROWS - 1; test_game_state[r][move] != 0; r--);
-        test_game_state[r][move] = ai_id;
+        for(row = BOARD_ROWS - 1; test_game_state_1[row][move] != 0; row--);
+        test_game_state_1[row][move] = ai_id;
 
         //Test to see if this move results in a win. If it does, return it as the move to use.
-        if(inARow(4, ai_id, test_game_state) > 0){
+        if(inARow(4, ai_id, test_game_state_1) > 0){
             return move;
         }
 
+        //Second-level move check. Move_2 is the move that the opponent can make after move "move" is made
+        //Allows to test for if making move "move" allows the opponent to easily win
+        //Very similar to structure leading up to this
+        for(int move_2 = 0; move_2 < BOARD_COLUMNS; move_2++){
 
+            //Test move_2 validity
+            if(!isValidMove(move_2, test_game_state_1)){
+                //If invalid, skip to next analysis
+                continue;
+            }
+
+            //reset test_game_state_2 to test_game_state_1
+            for(int r = 0; r < BOARD_ROWS; r++){
+                for(int c = 0; c < BOARD_COLUMNS; c++){
+                    test_game_state_2[r][c] = test_game_state_1[r][c];
+                }
+            }
+
+            //make move_2 in test_game_state_2
+            for(row = BOARD_ROWS - 1; test_game_state_2[row][move_2] != 0; row--);
+            test_game_state_2[row][move_2] = player_id;
+
+            //change the move score based on analysis
+
+            //Benefits to AI
+            move_score[move] += TWO_IN_A_ROW * inARow(2, ai_id, test_game_state_2);
+            move_score[move] += THREE_IN_A_ROW * inARow(3, ai_id, test_game_state_2);
+                //Theoretically this should never occur, but covering bases
+            move_score[move] += FOUR_IN_A_ROW * inARow(4, ai_id, test_game_state_2);
+                //Other player deviating from center is a pro
+            move_score[move] += CENTER_WEIGHT * fromCenter(player_id, test_game_state_2);
+
+            //Benefits to player
+            move_score[move] -= TWO_IN_A_ROW * inARow(2, player_id, test_game_state_2);
+            move_score[move] -= THREE_IN_A_ROW * inARow(3, player_id, test_game_state_2);
+            move_score[move] -= FOUR_IN_A_ROW * inARow(4, player_id, test_game_state_2);
+            move_score[move] -= CENTER_WEIGHT * fromCenter(ai_id, test_game_state_2);
+
+        }
 
 
     }
 
+    //Set best move to be first move initally 
+    int max_score = move_score[0];
+    int best_move = 0;
 
+    //Determine which move has max move score
+    for(int i = 0; i < BOARD_COLUMNS; i++){
+        if(move_score[i] > max_score){
+            max_score = move_score[i];
+            best_move = i;
+        }
+    }
+
+    return best_move;
 
 }
 
@@ -224,3 +274,24 @@ bool AI::isValidMove(int column, const int array[BOARD_ROWS][BOARD_COLUMNS]){
 	}
 
 }
+
+
+double AI::fromCenter(int player, const int array[BOARD_ROWS][BOARD_COLUMNS]){
+    //Adam Exley
+
+    double cumlative_dist = 0;
+    int count = 0;
+
+    for(int c = 0; c < BOARD_COLUMNS; c++){
+        for(int r = 0; r < BOARD_ROWS; r++){
+            if(array[r][c] == player){
+                count++;
+                cumlative_dist += fabs(c - ((BOARD_COLUMNS - 1) / 2));
+            }
+        }
+    }
+
+    return (cumlative_dist / count);
+
+}
+

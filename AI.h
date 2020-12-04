@@ -10,6 +10,7 @@
 #include "FEHSD.h"
 #include "config.h"
 #include <climits>
+#include <cmath>
 
 
 //https://www.gamesver.com/10-helpful-tips-tricks-and-strategies-to-win-at-connect-4/
@@ -29,7 +30,12 @@ class AI {
 
     /** Internal copy of master game state array that is changed and tested
      * */
-    int test_game_state[BOARD_ROWS][BOARD_COLUMNS];
+    int test_game_state_1[BOARD_ROWS][BOARD_COLUMNS];
+
+    /** Internal copy of master game state array that is changed and tested
+     *  Second level
+     * */
+    int test_game_state_2[BOARD_ROWS][BOARD_COLUMNS];
 
     /** Internal copy of master game state array that is constant
      * */
@@ -60,7 +66,7 @@ class AI {
      *  the board states will be compared agaainst each other. May result in some inaccuracy.
      *  @param x The number of chips in a row to detect.
      *  @param player The integer to analyze in the array.
-     *  @param array Array to analyze. game_state or test_game_state
+     *  @param array Array to analyze. game_state or test_game_state_1
      *  @returns Combonations of x-in-a-row chips found.
      * */
     int inARow(const int x, const int player, const int array[BOARD_ROWS][BOARD_COLUMNS]);
@@ -82,10 +88,18 @@ class AI {
      *  @brief Checks if a move in is possible in a column
      *  @details Modified from Board::isValidMove()
      *  @param column Column to see if move is valid in
-     *  @param array Which array to test validity on, test_game_state or game_state
+     *  @param array Which array to test validity on.
      *  @returns True/false as to if move is valid in given array
      * */
     bool isValidMove(int column, const int array[BOARD_ROWS][BOARD_COLUMNS]);
+
+    /** @author Adam Exley
+     *  @brief Measures how close a player's chips are towards the center
+     *  @param player The player ID to analyze
+     *  @param array The array to analyze
+     *  @returns The average distance from the center column
+     * */
+    double fromCenter(int player, const int array[BOARD_ROWS][BOARD_COLUMNS]);
 
     
 };
