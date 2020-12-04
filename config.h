@@ -7,10 +7,10 @@
 #define TEXT_COLOR LCD.White        //Text color for all menu buttons
 
 //Board and Chip Colors
-#define BOARD_COLOR BLUE
-#define BOARD_BACKGROUND_COLOR BLACK
-#define PLAYER_1_COLOR RED
-#define PLAYER_2_COLOR YELLOW
+#define BOARD_COLOR BLUE                //Color of game board
+#define BOARD_BACKGROUND_COLOR BLACK    //Color behind game board. Same as board hole color.
+#define PLAYER_1_COLOR RED              //Color of player 1's chips
+#define PLAYER_2_COLOR YELLOW           //Color of player 2's chips
 
 
 //Board Options
@@ -23,10 +23,15 @@
 
 
 //Menu Options
-#define MAIN_MENU_CALL_VALUE 10
-#define EXIT_CALL_VALUE 11
+#define MAIN_MENU_CALL_VALUE 10 //Value other class' touch functions can return to go to main menu
+#define EXIT_CALL_VALUE 11      //Value other class' touch functions can return to exit game
 
 //AI Scoring Options
-#define TWO_IN_A_ROW 10
-#define THREE_IN_A_ROW 25
-#define FOUR_IN_A_ROW
+#define CENTER_WEIGHT 2 //Value to weight moves towards center of board
+#define TWO_IN_A_ROW 15 //Value to give combonations of 2 in a row
+
+//Value to give combonations of 3 in a row above base. Base value will be 2 * TWO_IN_A_ROW
+#define THREE_IN_A_ROW 45 
+
+//Value to give combonations of 4 in a row above base. Base value will be 2 * THREE_IN_A_ROW + 3 * TWO_IN_A_ROW
+#define FOUR_IN_A_ROW 100000 

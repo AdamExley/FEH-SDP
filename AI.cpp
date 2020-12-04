@@ -7,6 +7,10 @@ Declarations are in AI.h
 #include "FEHRandom.h"
 #include "AI.h"
 
+AI::AI()
+:difficulty(false), player_number(2)
+{}
+
 void AI::setDifficulty(bool diff){
     difficulty = diff;
 }
@@ -19,10 +23,11 @@ int AI::pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]){
     }
 
     //Hard Difficulty
-    //Copy game state to local variable for easier analysis
+    //Copy game state to local variables for easier analysis
 
     for(int r = 0; r < BOARD_ROWS; r++){
         for(int c = 0; c < BOARD_COLUMNS; c++){
+            test_game_state[r][c] = game_state_array[r][c];
             game_state[r][c] = game_state_array[r][c];
         }
     }
@@ -45,7 +50,13 @@ int AI::inARow(const int x, const int player) {
 	//Check for X chips in a row in any orientation
     //Paramaterized version of Board::checkWin() that returns a count
 
+    /** Return count
+     * */
     int count = 0;
+
+    /** Logical value that stores if values are equal to desired player
+     * */
+    bool equal; 
 
 	/*************** Vertical ********************/
 
@@ -56,25 +67,22 @@ int AI::inARow(const int x, const int player) {
 		//Starting points in all columns
 		for (int c = 0; c < BOARD_COLUMNS; c++){
 
-			//Check if the starting point is equal to desired player
-			if (game_state[r][c] == player) {
+            equal = true; //Assume match exists
 
-				//Check if top 2 values are equal
-				if (game_state[r][c] == game_state[r + 1][c]) {
+            //Loop x times, finding if values are not equal to player
+            //If not equal, break loop
+            for (int z = 0; (z < x) && equal; z++){
+                //Check values vertically
+                if (test_game_state[r + z][c] != player){
+                    equal = false;
+                }
+            }
 
-					//Check if bottom 2 values are equal
-					if (game_state[r+2][c] == game_state[r+3][c]){
+            //If all values were equal to player, increase count
+            if (equal){
+                count++;
+            }
 
-						//Check that both top and bottom sets are equal
-						if (game_state[r][c] == game_state[r+2][c]){
-
-							//There is a win
-							//Return the value that won
-							return game_state[r][c];
-						}
-					}
-				}
-			}
 		}
 	}
 
@@ -82,31 +90,27 @@ int AI::inARow(const int x, const int player) {
 	/*************** Horizontal ********************/
 
 	//Use starting points in left half of board
-	//Go to last column with 3 columns to the right
-	for (int c = 0; c < BOARD_COLUMNS - 3; c++) {
+	//Go to last column with X-1 columns to the right
+	for (int c = 0; c < BOARD_COLUMNS - x + 1; c++) {
 
 		//Starting points in all rows
 		for (int r = 0; r < BOARD_ROWS; r++) {
 
-			//Check if the starting point is nonzero
-			if (game_state[r][c]) {
+            equal = true; //Assume match exists
 
-				//Check if left 2 values are equal
-				if (game_state[r][c] == game_state[r][c + 1]) {
+            //Loop x times, finding if values are not equal to player
+            //If not equal, break loop
+            for (int z = 0; (z < x) && equal; z++){
+                //Check values horizontally
+                if (test_game_state[r][c + z] != player){
+                    equal = false;
+                }
+            }
 
-					//Check if right 2 values are equal
-					if (game_state[r][c + 2] == game_state[r][c + 3]) {
-
-						//Check that both left and right sets are equal
-						if (game_state[r][c] == game_state[r][c + 2]) {
-
-							//There is a win
-							//Return the value that won
-							return game_state[r][c];
-						}
-					}
-				}
-			}
+            //If all values were equal to player, increase count
+            if (equal){
+                count++;
+            }
 		}
 	}
 
@@ -114,66 +118,71 @@ int AI::inARow(const int x, const int player) {
 	/************ Diagonal \ **********/
 
 	//Start in upper left corner
-	//Go to last row that has 3 rows below it
-	for(int r = 0; r < BOARD_ROWS - 3; r++) {
+	//Go to last row that has x-1 rows below it
+	for(int r = 0; r < BOARD_ROWS - x + 1; r++) {
 
-		//Go to last column that has 3 columns to the right
-		for (int c = 0; c < BOARD_COLUMNS - 3; c++) {
+		//Go to last column that has x-1 columns to the right
+		for (int c = 0; c < BOARD_COLUMNS - x + 1; c++) {
 
-			//Check that top left value is nonzero
-			if (game_state[r][c]) {
+            equal = true; //Assume match exists
 
-				//Check that top left 2 values are equal
-				if (game_state[r][c] == game_state[r + 1][c + 1]) {
+            //Loop x times, finding if values are not equal to player
+            //If not equal, break loop
+            for (int z = 0; (z < x) && equal; z++){
+                //Check values horizontally
+                if (test_game_state[r + z][c + z] != player){
+                    equal = false;
+                }
+            }
 
-					//Check that bottom right 2 values are equal
-					if (game_state[r + 2][c + 2] == game_state[r + 3][c + 3]) {
-
-						//Check that top left and bottom right segs are equal
-						if (game_state[r][c] == game_state[r + 2][c + 2]) {
-
-							//There is a win
-							//Return the value that won
-							return game_state[r][c];
-						}
-					}
-				}
-			}
+            //If all values were equal to player, increase count
+            if (equal){
+                count++;
+            }
 		}
 	}
 
 	/************ Diagonal / **********/
 
 	//Start in bottom left corner
-	//Go to last row that has 3 rows above it
-	for (int r = BOARD_ROWS - 1; r > 2; r--) {
+	//Go to last row that has x-1 rows above it
+	for (int r = BOARD_ROWS - 1; r > (x - 2); r--) {
 
-		//Go to last column that has 3 columns to the right
-		for (int c = 0; c < BOARD_COLUMNS - 3; c++) {
+		//Go to last column that has x-1 columns to the right
+		for (int c = 0; c < BOARD_COLUMNS - x + 1; c++) {
 
-			//Check that bottom left value is nonzero
-			if (game_state[r][c]) {
+            equal = true; //Assume match exists
 
-				//Check that bottom left 2 values are equal
-				if (game_state[r][c] == game_state[r - 1][c + 1]) {
+            //Loop x times, finding if values are not equal to player
+            //If not equal, break loop
+            for (int z = 0; (z < x) && equal; z++){
+                //Check values horizontally
+                if (test_game_state[r - z][c + z] != player){
+                    equal = false;
+                }
+            }
 
-					//Check that top right 2 values are equal
-					if (game_state[r - 2][c + 2] == game_state[r - 3][c + 3]) {
-
-						//Check that top right and bottom left segs are equal
-						if (game_state[r][c] == game_state[r - 2][c + 2]) {
-
-							//There is a win
-							//Return the value that won
-							return game_state[r][c];
-						}
-					}
-				}
-			}
+            //If all values were equal to player, increase count
+            if (equal){
+                count++;
+            }
 		}
 	}
 
+	//return number of matches found 
+	return count;
+}
 
-	//no win found 
-	return 0;
+
+bool AI::isValidMove(int column){
+	//Pietro Lavezzo
+
+	//Checks to see if a move in column is valid
+	if  (test_game_state[0][column] != 0) {      //Checking if the top row of the column is full 
+		return false;
+	}
+	else if (test_game_state[0][column] == 0) {   //Checking if the top row of the column is empty
+		return true;
+	}
+
 }
