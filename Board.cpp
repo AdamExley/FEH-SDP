@@ -323,23 +323,24 @@ void Board::pushGameState(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
 
 
 void Board::DropChip(int current_player) {
-    float time, x_position;
-    int current_height, time_delay = 5;
+    float time = 1.0, x_position;
+    int current_height, time_delay = 5, target_y;
     
     //Pass the current_player variable in the Chip function
     
-    
+	//Set the lowest y position of the chip as the target
+	//taken from updateGameState
+    for(target_y = BOARD_ROWS - 1; board_state[target_y][current_column] != 0; target_y--); 
+	target_y = (target_y + 1) * 40 + 20;
+
     //Set the x position of the chip based on the column that was deicded by user/AI
     x_position = (current_column*40) + 60;
 
-    //Set a variable for time used in the current_height equation
-    time = time_delay/time_delay;
-   
     //Understand which pixel the top of the chip is
     chip_y = (BOARD_ROWS) * 40;
 
     //This will redraw the circle at a faster rate as it goes down the screen
-    for (current_height = 0; current_height <= chip_y; current_height = (G * pow(time,2) + current_height) )
+    for (current_height = 0; current_height <= target_y; current_height = (G * pow(time,2) + current_height) )
     {
         //If structure to decide which color to draw the chip  
         if (current_player == 1)
@@ -353,7 +354,9 @@ void Board::DropChip(int current_player) {
       
         LCD.FillCircle(x_position, current_height, 15);           //Draw the chip in a spceicif (x,y) coordinate
 		current_row = (current_height - 20) / SQUARE_SIDE;		  //Update current row
-		occludeChip();
+
+		occludeChip();											  //Draw over the chip
+
         Sleep(time_delay);                                        //Keep the chip in that location for 0.1 seconds
         LCD.SetDrawColor(BLACK);                                  //Redraw a black chip over it, "earasing" the earlier chip.
         LCD.FillCircle(x_position, current_height, 15);
