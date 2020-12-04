@@ -10,6 +10,8 @@
 #include "FEHSD.h"
 #include "config.h"
 #include "Game.h"
+
+#define _USE_MATH_DEFINES
 #include <cmath>
 
 
@@ -29,6 +31,8 @@ class Board {
     /** Column that the board is currently manipulating
      * */
     int current_column;
+
+    int current_row;
 
     int chip_x;
     int chip_y;
@@ -100,6 +104,8 @@ class Board {
     void DropChip(int current_player);
 
     void getAIMove(int column);
+
+    void occludeChip();
 
 
 

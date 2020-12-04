@@ -323,7 +323,7 @@ void Board::pushGameState(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
 
 
 void Board::DropChip(int current_player) {
-    float chip_velocity, conversion_constant, time, x_position;
+    float time, x_position;
     int current_height, time_delay = 5;
     
     //Pass the current_player variable in the Chip function
@@ -352,6 +352,8 @@ void Board::DropChip(int current_player) {
         } //player 2 IF
       
         LCD.FillCircle(x_position, current_height, 15);           //Draw the chip in a spceicif (x,y) coordinate
+		current_row = (current_height - 20) / SQUARE_SIDE;		  //Update current row
+		occludeChip();
         Sleep(time_delay);                                        //Keep the chip in that location for 0.1 seconds
         LCD.SetDrawColor(BLACK);                                  //Redraw a black chip over it, "earasing" the earlier chip.
         LCD.FillCircle(x_position, current_height, 15);
@@ -364,4 +366,77 @@ void Board::DropChip(int current_player) {
 
 void Board::getAIMove(int column){
 	current_column = column;
+}
+
+
+void Board::occludeChip(){
+
+	int x;
+	int z;
+	LCD.SetDrawColor(BOARD_COLOR);
+
+	//Proteus doesnt like drawing at -y values, do special case if in top row
+	if(current_row == 0){
+
+		//Bottom block
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 5, (current_row + 1) * SQUARE_SIDE - 5, 30, 10);
+		//Top blocks
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 5 , 0, 30,  5);
+		//Special middle ones
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 5 , 0,  3, 16);
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 8 , 0,  3, 12);
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 11, 0,  3,  9);
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 2) - 7 , 0,  3, 16);
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 2) - 10, 0,  3, 12);
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 2) - 13, 0,  3,  9);
+
+		x = 1; //skip doing top section of left/right rectangles below
+		z = 2;
+	}else if (current_row >= BOARD_ROWS - 1){
+		//Proteus doesnt like drawing below the screen. Again, do special case.
+		current_row == BOARD_ROWS - 1;
+
+		//Bottom block
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 5, (current_row + 1) * SQUARE_SIDE - 5, 30, 5);
+		//Top block
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 5 , 234, 30,  4);
+		//Middle blocks
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 5 , 223,  3, 15);
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 8 , 227,  3, 11);
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 11, 230,  3,  8);
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 2) - 7 , 223,  3, 15);
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 2) - 10, 227,  3, 11);
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 2) - 13, 230,  3,  8);
+
+		x = 0; //skip part of middle blocks below
+		z = 1;
+	}
+	else{
+		//Top block
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 5, current_row * SQUARE_SIDE - 5, 30, 10);
+
+		x = 0; //do top and bottom sections below
+		z = 2;
+	}
+	
+
+	for(; x < z; x++){
+		//Approximate circular hole with 6 rectangles
+
+		//Left 1
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 5, (current_row + x) * SQUARE_SIDE - 16, 3, 32);
+		//Left 2
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 8, (current_row + x) * SQUARE_SIDE - 12, 3, 24);
+		//Left 3
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 11, (current_row + x) * SQUARE_SIDE - 9, 3, 18);
+
+		//Right 1
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 2) - 7, (current_row + x) * SQUARE_SIDE - 16, 3, 32);
+		//Right 2
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 2) - 10, (current_row + x) * SQUARE_SIDE - 12, 3, 24);
+		//Right 3
+		LCD.FillRectangle(SQUARE_SIDE*(current_column + 2) - 13, (current_row + x) * SQUARE_SIDE - 9, 3, 18);
+	}
+
+
 }

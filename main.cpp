@@ -45,13 +45,13 @@ int main() {
     Menu menu;
     Game game;
 
-    LCD.Clear(WHITE);
+    // LCD.Clear(WHITE);
 
-    int enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
-    Img connect4logo(enabled, 5);
-    connect4logo.Draw(logo_2b, 160, 51, 2, WHITE, false);
+    // int enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
+    // Img connect4logo(enabled, 5);
+    // connect4logo.Draw(logo_2b, 160, 51, 2, WHITE, false);
 
-    Sleep(5.0);
+    // Sleep(5.0);
 
     int x, y;
 
