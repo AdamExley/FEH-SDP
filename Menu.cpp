@@ -9,8 +9,8 @@
 Menu::Menu()
 //Adam Exley
 //Set menu_state and all stats to 0 except for fastest_win
-:menu_state(0), single_player_wins(0), AI_wins(0),
- multi_player_1_wins(0), multi_player_2_wins(0), fastest_win(999)
+:menu_state(0), single_player_wins(0), AI_wins(0), fastest_win(999),
+ multi_player_1_wins(0), multi_player_2_wins(0)
 {}
 
 
@@ -40,7 +40,8 @@ bool Menu::checkTouchLocation(int x, int y){
             return true;
         }
 
-    }else{//Not in main menu
+    }
+    else{//Not in main menu
         //All other menus feature "Return" and "Exit" buttons
         //Check these buttons first
 
@@ -97,6 +98,9 @@ bool Menu::checkTouchLocation(int x, int y){
             }
         }
     }
+
+    //This line should never get reached
+    return false;
 }
 
 

@@ -57,13 +57,13 @@ int Img::lookupColor(const uint_fast32_t image_array[], int x) {
     //Extract the red, green and blue values of the color
 	blue_string[0] = convert[2];
 	blue_string[1] = convert[3];
-	blue_string[2] = NULL;
+	blue_string[2] = (char) NULL;
 	green_string[0] = convert[4];
 	green_string[1] = convert[5];
-	green_string[2] = NULL;
+	green_string[2] = (char) NULL;
 	red_string[0] = convert[6];
 	red_string[1] = convert[7];
-	red_string[2] = NULL;
+	red_string[2] = (char) NULL;
 
     //Convert the hex string values for each channel into numbers 0-255
     //Consulted https://stackoverflow.com/questions/10156409/convert-hex-string-char-to-int/25681839
@@ -96,7 +96,7 @@ int Img::lookupColor(const uint_fast32_t image_array[], int x) {
 
 
 
-void Img::PlotImg(const uint_fast32_t image_array[], int width, int height, int scale, int background){
+void Img::PlotImg(const uint_fast32_t image_array[], int width, int height, int scale, unsigned int background){
     int min,r,c;
     for(unsigned int color = 0; color < 22; color++){
 
@@ -130,7 +130,7 @@ void Img::PlotImg(const uint_fast32_t image_array[], int width, int height, int 
 
 
 
-void Img::Draw(const uint_fast32_t image_array[], int width, int height, int scale, int background, bool optimize){
+void Img::Draw(const uint_fast32_t image_array[], int width, int height, int scale, unsigned int background, bool optimize){
 
     uint_fast32_t *color_array = new uint_fast32_t[width*height];
 

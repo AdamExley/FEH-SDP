@@ -50,26 +50,6 @@ class AI {
      *  Mainly for testing by pitting AI's against each other.
      * */
     int player_id;
-
-    /** @author Lauren Pokonosky
-     *  @brief Easy difficulty AI move generator.
-     *  @details A random number generator.
-     *  @returns A column (0-6) of a move.
-     * */
-    int easyMove();
-
-    /** @author Adam Exley
-     *  @brief Determines how many X-in-a-row combinations exist for a player.
-     *  @details Will count multiple smaller structures inside a larger structure.
-     *  For example, one 4-in-a-row is also 2 instances of 3-in-a-row and 3 instances of 2-in-a-row.
-     *  Does not factor in as to if the combos are able to be played on, as this should somewhat cancel out as
-     *  the board states will be compared agaainst each other. May result in some inaccuracy.
-     *  @param x The number of chips in a row to detect.
-     *  @param player The integer to analyze in the array.
-     *  @param array Array to analyze. game_state or test_game_state_1
-     *  @returns Combonations of x-in-a-row chips found.
-     * */
-    int inARow(const int x, const int player, const int array[BOARD_ROWS][BOARD_COLUMNS]);
   
   public: 
 
@@ -82,11 +62,26 @@ class AI {
      * */
     void setDifficulty(bool diff);
 
+    /** @author Adam Exley
+     *  @brief Picks a move given the current game state
+     *  @details Looks at possible moves and moves that coud be played on those moves,
+     *  and gives each move a score based on that. Picks the highest scoring move.
+     *  @returns The column to make a move in
+     * */
     int pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]);
+
+  private:
+
+    /** @author Lauren Pokonosky
+     *  @brief Easy difficulty AI move generator.
+     *  @details A random number generator. Called by pickMove() if on easy difficulty.
+     *  @returns A column (0-6) of a move.
+     * */
+    int easyMove();
 
     /** @author Pietro Lavezzo
      *  @brief Checks if a move in is possible in a column
-     *  @details Modified from Board::isValidMove()
+     *  @details Modified from Board::isValidMove(). Called by pickMove()
      *  @param column Column to see if move is valid in
      *  @param array Which array to test validity on.
      *  @returns True/false as to if move is valid in given array
@@ -94,7 +89,21 @@ class AI {
     bool isValidMove(int column, const int array[BOARD_ROWS][BOARD_COLUMNS]);
 
     /** @author Adam Exley
-     *  @brief Measures how close a player's chips are towards the center
+     *  @brief Determines how many X-in-a-row combinations exist for a player.
+     *  @details Will count multiple smaller structures inside a larger structure.
+     *  For example, one 4-in-a-row is also 2 instances of 3-in-a-row and 3 instances of 2-in-a-row.
+     *  Factors in whether or not a combination can be played on.
+     *  Called by pickMove().
+     *  @param x The number of chips in a row to detect.
+     *  @param player The integer to analyze in the array.
+     *  @param array Array to analyze. game_state or test_game_state_1
+     *  @returns Combonations of x-in-a-row chips found that can be played on to get 4 in a row.
+     * */
+    int inARow(const int x, const int player, const int array[BOARD_ROWS][BOARD_COLUMNS]);
+
+    /** @author Adam Exley
+     *  @brief Measures how close a player's chips are towards the center.
+     *  @details Called by pickMove().
      *  @param player The player ID to analyze
      *  @param array The array to analyze
      *  @returns The average distance from the center column
@@ -105,12 +114,4 @@ class AI {
 };
 
 
-/** Strategies:
- *  - Prefer the center of the board
- *  - Try to get 4 in a row
- *  - Try to get 3 in a row
- *  - Try to get 2 in a row
- * 
- *  - Don't let the opponent do any of the above
- * */
 

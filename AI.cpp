@@ -22,7 +22,19 @@ int AI::pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]){
         return easyMove();
     }
     double temp = TimeNow();
+
+
     //Hard Difficulty from here on
+
+    /** Strategies:
+     *  - Prefer the center of the board
+     *  - Try to get 4 in a row
+     *  - Try to get 3 in a row
+     *  - Try to get 2 in a row
+     * 
+     *  - Don't let the opponent do any of the above
+     * */
+
 
     //Array to store "scores" for each possible move
     int move_score[BOARD_COLUMNS] = {0};
@@ -123,9 +135,13 @@ int AI::pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]){
         }
     }
 
+
+//************************************************ DELETE
     LCD.WriteAt(TimeNow()-temp, 50, 225);
 
     Sleep(2.0);
+//*************************************************
+
 
     return best_move;
 
@@ -136,6 +152,22 @@ int AI::easyMove(){
     int rand = RandInt();
     int easy_move = rand % 7;
     return easy_move;
+}
+
+
+bool AI::isValidMove(int column, const int array[BOARD_ROWS][BOARD_COLUMNS]){
+	//Pietro Lavezzo
+
+	//Checks to see if a move in column is valid
+	if  (array[0][column] != 0) {      //Checking if the top row of the column is full 
+		return false;
+	}
+	else if (array[0][column] == 0) {   //Checking if the top row of the column is empty
+		return true;
+	}
+
+    return false; //Shouldn't reach here
+
 }
 
 
@@ -373,19 +405,6 @@ int AI::inARow(const int x, const int player, const int array[BOARD_ROWS][BOARD_
 	return count;
 }
 
-
-bool AI::isValidMove(int column, const int array[BOARD_ROWS][BOARD_COLUMNS]){
-	//Pietro Lavezzo
-
-	//Checks to see if a move in column is valid
-	if  (array[0][column] != 0) {      //Checking if the top row of the column is full 
-		return false;
-	}
-	else if (array[0][column] == 0) {   //Checking if the top row of the column is empty
-		return true;
-	}
-
-}
 
 
 double AI::fromCenter(int player, const int array[BOARD_ROWS][BOARD_COLUMNS]){

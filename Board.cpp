@@ -344,6 +344,7 @@ bool Board::isValidMove(){
 		return 1;                                   //If so, return 1
 	}
 
+	return 0; //Shouldn't reach here
 }
 
 
@@ -361,7 +362,7 @@ void Board::pushGameState(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
 
 
 
-void Board::DropChip(int current_player) {
+void Board::dropChip(int current_player) {
     float time = 1.0, x_position;
     int current_height, time_delay = 5, target_y;
     
@@ -369,7 +370,9 @@ void Board::DropChip(int current_player) {
     
 	//Set the lowest y position of the chip as the target
 	//taken from updateGameState
-    for(target_y = BOARD_ROWS - 1; board_state[target_y][current_column] != 0; target_y--); 
+    for(target_y = BOARD_ROWS - 1; board_state[target_y][current_column] != 0; target_y--){
+
+	}
 	target_y = (target_y + 1) * 40 + 20;
 
     //Set the x position of the chip based on the column that was deicded by user/AI
@@ -436,7 +439,7 @@ void Board::occludeChip(){
 		z = 2;
 	}else if (current_row >= BOARD_ROWS - 1){
 		//Proteus doesnt like drawing below the screen. Again, do special case.
-		current_row == BOARD_ROWS - 1;
+		current_row = BOARD_ROWS - 1;
 
 		//Bottom block
 		LCD.FillRectangle(SQUARE_SIDE*(current_column + 1) + 5, (current_row + 1) * SQUARE_SIDE - 5, 30, 5);

@@ -140,7 +140,7 @@ int main() {
 
             }
 
-            board.DropChip(game.getCurrentPlayer());
+            board.dropChip(game.getCurrentPlayer());
 
             board.DrawBoard();
             game.switchPlayer();
