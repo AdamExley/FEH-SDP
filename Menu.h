@@ -55,6 +55,11 @@ class Menu{
       int AI_wins;
 
       /** @brief Statistic
+       *  @details The least number of moves taken to beat an AI
+       * */
+      int fastest_win;
+
+      /** @brief Statistic
        *  @details The number of multi player player 1 wins
        * */
       int multi_player_1_wins;
@@ -146,6 +151,6 @@ class Menu{
        *  @brief Updates the stats stored in the menu object
        *  @param winner Integer correspondng to winning player (1 or 2)
        * */
-      void updateStats(int winner);
+      void updateStats(int winner, int turns);
 
 };

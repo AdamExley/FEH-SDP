@@ -18,6 +18,24 @@ Board::Board(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
 
 }
 
+
+void Board::reset(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
+
+
+	for(int r = 0; r < BOARD_ROWS; r++){
+		for (int c = 0; c < BOARD_COLUMNS; c++){
+			board_state[r][c] = 0;
+		}
+	}
+
+	pushGameState(game_state);
+
+}
+
+
+
+
+
 void Board::DrawBoardMenu(){ //Drawing the menu that will display on the left of the board
 	//Lauren Pokonosky
 	
@@ -269,6 +287,27 @@ int Board::checkWin() {
 			}
 		}
 	}
+
+	//No win found, but check for full board (tie)
+	bool tie = true; //assume board is full
+
+	//cycle through entire board
+	for(int r = 0; r < BOARD_ROWS; r++){
+		for(int c = 0; c < BOARD_COLUMNS; c++){
+
+			//if any spot is empty, there is no tie
+			if(board_state[r][c] == 0){
+				tie = false;
+			}
+		}
+	}
+	
+	//return 3 for a tie
+	if(tie){
+		return 3;
+	}
+
+
 
 
 	//no win found 

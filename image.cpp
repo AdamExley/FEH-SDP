@@ -66,6 +66,7 @@ int Img::lookupColor(const uint_fast32_t image_array[], int x) {
 	red_string[2] = NULL;
 
     //Convert the hex string values for each channel into numbers 0-255
+    //Consulted https://stackoverflow.com/questions/10156409/convert-hex-string-char-to-int/25681839
 	red = (int)strtol(red_string, NULL, 16);
 	green = (int)strtol(green_string, NULL, 16);
     blue = (int)strtol(blue_string, NULL, 16);

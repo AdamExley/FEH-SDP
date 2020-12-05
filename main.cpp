@@ -2,8 +2,8 @@
 /* FEH SDP                                        */
 /* Adam Exley, Lauren Pokonosky, Pietro Lavezzo   */
 /* Connect 4                                      */
-/* Clingan 8:00     10/30/20                      */
-/* Ver 0.2                                        */
+/* Clingan 8:00     12/04/20                      */
+/* Ver 1.0                                        */
 /**************************************************/
 
 //General headers
@@ -40,6 +40,12 @@ int main() {
      * */
     int game_state[BOARD_ROWS][BOARD_COLUMNS];
 
+    //Turn counter
+    int turns = 0;
+
+    int x, y; //Touch locations
+
+    //Create objects of all required classes
     AI ai;
     Board board(game_state);
     Menu menu;
@@ -53,7 +59,6 @@ int main() {
 
     // Sleep(5.0);
 
-    int x, y;
 
     //show main menu at beginning of game
     menu.showMain();
@@ -96,6 +101,8 @@ int main() {
             //Clear Proteus Touch buffer
             LCD.ClearBuffer();
 
+            turns++; //increment turn counter
+
             if(game.isPlayerTurn()){
                 //if it's a player's turn, execute this
 
@@ -137,22 +144,34 @@ int main() {
 
             board.DrawBoard();
             game.switchPlayer();
+            
 
         }while(!board.checkWin());
 
-        //update in-game statistics
-        menu.updateStats(board.checkWin());
-        //Show win/loss screen
-        menu.showWinLoss(board.checkWin());
+        //If there was a menu call, address that first 
         
-        menu.checkTouchLocation(x, y); //Player either clicks Exit or Return button
-       
-        
-
         if(temp == MAIN_MENU_CALL_VALUE){
             menu.showMain();
         }else if(temp == EXIT_CALL_VALUE){
             menu.showExit();
+        }else{
+            //Otherwise there is a win/loss/tie
+
+            //update in-game statistics
+            menu.updateStats(board.checkWin(), turns);
+
+            //Show win/loss screen
+            menu.showWinLoss(board.checkWin());
+
+            //reset game
+            game.reset();
+            board.reset(game_state);
+
+            
+            //Player either clicks Exit or Return button at win/loss screen
+            menu.checkTouchLocation(x, y); 
+
+        
         }
 
     }

@@ -7,7 +7,6 @@
 #include <cmath>
 #include "FEHSD.h"
 
-//https://stackoverflow.com/questions/10156409/convert-hex-string-char-to-int/25681839
 
 /** Arbitrary value to set a color's RGB values to when disabled.
  * */

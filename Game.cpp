@@ -46,6 +46,11 @@ void Game::switchPlayer(){
 }
 
 
+void Game::reset(){
+    current_player = 1;
+}
+
+
 
 void waitForInput(int &x, int &y){
     //Written by Adam Exley

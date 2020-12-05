@@ -8,8 +8,9 @@
 
 Menu::Menu()
 //Adam Exley
-//Set menu_state and all stats to 0
-:menu_state(0), single_player_wins(0), AI_wins(0), multi_player_1_wins(0), multi_player_2_wins(0)
+//Set menu_state and all stats to 0 except for fastest_win
+:menu_state(0), single_player_wins(0), AI_wins(0),
+ multi_player_1_wins(0), multi_player_2_wins(0), fastest_win(999)
 {}
 
 
@@ -177,7 +178,7 @@ void Menu::showStats(){
         LCD.WriteAt(AI_wins, 125, 90);
     
         LCD.WriteAt("Fastest Win:", 35, 110);
-            LCD.WriteAt("10", 140, 110);
+            LCD.WriteAt(fastest_win, 140, 110);
             LCD.WriteAt("   Moves", 155, 110);
     
     LCD.WriteAt("2 Player:", 10, 140);
@@ -389,10 +390,14 @@ void Menu::displayTA(){//this function randomizes the TA image that will show up
 
 
 
-void Menu::updateStats(int winner){
+void Menu::updateStats(int winner, int turns){
     //Lauren Pokonosky
 
     //Updates game statistics
+
+    if(turns < fastest_win){
+        fastest_win = turns;
+    }
 
     if (singleplayer == true && winner == 1){ //single player win
         single_player_wins = single_player_wins + 1;

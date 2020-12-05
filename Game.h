@@ -31,6 +31,8 @@ class Game{
         void switchPlayer();
 
         bool isPlayerTurn();
+
+        void reset();
 };
 
 

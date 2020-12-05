@@ -21,7 +21,7 @@ int AI::pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]){
     if(!difficulty){
         return easyMove();
     }
-
+    double temp = TimeNow();
     //Hard Difficulty from here on
 
     //Array to store "scores" for each possible move
@@ -116,11 +116,16 @@ int AI::pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]){
 
     //Determine which move has max move score
     for(int i = 0; i < BOARD_COLUMNS; i++){
+
         if(move_score[i] > max_score){
             max_score = move_score[i];
             best_move = i;
         }
     }
+
+    LCD.WriteAt(TimeNow()-temp, 50, 225);
+
+    Sleep(2.0);
 
     return best_move;
 

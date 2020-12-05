@@ -71,10 +71,9 @@ class Board {
 
 
     /** @author Adam Exley
-     *  @brief Determines if a player has won
+     *  @brief Determines if a player has won.
      *  Tests all possible orientations and positions of getting 4 in a row.
-     *  If a win is found: 
-     *  @returns The ID of the winning player (1 or 2). Otherwise returns 0.
+     *  @returns The ID of the winning player (1 or 2), 3 for a tie, otherwise returns 0.
      * */
     int checkWin();
 
@@ -106,6 +105,8 @@ class Board {
     void getAIMove(int column);
 
     void occludeChip();
+
+    void reset(int game_state[BOARD_ROWS][BOARD_COLUMNS]);
 
 
 

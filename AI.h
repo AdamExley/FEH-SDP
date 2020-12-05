@@ -12,10 +12,10 @@
 #include <climits>
 #include <cmath>
 
+//These websites were used in creating this code
+//https://connect4.gamesolver.org
+//https://www.wikihow.com/Win-at-Connect-4
 
-//https://www.gamesver.com/10-helpful-tips-tricks-and-strategies-to-win-at-connect-4/
-//https://en.wikipedia.org/wiki/Connect_Four#Mathematical_solution
-//https://docs.microsoft.com/en-us/cpp/cpp/?view=msvc-160
 
 /** @brief Computer controlled AI that has easy and hard difficulties.
  *  @details Easy difficulty is a mere random number generator.
