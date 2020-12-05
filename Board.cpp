@@ -19,7 +19,7 @@ Board::Board(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
 }
 
 
-void Board::reset(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
+void Board::Reset(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
 
 
 	for(int r = 0; r < BOARD_ROWS; r++){

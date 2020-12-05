@@ -6,11 +6,11 @@ Pietro Lavezzo, Adam Exley, Lauren Pokonosky
 ## Compiling Code and Running Connect 4
 As long as you have the [Proteus Simulator](https://feh.osu.edu/simulator/) installed, compilation is simple.
 
-1. Download the code as a *.zip* file (the green code button)
+1. Download the code as a **.zip** file (the green code button)
 2. Unzip this file (usually right click -> Extract All/ Unzip)
 3. Open the resulting folder in Visual Studio
-4. Run *mingw32-make* in the terminal
-5. Using the Proteus Simulator, run the resulting *game* file
+4. Run **mingw32-make** in the terminal
+5. Using the Proteus Simulator, run the resulting **game** file
 
 ## File Structure
 
@@ -38,11 +38,21 @@ Brief descriptions provided; see documentation or code for more information.
 - fromCenter() - Gives the average dispersion of a player's chips from the center
 
 ### Board
-- **Board()** - Constructs the board with all spaces set to be blank
-- **DrawNewBoard()** - Draws an empty board
-- **checkWin()** - Using the game_state array, checks if any 4 chips are in a row
-- **updateGameState(** player **)** - Adds a chip to the game_state array with value "player" in the given column
-- ***isValidMove(*** column ***)***
+- **Board()** - Constructs board object
+- **Reset()** - Resets object to inital state
+- **DrawBoard()** - Draws full board
+- **DrawChips()** - Draws only chips of board
+- **DrawBoardMenu()** - Draws menu buttons to left of board
+- **isValidMove()** - Checks that specified move is valid
+- **getCurrentColumn()** - Finds the column that the player selects
+- **getAIMove()** - Imports AI move
+- **dropChip()** - Animates the dropping of a chip
+- occludeChip() - Covers over a dropping chip with an approximation of the board
+- **updateGameState()** - Adds new chip to board
+- pushGameState() -  Exports internal game state to external array
+- **checkWin()** - Checks for a win or tie
+
+
 
 
 ### Game

@@ -53,18 +53,21 @@ class AI {
   
   public: 
 
-    /** @brief Constructs AI object, setting difficulty to easy,
+    /** @author Adam Exley
+     *  @brief Constructs AI object, setting difficulty to easy,
      *  ai_id to 2, and player_id to 1
      * */
     AI();
 
-    /** @brief Sets difficulty variable of AI object
+    /** @author Adam Exley
+     *  @brief Sets difficulty variable of AI object
+     *  @param diff AI difficulty (0 = Easy, 1 = Hard)
      * */
     void setDifficulty(bool diff);
 
     /** @author Adam Exley
      *  @brief Picks a move given the current game state
-     *  @details Looks at possible moves and moves that coud be played on those moves,
+     *  @details Looks at possible moves and moves that could be played on those moves,
      *  and gives each move a score based on that. Picks the highest scoring move.
      *  @returns The column to make a move in
      * */

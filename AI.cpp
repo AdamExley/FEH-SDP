@@ -8,10 +8,14 @@ Declarations are in AI.h
 #include "AI.h"
 
 AI::AI()
+//Adam Exley
+//Sets defaults
 :difficulty(false), ai_id(2), player_id(1)
 {}
 
 void AI::setDifficulty(bool diff){
+    //Adam Exley
+    //Sets difficulty
     difficulty = diff;
 }
 

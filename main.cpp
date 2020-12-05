@@ -170,7 +170,7 @@ int main() {
 
             //reset game
             game.reset();
-            board.reset(game_state);
+            board.Reset(game_state);
 
             
             //Player either clicks Exit or Return button at win/loss screen

@@ -52,7 +52,7 @@ class Board {
      *  @brief Resets all variables.
      *  @details Same as constructor.
      * */
-    void reset(int game_state[BOARD_ROWS][BOARD_COLUMNS]);
+    void Reset(int game_state[BOARD_ROWS][BOARD_COLUMNS]);
 
 
 
