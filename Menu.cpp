@@ -344,6 +344,14 @@ void Menu::showWinLoss(int winner){
         
         drawReturnExit();
     }
+    else if (winner == 3){ //Tie screen
+        LCD.Clear();
+        LCD.WriteAt("Tie!", 195 , 20);
+        LCD.WriteAt("is indifferent.", 170, 75);
+        displayTA();
+
+        drawReturnExit();
+    }
 
 }
 
