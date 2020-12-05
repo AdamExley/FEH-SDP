@@ -1,5 +1,5 @@
 /** @file Game.cpp
- *  @brief Contains definitions of functions in use throughout the entire game
+ *  @brief Contains definitions of functions in use throughout the entire game and the game class
  * 
  * */
 #include "Game.h"

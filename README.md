@@ -2,16 +2,15 @@
 FEH Software Design Project - Connect4
 
 Pietro Lavezzo, Adam Exley, Lauren Pokonosky
-# TODO
-### Game class
-- Add switchPlayer function. If current player is 1 it makes it 2 and vice versa.
-- isPlayerTurn. Returns true if the game isn't singleplayer or if it's singleplayer and curren_player is 1.
-### Make "Statistics" class
-- singleplayerPlayerWin increase that stat
-- singleplayerAIwin increase that stat
-- multiplayerPlayer1Win() incrase that stat
-- multiplayerPlayer2Win() increase that stat
-- minMoves(moves) if moves is less than the stored number, replace it
+
+## Compiling Code and Running Connect 4
+As long as you have the [Proteus Simulator](https://feh.osu.edu/simulator/) installed, compilation is simple.
+
+1. Download the code as a *.zip* file (the green code button)
+2. Unzip this file (usually right click -> Extract All/ Unzip)
+3. Open the resulting folder in Visual Studio
+4. Run *mingw32-make* in the terminal
+5. Using the Proteus Simulator, run the resulting *game* file
 
 ## File Structure
 
@@ -23,13 +22,20 @@ Header files are used, [here's a reference on how they work.](https://www.learnc
 
 **main.cpp** contains all the basic code for the project, as in any other simple program.
 
-## Classes and Functions
-*Italics* indicate that the class/function has yet to be implemented.
+## Classes and Functions Used
+
+Brief descriptions provided; see documentation or code for more information.
+
+**Bold** functions are public
 
 ### AI
-- ***AI()***
-- ***PickMove()***
-- ***PickRandom()***
+- **AI()** - Constructs AI object
+- **setDifficulty()** - Sets AI difficulty
+- **pickMove()** - AI makes a move based on the current game state
+- easyMove() - A random column is selected as a move
+- isValidMove() - Modified from board class
+- inARow() - Counts number of playable chip combos in a row given a game state
+- fromCenter() - Gives the average dispersion of a player's chips from the center
 
 ### Board
 - **Board()** - Constructs the board with all spaces set to be blank
@@ -38,11 +44,7 @@ Header files are used, [here's a reference on how they work.](https://www.learnc
 - **updateGameState(** player **)** - Adds a chip to the game_state array with value "player" in the given column
 - ***isValidMove(*** column ***)***
 
-### Chip
-- ***Chip()***
-- ***drop(*** column ***)***
-
-### *Menu* 
+### Menu 
 - **Menu()** - Constructs menu and sets menu state to be the main menu
 - **showMain()** - Draws main menu
 - **showPlay()** - Draws game selection menu
@@ -53,19 +55,4 @@ Header files are used, [here's a reference on how they work.](https://www.learnc
 
 ### Class-less Functions
 - **waitForInput(** int *x, int *y ***OR*** int &x, int &y **)** - Waits for and returns location of a touch on the screen
-- ***displayWin()***
-- ***displayloss()***
-- ***switchPlayer()***
 
-## Compiling code
-As long as you have the [Proteus Simulator](https://feh.osu.edu/simulator/) installed, compilation is simple.
-
-1. Download the code as a *.zip* file (the green code button)
-2. Unzip this file (usually right click -> Extract All/ Unzip)
-3. Open the resulting folder in Visual Studio
-4. Run *mingw32-make* in the terminal
-5. Using the Proteus Simulator, run the resulting *game* file
-
-
-
-This file uses markdown syntax. For more information, see https://www.markdownguide.org/basic-syntax/.
