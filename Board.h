@@ -88,7 +88,7 @@ class Board {
      * */
     int getCurrentColumn();
 
-    /** @author Adam Exley
+    /** @author Pietro Lavezzo
      *  @brief Changes current_column. For use with AI.
      *  @param column Value to set current_column (and thus the move)
      * */
