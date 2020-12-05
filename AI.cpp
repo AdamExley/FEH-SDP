@@ -16,6 +16,7 @@ void AI::setDifficulty(bool diff){
 }
 
 int AI::pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]){
+    //Adam Exley
 
     //If set to easy, return an easy move
     if(!difficulty){
@@ -149,6 +150,9 @@ int AI::pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]){
 
 
 int AI::easyMove(){
+    //Lauren Pokonosky
+
+    //Generate random number 0-6
     int rand = RandInt();
     int easy_move = rand % 7;
     return easy_move;
@@ -413,8 +417,11 @@ double AI::fromCenter(int player, const int array[BOARD_ROWS][BOARD_COLUMNS]){
     double cumlative_dist = 0;
     int count = 0;
 
+    //Go through entire board, adding the absolute value of the distance from the center column
     for(int c = 0; c < BOARD_COLUMNS; c++){
         for(int r = 0; r < BOARD_ROWS; r++){
+
+            //Only add if chip present
             if(array[r][c] == player){
                 count++;
                 cumlative_dist += fabs(c - ((BOARD_COLUMNS - 1) / 2));
