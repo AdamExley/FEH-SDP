@@ -19,11 +19,8 @@
 #include "Game.h"
 #include "image.h"
 
-
-
-#include "logo_b.c"
-
-
+//Include logo data
+#include "logo.c"
 
 
 /*************************************************** Main *****************/
@@ -51,13 +48,17 @@ int main() {
     Menu menu;
     Game game;
 
-    // LCD.Clear(WHITE);
+    //Draw logo splash screen
+    LCD.Clear(WHITE);
+        //Set enabled/disabled colors
+    int logo_enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
+    int logo_disabled[] = {WHITE};
+        //Initialize object
+    Image connect4logo(LOGO_FRAME_WIDTH, LOGO_FRAME_HEIGHT, logo_enabled, 5, logo_disabled, 1);
+        //Draw
+    connect4logo.Draw(logo, 2, false, 0, 69);
 
-    // int enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
-    // Image connect4logo(enabled, 5);
-    // connect4logo.Draw(logo_2b, 160, 51, 2, WHITE, false);
-
-    // Sleep(5.0);
+    Sleep(5.0);
 
 
     //show main menu at beginning of game
@@ -128,24 +129,25 @@ int main() {
             }
             else{ //if it's not a player's turn, let the AI pick a move
 
-                // ai.PickMove(game_state);
-
-                do{
+                do{//Get moves from AI until one is valid
                   
                     board.getAIMove(ai.pickMove(game_state));
 
                 }while(!board.isValidMove());
                 
+                //Update game with the AI's move
                 board.updateGameState(2, game_state);
 
             }
 
+            //Drop the current chip with the color of the current player
             board.dropChip(game.getCurrentPlayer());
 
+            //Redraw board and switch player
             board.DrawBoard();
             game.switchPlayer();
             
-
+            //Check for a win
         }while(!board.checkWin());
 
         //If there was a menu call, address that first 
@@ -156,6 +158,9 @@ int main() {
             menu.showExit();
         }else{
             //Otherwise there is a win/loss/tie
+
+            //Pause for user to realize what has happened
+            Sleep(3.0);
 
             //update in-game statistics
             menu.updateStats(board.checkWin(), turns);

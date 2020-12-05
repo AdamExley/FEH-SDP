@@ -44,6 +44,11 @@ Brief descriptions provided; see documentation or code for more information.
 - **updateGameState(** player **)** - Adds a chip to the game_state array with value "player" in the given column
 - ***isValidMove(*** column ***)***
 
+
+### Game
+
+### Image
+
 ### Menu 
 - **Menu()** - Constructs menu and sets menu state to be the main menu
 - **showMain()** - Draws main menu

@@ -1,7 +1,7 @@
 #include "image.h"
 
-Image::Image()
-:num_no_draw(0)
+Image::Image(int w, int h)
+:width(w), height(h), num_no_draw(0)
 {
 
     //RGB values of the 22 Proteus LCDColors.h colors
@@ -23,7 +23,9 @@ Image::Image()
 
 
 
-Image::Image(const int enabled_colors[], int num_enabled, const int do_not_draw[], int no_draw_num){
+Image::Image(int w, int h, const int enabled_colors[], int num_enabled, const int do_not_draw[], int no_draw_num)
+:width(w), height(h)
+{
 
     //RGB values of the 22 Proteus LCDColors.h colors
     static const uint_fast32_t temp[3][22] =
@@ -104,7 +106,7 @@ int Image::lookupColor(const uint_fast32_t image_array[], int x) {
 
 
 
-void Image::PlotImg(const uint_fast32_t image_array[], int width, int height, int scale){
+void Image::PlotImg(const uint_fast32_t image_array[], int scale, int x_off, int y_off){
     int min,r,c;
     for(unsigned int color = 0; color < 22; color++){
 
@@ -143,7 +145,7 @@ void Image::PlotImg(const uint_fast32_t image_array[], int width, int height, in
                 }
 
                 if(min != width){
-                    LCD.FillRectangle(min*scale, r*scale,(c-min) * scale, scale);
+                    LCD.FillRectangle(min*scale + x_off, r*scale + y_off,(c-min) * scale, scale);
                 }
             }
         }
@@ -152,7 +154,7 @@ void Image::PlotImg(const uint_fast32_t image_array[], int width, int height, in
 
 
 
-void Image::Draw(const uint_fast32_t image_array[], int width, int height, int scale, bool optimize){
+void Image::Draw(const uint_fast32_t image_array[], int scale, bool optimize, int x_off, int y_off){
 
     uint_fast32_t *color_array = new uint_fast32_t[width*height];
 
@@ -161,15 +163,15 @@ void Image::Draw(const uint_fast32_t image_array[], int width, int height, int s
     }
     
     if (optimize){
-        HorizLineOptimize(color_array, width, height);
+        HorizLineOptimize(color_array);
     }
     
-    PlotImg(color_array, width, height, scale);
+    PlotImg(color_array, scale, x_off, y_off);
 }
 
 
 
-void Image::HorizLineOptimize(uint_fast32_t image_color_array[], int width, int height){
+void Image::HorizLineOptimize(uint_fast32_t image_color_array[]){
 
     bool cont;
 

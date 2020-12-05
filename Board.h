@@ -90,7 +90,7 @@ class Board {
 
     /** @author Adam Exley
      *  @brief Changes current_column. For use with AI.
-     *  @param column Value to set current_column (and thus the move) to
+     *  @param column Value to set current_column (and thus the move)
      * */
     void getAIMove(int column);
 

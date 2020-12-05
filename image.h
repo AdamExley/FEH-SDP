@@ -39,6 +39,10 @@ class Image{
          * */
         int lookup_table[3][22];
 
+        /** @brief The width and height of the image object in pixels
+         * */
+        int width, height;
+
         /** @brief Stores values of colors not to draw
          * */
         unsigned int no_draw[22];
@@ -62,26 +66,43 @@ class Image{
 
     public:
         /** @author Adam Exley
-         *  @brief Default Image constructor. Enables all 22 LCD Colors.
+         *  @brief Default Image constructor. Enables all 22 LCD Colors for render and drawing.
+         *  @param w Image width in pixels
+         *  @param h Image height in pixlels
          * */
-        Image();
+        Image(int w, int h);
 
         /** @author Adam Exley
          *  @brief Image constructor. Enabled colors are specified.
+         *  @param w Image width in pixels
+         *  @param h Image height in pixels
          *  @param enabled_colors Int array corresponding to enabled colors. Use defines in FEHLCDColors.h
          *  @param num_enabled Number of values in enabled_colors
-         *  @param do_not_draw Int array that stores colors that should not be drawn
+         *  @param do_not_draw Int array that stores colors that should be rendered, but should not be drawn
          *  @param num_no_draw Number of values in do_not_draw
          * */
-        Image(const int enabled_colors[], int num_enabled, const int do_not_draw[], int num_no_draw);
+        Image(int w, int h, const int enabled_colors[], int num_enabled, const int do_not_draw[], int num_no_draw);
 
+        /** @author Adam Exley
+         *  @brief Finds the closest proteus color to a specified color in an array
+         *  @details Splits the hex color value in the array into red green and blue components.
+         *  Then searches the Proteus lookup table, finding the color that hsa the closest R G and B components.
+         *  @param image_array The array with hex color values to look up
+         *  @param x The index of the color to look up
+         *  @returns The proteus ID of the closest color that is enabled
+         * */
         int lookupColor(const uint_fast32_t image_array[], int x);
 
-        void PlotImg(const uint_fast32_t image_array[], int width, int height, const int scale = 1);
+        /** @author Adam Exley
+         *  @brief Plots an array of Proteus-compatible colors on the screen
+         * 
+         * 
+         * */
+        void PlotImg(const uint_fast32_t image_array[], const int scale = 1, int x_off = 0, int y_off = 0);
 
-        void Draw(const uint_fast32_t image_array[], int width, int height, int scale = 1, bool optimize = true);
+        void Draw(const uint_fast32_t image_array[], int scale = 1, bool optimize = true, int x_off = 0, int y_off = 0);
 
-        void HorizLineOptimize(uint_fast32_t image_color_array[], int width, int height);
+        void HorizLineOptimize(uint_fast32_t image_color_array[]);
 
 
 

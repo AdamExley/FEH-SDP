@@ -33,6 +33,23 @@ void Board::reset(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
 }
 
 
+void Board::DrawBoard(){
+	//Adam Exley
+
+    // Draw the full game board
+    // start at bottom of the screen, justifying the board to the right
+
+	//Set draw color to the specified board color
+	LCD.SetDrawColor(BOARD_COLOR);
+
+	//Draw large rectangle for game board
+	//Determine size and location based on rows, columns, and size of the tiles
+	LCD.FillRectangle((320 - BOARD_COLUMNS * SQUARE_SIDE), 0, SQUARE_SIDE * BOARD_COLUMNS, SQUARE_SIDE * BOARD_ROWS);
+
+	//Draw the chips in the board
+	DrawChips();
+
+}
 
 
 
@@ -57,23 +74,6 @@ void Board::DrawBoardMenu(){ //Drawing the menu that will display on the left of
     	LCD.WriteAt("t", 16, 206);	
 }
 
-void Board::DrawBoard(){
-	//Adam Exley
-
-    // Draw the full game board
-    // start at bottom of the screen, justifying the board to the right
-
-	//Set draw color to the specified board color
-	LCD.SetDrawColor(BOARD_COLOR);
-
-	//Draw large rectangle for game board
-	//Determine size and location based on rows, columns, and size of the tiles
-	LCD.FillRectangle((320 - BOARD_COLUMNS * SQUARE_SIDE), 0, SQUARE_SIDE * BOARD_COLUMNS, SQUARE_SIDE * BOARD_ROWS);
-
-	//Draw the chips in the board
-	DrawChips();
-
-}
 
 
 void Board::DrawChips(){
