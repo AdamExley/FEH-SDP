@@ -54,7 +54,7 @@ int main() {
     // LCD.Clear(WHITE);
 
     // int enabled[] = {WHITE, RED, BLACK, YELLOW, GRAY};
-    // Img connect4logo(enabled, 5);
+    // Image connect4logo(enabled, 5);
     // connect4logo.Draw(logo_2b, 160, 51, 2, WHITE, false);
 
     // Sleep(5.0);

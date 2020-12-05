@@ -1,6 +1,6 @@
 #include "image.h"
 
-Img::Img()
+Image::Image()
 :num_no_draw(0)
 {
 
@@ -23,7 +23,7 @@ Img::Img()
 
 
 
-Img::Img(const int enabled_colors[], int num_enabled, const int do_not_draw[], int no_draw_num){
+Image::Image(const int enabled_colors[], int num_enabled, const int do_not_draw[], int no_draw_num){
 
     //RGB values of the 22 Proteus LCDColors.h colors
     static const uint_fast32_t temp[3][22] =
@@ -56,7 +56,7 @@ Img::Img(const int enabled_colors[], int num_enabled, const int do_not_draw[], i
 }
 
 
-int Img::lookupColor(const uint_fast32_t image_array[], int x) {
+int Image::lookupColor(const uint_fast32_t image_array[], int x) {
     
     //Copy the hex value of the color into the convert char array
 	sprintf(convert, "%x", image_array[x]);
@@ -104,7 +104,7 @@ int Img::lookupColor(const uint_fast32_t image_array[], int x) {
 
 
 
-void Img::PlotImg(const uint_fast32_t image_array[], int width, int height, int scale){
+void Image::PlotImg(const uint_fast32_t image_array[], int width, int height, int scale){
     int min,r,c;
     for(unsigned int color = 0; color < 22; color++){
 
@@ -152,7 +152,7 @@ void Img::PlotImg(const uint_fast32_t image_array[], int width, int height, int 
 
 
 
-void Img::Draw(const uint_fast32_t image_array[], int width, int height, int scale, bool optimize){
+void Image::Draw(const uint_fast32_t image_array[], int width, int height, int scale, bool optimize){
 
     uint_fast32_t *color_array = new uint_fast32_t[width*height];
 
@@ -169,7 +169,7 @@ void Img::Draw(const uint_fast32_t image_array[], int width, int height, int sca
 
 
 
-void Img::HorizLineOptimize(uint_fast32_t image_color_array[], int width, int height){
+void Image::HorizLineOptimize(uint_fast32_t image_color_array[], int width, int height){
 
     bool cont;
 

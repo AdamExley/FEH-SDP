@@ -30,7 +30,7 @@
  *  A majority of the hexadecimal conversion code had been written before this project in order to try to display images,
  *  only to realize that the Proteus was unable (at the time) to reproduce more than 7 colors.
  * */
-class Img{
+class Image{
     private:
 
         /** @brief Stores the RGB values of the 22 LCD Colors.
@@ -62,18 +62,18 @@ class Img{
 
     public:
         /** @author Adam Exley
-         *  @brief Default Img constructor. Enables all 22 LCD Colors.
+         *  @brief Default Image constructor. Enables all 22 LCD Colors.
          * */
-        Img();
+        Image();
 
         /** @author Adam Exley
-         *  @brief Img constructor. Enabled colors are specified.
+         *  @brief Image constructor. Enabled colors are specified.
          *  @param enabled_colors Int array corresponding to enabled colors. Use defines in FEHLCDColors.h
          *  @param num_enabled Number of values in enabled_colors
          *  @param do_not_draw Int array that stores colors that should not be drawn
          *  @param num_no_draw Number of values in do_not_draw
          * */
-        Img(const int enabled_colors[], int num_enabled, const int do_not_draw[], int num_no_draw);
+        Image(const int enabled_colors[], int num_enabled, const int do_not_draw[], int num_no_draw);
 
         int lookupColor(const uint_fast32_t image_array[], int x);
 
@@ -91,25 +91,25 @@ class Img{
 
 
     // int bailey_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
-    // Img bailey(bailey_enable, 5);
+    // Image bailey(bailey_enable, 5);
     // bailey.Draw(bailey_data, BAILEY_FRAME_WIDTH, BAILEY_FRAME_HEIGHT, 1, BLACK);
 
     // int bridgette_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
-    // Img bridgette(bridgette_enable, 5);
+    // Image bridgette(bridgette_enable, 5);
     // bridgette.Draw(bridgette_data, BRIDGETTE_FRAME_WIDTH, BRIDGETTE_FRAME_HEIGHT, 1, BLACK);
 
     // int alex_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, BLUE};
-    // Img alex(alex_enable, 6);
+    // Image alex(alex_enable, 6);
     // alex.Draw(alex_data, ALEX_FRAME_WIDTH, ALEX_FRAME_HEIGHT, 1, BLACK);
 
     // int paul_enable[] = {BLACK, WHITE, GRAY, OLIVE, MAROON, CYAN};
-    // Img paul(paul_enable, 6);
+    // Image paul(paul_enable, 6);
     // paul.Draw(paul_data, PAUL_FRAME_WIDTH, PAUL_FRAME_HEIGHT, 1, BLACK, 0);
 
     // int jamie_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
-    // Img jamie(jamie_enable, 6);
+    // Image jamie(jamie_enable, 6);
     // jamie.Draw(jamie_data, JAMIE_FRAME_WIDTH, JAMIE_FRAME_HEIGHT, 1, BLACK);
 
     // int jane_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
-    // Img jane(jane_enable, 6);
+    // Image jane(jane_enable, 6);
     // jane.Draw(jane_data, JANE_FRAME_WIDTH, JANE_FRAME_HEIGHT, 1, BLACK);
