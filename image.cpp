@@ -1,6 +1,8 @@
 #include "image.h"
 
-Img::Img(){
+Img::Img()
+:num_no_draw(0)
+{
 
     //RGB values of the 22 Proteus LCDColors.h colors
     static const uint_fast32_t temp[3][22] =
@@ -21,7 +23,7 @@ Img::Img(){
 
 
 
-Img::Img(const int enabled_colors[], const int num_enabled){
+Img::Img(const int enabled_colors[], int num_enabled, const int do_not_draw[], int no_draw_num){
 
     //RGB values of the 22 Proteus LCDColors.h colors
     static const uint_fast32_t temp[3][22] =
@@ -29,6 +31,12 @@ Img::Img(const int enabled_colors[], const int num_enabled){
         {0,255,  0,255,  0,  0,102,  0,128,255,255,211,139,224,  0,  0,184,206, 21,238, 42,255},
         {0,255,  0,  0,255,  0,102,128,128,  0,255,202, 34,208,  0,128,108,235,  0,144, 42,  0}
     };
+
+    num_no_draw = no_draw_num;
+
+    for(int i = 0; i < num_no_draw; i++){
+        no_draw[i] = do_not_draw[i];
+    }
 
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 22; j++){
@@ -96,14 +104,28 @@ int Img::lookupColor(const uint_fast32_t image_array[], int x) {
 
 
 
-void Img::PlotImg(const uint_fast32_t image_array[], int width, int height, int scale, unsigned int background){
+void Img::PlotImg(const uint_fast32_t image_array[], int width, int height, int scale){
     int min,r,c;
     for(unsigned int color = 0; color < 22; color++){
 
-        //If this color is disabled, skip trying to draw it
-        if (color == background || lookup_table[0][color] == DISABLE_VALUE){
+        //If this color is totally disabled, skip trying to draw it
+        if (lookup_table[0][color] == DISABLE_VALUE){
             continue;
         }
+
+        //Also skip if drawing is disabled for this color
+        bool disabled = false;
+
+        for(int i = 0; i < num_no_draw; i++){
+            if(no_draw[i] == color){
+                disabled = true;
+            }
+        }
+        if(disabled){
+            continue;
+        }
+
+        
 
         LCD.SetDrawColor(color);
         for (r = 0; r < height; r++){
@@ -130,7 +152,7 @@ void Img::PlotImg(const uint_fast32_t image_array[], int width, int height, int 
 
 
 
-void Img::Draw(const uint_fast32_t image_array[], int width, int height, int scale, unsigned int background, bool optimize){
+void Img::Draw(const uint_fast32_t image_array[], int width, int height, int scale, bool optimize){
 
     uint_fast32_t *color_array = new uint_fast32_t[width*height];
 
@@ -142,7 +164,7 @@ void Img::Draw(const uint_fast32_t image_array[], int width, int height, int sca
         HorizLineOptimize(color_array, width, height);
     }
     
-    PlotImg(color_array, width, height, scale, background);
+    PlotImg(color_array, width, height, scale);
 }
 
 

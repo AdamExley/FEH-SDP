@@ -39,6 +39,14 @@ class Img{
          * */
         int lookup_table[3][22];
 
+        /** @brief Stores values of colors not to draw
+         * */
+        unsigned int no_draw[22];
+
+        /** @brief Stores number of colors that are not being drawn
+         * */
+        int num_no_draw;
+
         /** @brief Stores the hex string of the color being converted.
          *  @details String should occupy 8 characters.
          * */
@@ -62,14 +70,16 @@ class Img{
          *  @brief Img constructor. Enabled colors are specified.
          *  @param enabled_colors Int array corresponding to enabled colors. Use defines in FEHLCDColors.h
          *  @param num_enabled Number of values in enabled_colors
+         *  @param do_not_draw Int array that stores colors that should not be drawn
+         *  @param num_no_draw Number of values in do_not_draw
          * */
-        Img(const int enabled_colors[], const int num_enabled);
+        Img(const int enabled_colors[], int num_enabled, const int do_not_draw[], int num_no_draw);
 
         int lookupColor(const uint_fast32_t image_array[], int x);
 
-        void PlotImg(const uint_fast32_t image_array[], int width, int height, const int scale = 1, unsigned int background = BLACK);
+        void PlotImg(const uint_fast32_t image_array[], int width, int height, const int scale = 1);
 
-        void Draw(const uint_fast32_t image_array[], int width, int height, int scale = 1, unsigned int background = BLACK, bool optimize = true);
+        void Draw(const uint_fast32_t image_array[], int width, int height, int scale = 1, bool optimize = true);
 
         void HorizLineOptimize(uint_fast32_t image_color_array[], int width, int height);
 
