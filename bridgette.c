@@ -1,3 +1,6 @@
+/** @file bridgette.c
+ *  @brief Data for Bridgette's picture. Exported from piskel.com.
+ * */
 #include <stdint.h>
 
 #define BRIDGETTE_FRAME_COUNT 1

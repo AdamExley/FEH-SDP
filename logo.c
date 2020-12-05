@@ -1,3 +1,6 @@
+/** @file logo.c
+ *  @brief Data for Connect 4 logo. Exported from piskel.com.
+ * */
 #include <stdint.h>
 
 #define LOGO_FRAME_COUNT 1

@@ -1,3 +1,6 @@
+/** @file paul.c
+ *  @brief Data for Paul's picture. Exported from piskel.com.
+ * */
 #include <stdint.h>
 
 #define PAUL_FRAME_COUNT 1

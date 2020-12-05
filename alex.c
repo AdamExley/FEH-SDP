@@ -1,3 +1,7 @@
+/** @file alex.c
+ *  @brief Data for Alex's picture. Exported from piskel.com.
+ * */
+
 #include <stdint.h>
 
 #define ALEX_FRAME_COUNT 1

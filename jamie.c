@@ -1,3 +1,6 @@
+/** @file jamie.c
+ *  @brief Data for Jamie's picture. Exported from piskel.com.
+ * */
 #include <stdint.h>
 
 #define JAMIE_FRAME_COUNT 1

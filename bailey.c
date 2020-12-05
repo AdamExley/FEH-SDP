@@ -1,3 +1,6 @@
+/** @file bailey.c
+ *  @brief Data for Bailey's picture. Exported from piskel.com.
+ * */
 #include <stdint.h>
 
 #define BAILEY_FRAME_COUNT 1

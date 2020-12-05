@@ -1,3 +1,6 @@
+/** @file jane.c
+ *  @brief Data for Jane's picture. Exported from piskel.com.
+ * */
 #include <stdint.h>
 
 #define JANE_FRAME_COUNT 1
