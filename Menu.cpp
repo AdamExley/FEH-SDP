@@ -243,8 +243,9 @@ void Menu::showExit(){
     Sleep(2.0);
 
     int paul_enable[] = {BLACK, WHITE, GRAY, OLIVE, MAROON, CYAN};
-    Img paul(paul_enable, 6);
-    paul.Draw(paul_data, PAUL_FRAME_WIDTH, PAUL_FRAME_HEIGHT, 1, BLACK, 0);
+    int paul_disable[] = {BLACK, CYAN};
+    Img paul(paul_enable, 6, paul_disable, 2);
+    paul.Draw(paul_data, PAUL_FRAME_WIDTH, PAUL_FRAME_HEIGHT, 1, 0);
 
     while(true){ //Run forever
 
@@ -357,35 +358,40 @@ void Menu::displayTA(){//this function randomizes the TA image that will show up
             case 1:{ //display Bridgette
                 LCD.WriteAt("Bridgette", 210, 50);
                 int bridgette_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
-                Img bridgette(bridgette_enable, 5);
-                bridgette.Draw(bridgette_data, BRIDGETTE_FRAME_WIDTH, BRIDGETTE_FRAME_HEIGHT, 1, BLACK);
+                int bridgette_disable[] = {BLACK};
+                Img bridgette(bridgette_enable, 5, bridgette_disable, 1);
+                bridgette.Draw(bridgette_data, BRIDGETTE_FRAME_WIDTH, BRIDGETTE_FRAME_HEIGHT, 1);
                     break;
             }
             case 2:{ //display Jane
                 LCD.WriteAt("Jane", 210, 50);
                 int jane_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
-                Img jane(jane_enable, 6);
-                jane.Draw(jane_data, JANE_FRAME_WIDTH, JANE_FRAME_HEIGHT, 1, BLACK);
+                int jane_disable[] = {BLACK, MAROON};
+                Img jane(jane_enable, 6, jane_disable, 2);
+                jane.Draw(jane_data, JANE_FRAME_WIDTH, JANE_FRAME_HEIGHT, 1);
                     break;
             }
             case 3:{ //display Bailey
                 LCD.WriteAt("Bailey", 210, 50);
                 int bailey_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
-                Img bailey(bailey_enable, 5);
-                bailey.Draw(bailey_data, BAILEY_FRAME_WIDTH, BAILEY_FRAME_HEIGHT, 1, BLACK);
+                int bailey_disable[] = {BLACK};
+                Img bailey(bailey_enable, 5, bailey_disable, 1);
+                bailey.Draw(bailey_data, BAILEY_FRAME_WIDTH, BAILEY_FRAME_HEIGHT, 1);
                     break;
             }
             case 4:{ //display Alex
                 LCD.WriteAt("Alex", 210, 50);
                 int alex_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, BLUE};
-                Img alex(alex_enable, 6);
-                alex.Draw(alex_data, ALEX_FRAME_WIDTH, ALEX_FRAME_HEIGHT, 1, BLACK);
+                int alex_disable[]= {BLACK};
+                Img alex(alex_enable, 6, alex_disable, 1);
+                alex.Draw(alex_data, ALEX_FRAME_WIDTH, ALEX_FRAME_HEIGHT, 1);
                     break;
             }
             case 5:{ //display Jamie
                 LCD.WriteAt("Jamie", 210, 50);
                 int jamie_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
-                Img jamie(jamie_enable, 6);
+                int jamie_disable[] = {BLACK, BROWN};
+                Img jamie(jamie_enable, 6, jamie_disable, 2);
                 jamie.Draw(jamie_data, JAMIE_FRAME_WIDTH, JAMIE_FRAME_HEIGHT, 1, BLACK);
                     break;
             }
