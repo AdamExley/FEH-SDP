@@ -169,7 +169,7 @@ int main() {
             menu.showWinLoss(board.checkWin());
 
             //reset game
-            game.reset();
+            game.Reset();
             board.Reset(game_state);
 
             
