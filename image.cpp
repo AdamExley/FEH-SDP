@@ -64,6 +64,28 @@ Image::Image(int w, int h, const int enabled_colors[], int num_enabled, const in
 }
 
 
+
+void Image::Draw(const uint_fast32_t image_array[], int scale, bool optimize, int x_off, int y_off){
+
+    //Make a Proteus color array the same size as the hex color array
+    uint_fast32_t *color_array = new uint_fast32_t[width*height];
+
+    //Lookup every color in the hex color array, storing in Proteus color array
+    for (int i = 0; i < width * height; i++){
+        color_array[i] = lookupColor(image_array,i);
+    }
+    
+    //Optimize if enabled
+    if (optimize){
+        HorizLineOptimize(color_array);
+    }
+    
+    //Plot image
+    PlotImg(color_array, scale, x_off, y_off);
+}
+
+
+
 int Image::lookupColor(const uint_fast32_t image_array[], int x) {
     
     //Copy the hex value of the color into the convert char array
@@ -113,6 +135,55 @@ int Image::lookupColor(const uint_fast32_t image_array[], int x) {
     //Return the closest color
 	return color;
 
+}
+
+
+void Image::HorizLineOptimize(uint_fast32_t image_color_array[]){
+
+    bool cont;
+
+    //Try to optimize each color
+    for(unsigned int color = 0; color < 22; color++){
+
+        //If this color is disabled, skip trying to optimize it
+        if (lookup_table[0][color] == DISABLE_VALUE){
+            continue;
+        }
+
+        //Do for entire height
+        for(int row = 0; row < height; row++){
+
+            //Check starting at column = 0 to max column that has sufficent padding on the left
+            //Innately cannot optimize PER_SIDE first and last pixels
+            for(int column = 0; column < width - (PER_SIDE*2 + OPTIMIZE_WIDTH); column++){
+
+                //Assume it's a continuous color on either side of optimization area
+                cont = true;
+
+                //Check that left side is a single color
+                for(int j = 0; (j <= PER_SIDE) && cont; j++){
+                    if(image_color_array[column + j + row * width] != color){
+                        cont = false;
+                    }
+                }
+
+                //Check that right side is a single color
+                for(int j = 0; (j <= PER_SIDE) && cont; j++){
+                    if(image_color_array[column + j + PER_SIDE + OPTIMIZE_WIDTH + row * width] != color){
+                        cont = false;
+                    }
+                }
+                
+                //If left and right areas of PER_SIDE width are all one color, make OPTIMIZE_WIDTH
+                //Area in between them the same color
+                if(cont){
+                    for(int k = 1; k <= OPTIMIZE_WIDTH; k++){
+                        image_color_array[column + row * width + PER_SIDE + k] = color;
+                    }  
+                }
+            }
+        }
+    }
 }
 
 
@@ -173,76 +244,3 @@ void Image::PlotImg(const uint_fast32_t image_array[], int scale, int x_off, int
         }
     }
 }
-
-
-
-void Image::Draw(const uint_fast32_t image_array[], int scale, bool optimize, int x_off, int y_off){
-
-    //Make a Proteus color array the same size as the hex color array
-    uint_fast32_t *color_array = new uint_fast32_t[width*height];
-
-    //Lookup every color in the hex color array, storing in Proteus color array
-    for (int i = 0; i < width * height; i++){
-        color_array[i] = lookupColor(image_array,i);
-    }
-    
-    //Optimize if enabled
-    if (optimize){
-        HorizLineOptimize(color_array);
-    }
-    
-    //Plot image
-    PlotImg(color_array, scale, x_off, y_off);
-}
-
-
-
-void Image::HorizLineOptimize(uint_fast32_t image_color_array[]){
-
-    bool cont;
-
-    //Try to optimize each color
-    for(unsigned int color = 0; color < 22; color++){
-
-        //If this color is disabled, skip trying to optimize it
-        if (lookup_table[0][color] == DISABLE_VALUE){
-            continue;
-        }
-
-        //Do for entire height
-        for(int row = 0; row < height; row++){
-
-            //Check starting at column = 0 to max column that has sufficent padding on the left
-            //Innately cannot optimize PER_SIDE first and last pixels
-            for(int column = 0; column < width - (PER_SIDE*2 + OPTIMIZE_WIDTH); column++){
-
-                //Assume it's a continuous color on either side of optimization area
-                cont = true;
-
-                //Check that left side is a single color
-                for(int j = 0; (j <= PER_SIDE) && cont; j++){
-                    if(image_color_array[column + j + row * width] != color){
-                        cont = false;
-                    }
-                }
-
-                //Check that right side is a single color
-                for(int j = 0; (j <= PER_SIDE) && cont; j++){
-                    if(image_color_array[column + j + PER_SIDE + OPTIMIZE_WIDTH + row * width] != color){
-                        cont = false;
-                    }
-                }
-                
-                //If left and right areas of PER_SIDE width are all one color, make OPTIMIZE_WIDTH
-                //Area in between them the same color
-                if(cont){
-                    for(int k = 1; k <= OPTIMIZE_WIDTH; k++){
-                        image_color_array[column + row * width + PER_SIDE + k] = color;
-                    }  
-                }
-            }
-        }
-    }
-}
-
-
