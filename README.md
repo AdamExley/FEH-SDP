@@ -3,6 +3,8 @@ FEH Software Design Project - Connect4
 
 Pietro Lavezzo, Adam Exley, Lauren Pokonosky
 
+[Offical Website](https://u.osu.edu/sdph2020/)
+
 ## Compiling Code and Running Connect 4
 As long as you have the [Proteus Simulator](https://feh.osu.edu/simulator/) installed, compilation is simple.
 
@@ -64,16 +66,27 @@ Includes the classless function:
 - **waitForInput()** - Waits for and returns location of a touch on the screen
 
 ### Image
+- **Image()** - Constructs an Image object, sets size and options
+- **Draw()** - Converts, optimizes, and plots an image from a hexadecimal color array
+- lookupColor() - Finds the cloesest Proteus color to a hexadecimal color
+- HorizLineOptimize() - Attempts to change small discrepencies in color in lines
+- PlotImg() - Displays image on screen
 
 ### Menu 
-- **Menu()** - Constructs menu and sets menu state to be the main menu
+- **Menu()** - Constructs Menu object and sets menu state and statistics
+- **checkTouchLocation()** - Waits for a touch and execues the function corresponding to the touch location
 - **showMain()** - Draws main menu
-- **showPlay()** - Draws game selection menu
-- **showStats()** - Draws statistics screen
-- **showInstructions()** - Shows game instructions
-- **showCredits()** - Shows game credits
-- ***AISelect()***
+- showPlay() - Draws game selection menu
+- showDifficulty() - Draws singleplayer difficulty selection screen
+- showStats() - Draws statistics screen
+- showInstructions() - Shows game instructions
+- showCredits() - Shows game credits
+- drawReturnExit() - Draws the return and exit buttons present on most menus
+- **getDifficulty()** - Returns selected difficulty
+- **getSingleplayer()** - Returns if singleplayer mode was selected
+- **updateStats()** - Updates stored statistics
+- **showWinLoss()** - Shows the win/loss/tie screen
+- displayTA() - Draws a random TA for win/loss/tie screens
+- **showExit()** - Shows the game exit screen forever
 
-### Class-less Functions
-- **waitForInput()** - Waits for and returns location of a touch on the screen
 
