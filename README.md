@@ -3,7 +3,7 @@ FEH Software Design Project - Connect4
 
 Pietro Lavezzo, Adam Exley, Lauren Pokonosky
 
-Additional documentation cen be found on the [offical website](https://u.osu.edu/sdph2020/)
+Additional documentation can be found on the [offical website](https://u.osu.edu/sdph2020/)
 
 ## Compiling Code and Running Connect 4
 As long as you have the [Proteus Simulator](https://feh.osu.edu/simulator/) installed, compilation is simple.
