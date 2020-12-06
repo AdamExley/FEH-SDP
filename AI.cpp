@@ -23,8 +23,6 @@ int AI::pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]){
     if(!difficulty){
         return easyMove();
     }
-    double temp = TimeNow();
-
 
     //Hard Difficulty from here on
 
