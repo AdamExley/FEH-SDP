@@ -17,7 +17,7 @@
 //https://www.wikihow.com/Win-at-Connect-4
 
 
-/** @brief Computer controlled AI that has easy and hard difficulties.
+/** @brief Computer controlled AI that has easy and hard difficulties. Makes decisions to output a desired move.
  *  @details Easy difficulty is a mere random number generator.
  *  Hard difficulty does analysis on 1 future move using arbitrary scores for certain conditions.
  * */
