@@ -6,28 +6,32 @@
 #include "Board.h"
 
 Board::Board(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
+	//Adam Exley
 
-
+	//Sets board_state to all 0's
 	for(int r = 0; r < BOARD_ROWS; r++){
 		for (int c = 0; c < BOARD_COLUMNS; c++){
 			board_state[r][c] = 0;
 		}
 	}
 
+	//sends board_state to specified array
 	pushGameState(game_state);
 
 }
 
 
 void Board::Reset(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
+	//Adam Exley
 
-
+	//Sets board_state to all 0's
 	for(int r = 0; r < BOARD_ROWS; r++){
 		for (int c = 0; c < BOARD_COLUMNS; c++){
 			board_state[r][c] = 0;
 		}
 	}
-
+	
+	//sends board_state to specified array
 	pushGameState(game_state);
 
 }

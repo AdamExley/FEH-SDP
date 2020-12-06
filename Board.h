@@ -17,7 +17,8 @@
 
 
 /**
- * @brief Stores and dislays game state 
+ * @brief Stores and dislays game state. 
+ * Responsible for keeping track of, and updating, where chips are located.
  * */
 class Board {
 
