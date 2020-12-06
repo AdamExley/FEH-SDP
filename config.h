@@ -1,3 +1,4 @@
+#pragma once
 /** @file config.h
  *  @brief Contains global constants that can be modified to change program behavior.
  * */
