@@ -52,10 +52,16 @@ Brief descriptions provided; see documentation or code for more information.
 - pushGameState() -  Exports internal game state to external array
 - **checkWin()** - Checks for a win or tie
 
-
-
-
 ### Game
+- **Game()** - Constructs object, sets current player to 1
+- **Reset()** - Resets current player
+- **setSingleplayer()** - Sets if game is single or multiplayer
+- **getCurrentPlayer()** - Returns current player ID
+- **isPlayerTurn()** - Returns if it is a human's turn
+- **switchPlayer()** - Switches current player
+
+Includes the classless function:
+- **waitForInput()** - Waits for and returns location of a touch on the screen
 
 ### Image
 
@@ -69,5 +75,5 @@ Brief descriptions provided; see documentation or code for more information.
 - ***AISelect()***
 
 ### Class-less Functions
-- **waitForInput(** int *x, int *y ***OR*** int &x, int &y **)** - Waits for and returns location of a touch on the screen
+- **waitForInput()** - Waits for and returns location of a touch on the screen
 
