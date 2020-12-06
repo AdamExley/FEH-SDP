@@ -1,5 +1,4 @@
 #pragma once
-
 /** @file AI.h
  *  @brief Contains declarations of AI class functions.
  * */
