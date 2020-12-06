@@ -1,5 +1,4 @@
 #pragma once
-
 /** @file Menu.h
  *  @brief Contains the class definition and prototypes for the Menu class.
  * */

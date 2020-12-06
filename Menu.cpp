@@ -1,8 +1,7 @@
 /** @file Menu.cpp
  *  @brief Contains all the definitions for the Menu class.
- * Declarations are in Menu.h.
+ *  Declarations are in Menu.h.
  * */
-
 #include "Menu.h"
 
 
@@ -209,7 +208,7 @@ void Menu::showStats(){
     
         LCD.WriteAt("Fastest Win:", 35, 110);
             LCD.WriteAt(fastest_win, 140, 110);
-            LCD.WriteAt("   Moves", 155, 110);
+            LCD.WriteAt("    Moves", 155, 110);
     
     LCD.WriteAt("2 Player:", 10, 140);
         LCD.WriteAt("Player 1 Wins:", 35, 160);
