@@ -8,7 +8,7 @@ Pietro Lavezzo, Adam Exley, Lauren Pokonosky
 ## Compiling Code and Running Connect 4
 As long as you have the [Proteus Simulator](https://feh.osu.edu/simulator/) installed, compilation is simple.
 
-1. Download the code as a **.zip** file (the green code button)
+1. Download the code as a **.zip** file from the project [GitHub page](https://github.com/AdamExley/FEH-SDP/releases) .
 2. Unzip this file (usually right click -> Extract All/ Unzip)
 3. Open the resulting folder in Visual Studio
 4. Run **mingw32-make** in the terminal
