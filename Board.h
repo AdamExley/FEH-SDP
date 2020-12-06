@@ -1,9 +1,7 @@
 #pragma once //don't include multiple copies in final compilation
-/**
- * @file Board.h
- * @brief Contains the class definition and prototypes for the Board class
+/** @file Board.h
+ *  @brief Contains the class definition and prototypes for the Board class
  * */
-
 #include "FEHLCD.h"
 #include "FEHUtility.h"
 #include "FEHRandom.h"
@@ -12,8 +10,6 @@
 
 #define _USE_MATH_DEFINES
 #include <cmath>
-
-
 
 
 /**

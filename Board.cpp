@@ -2,7 +2,6 @@
  * This contains all the definitions for the Board class.
  * Declarations are in Board.h
  * */
-
 #include "Board.h"
 
 Board::Board(int game_state[BOARD_ROWS][BOARD_COLUMNS]){
