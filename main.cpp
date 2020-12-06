@@ -2,7 +2,7 @@
 /* FEH SDP                                        */
 /* Adam Exley, Lauren Pokonosky, Pietro Lavezzo   */
 /* Connect 4                                      */
-/* Clingan 8:00     12/04/20                      */
+/* Clingan 8:00     12/06/20                      */
 /* Ver 1.0                                        */
 /**************************************************/
 
@@ -19,19 +19,18 @@
 #include "Game.h"
 #include "image.h"
 
-//Include logo data
+//Include logo image data
 #include "logo.c"
 
 
-/*************************************************** Main *****************/
-
-/**
- * Entry point to the application.
- * 
- * @returns status code of program exit
- */
-
+/** @authors Adam Exley, Lauren Pokonosky, Pietro Lavezzo
+ *  @brief The main loop for the game.
+ *  @details Displays game logo before initiating menu. Menu runs until a game mode is selected
+ *  Board is then drawn and game is played before a win/loss/tie screen is shown.
+ *  Game is then reset to be played again.
+ * */
 int main() {
+    //Written by Adam Exley, Lauren Pokonosky, and Pietro Lavezzo
 
     /** Shared game state array. Is updated by the Board class.
      * */
