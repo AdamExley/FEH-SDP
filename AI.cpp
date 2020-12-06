@@ -138,16 +138,7 @@ int AI::pickMove(const int game_state_array[BOARD_ROWS][BOARD_COLUMNS]){
         }
     }
 
-
-//************************************************ DELETE
-    LCD.WriteAt(TimeNow()-temp, 50, 225);
-
-    Sleep(2.0);
-//*************************************************
-
-
     return best_move;
-
 }
 
 
