@@ -1,4 +1,8 @@
-#include "image.h"
+#include "Image.h"
+/** @file Image.cpp
+ *  @brief contains Image class defintions
+ * 
+ * */
 
 Image::Image(int w, int h)
 :width(w), height(h), num_no_draw(0)

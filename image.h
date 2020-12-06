@@ -1,28 +1,15 @@
 #pragma once
+/** @file Image.h
+ *  @brief Contains declarations of Image class functions.
+ * */
 
 #include <stdint.h>
 #include "FEHLCD.h"
+#include "config.h"
 #include <cstdlib>
 #include <cstdio>
 #include <cmath>
-#include "FEHSD.h"
 
-
-/** Arbitrary value to set a color's RGB values to when disabled.
- * */
-#define DISABLE_VALUE 4000
-
-/** @brief Optimization Constant.
- *  @details The number of pixels required padding a region of pixels in order to
- *  replace the region with the surrounding color. 
- * */
-#define PER_SIDE 6
-
-/** @brief Optimization Constant.
- *  @details The number of pixels in a row to attempt to change to another color if
- *  appropriately surounded by other pixels of consatnt color.
- * */
-#define OPTIMIZE_WIDTH 3
 
 /** @author Adam Exley
  *  @brief This class displays images exported from https://www.piskelapp.com
@@ -83,6 +70,19 @@ class Image{
          * */
         Image(int w, int h, const int enabled_colors[], int num_enabled, const int do_not_draw[], int num_no_draw);
 
+
+        /** @author Adam Exley
+         *  @brief Plots a given image with a certain scale, optimization, and coordinate offset
+         *  @details Converts hexadecimal color array before optionally optimizing it and then displaying it on screen
+         *  @param image_array Source array of image to plot
+         *  @param scale (Optional) Default 1. Factor to scale image by. Integers only. 
+         *  @param optimize (Optional) Default True. Whether to apply horizontal line optimization to the image.
+         *  @param x_off (Optional) Default 0. X-coordinate offset of top left corner of image.
+         *  @param y_off (Optional) Default 0. Y-coordinate offset of top left corner of image.
+         * */
+        void Draw(const uint_fast32_t image_array[], int scale = 1, bool optimize = true, int x_off = 0, int y_off = 0);
+
+    private:
         /** @author Adam Exley
          *  @brief Finds the closest proteus color to a specified color in an array
          *  @details Splits the hex color value in the array into red green and blue components.
@@ -94,43 +94,31 @@ class Image{
         int lookupColor(const uint_fast32_t image_array[], int x);
 
         /** @author Adam Exley
-         *  @brief Plots an array of Proteus-compatible colors on the screen
-         * 
-         * 
+         *  @brief Optimizes a proteus color array for line plotting
+         *  @details Called by Draw() if optimization is enabled.
+         *  Due to PlotImg() using horizontal lines to plot colors for performance, additional
+         *  speed can be gained by lengthening the lines that are drawn. Uses parameters found in config.h
+         *  to change small sections of colors surrounded by a uniform color in order to create longer lines.
+         *  Reduces visual fidelity. Should only be used on images, not graphics that are to be rendered as 
+         *  graphics have less noise and the approach taken by this function will liekly cause large amount of artifacting.
+         *  Could be made more efficient by consdiering the order colors are plotted and which colors are enabled.
+         *  @todo Consider what colors will be plotted over each color to increase line length and thus performace.
+         *  @param image_color_array Array to optimize
          * */
-        void PlotImg(const uint_fast32_t image_array[], const int scale = 1, int x_off = 0, int y_off = 0);
-
-        void Draw(const uint_fast32_t image_array[], int scale = 1, bool optimize = true, int x_off = 0, int y_off = 0);
-
         void HorizLineOptimize(uint_fast32_t image_color_array[]);
 
-
-
-
+        /** @author Adam Exley
+         *  @brief Plots an array of Proteus-compatible colors on the screen
+         *  @details Must be converted by lookupColor first. Called by Draw().
+         *  Plots in horizontal lines of like color to increase speed. This is more efficent than plotting
+         *  pixel-by-pixel, but less efficent than plotting the largest possible rectangles or circles of each color.
+         *  @todo Convert array into list of rectangles/circles of maximum area to plot instead
+         *  @param image_array The array of Proteus color ID's to plot
+         *  @param scale The factor to enlarge the image by
+         *  @param x_off The x-offset of the image on the screen
+         *  @param y_off The y-offset of the image on the screen
+         * */
+        void PlotImg(const uint_fast32_t image_array[], const int scale = 1, int x_off = 0, int y_off = 0);
 };
 
 
-
-    // int bailey_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
-    // Image bailey(bailey_enable, 5);
-    // bailey.Draw(bailey_data, BAILEY_FRAME_WIDTH, BAILEY_FRAME_HEIGHT, 1, BLACK);
-
-    // int bridgette_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN};
-    // Image bridgette(bridgette_enable, 5);
-    // bridgette.Draw(bridgette_data, BRIDGETTE_FRAME_WIDTH, BRIDGETTE_FRAME_HEIGHT, 1, BLACK);
-
-    // int alex_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, BLUE};
-    // Image alex(alex_enable, 6);
-    // alex.Draw(alex_data, ALEX_FRAME_WIDTH, ALEX_FRAME_HEIGHT, 1, BLACK);
-
-    // int paul_enable[] = {BLACK, WHITE, GRAY, OLIVE, MAROON, CYAN};
-    // Image paul(paul_enable, 6);
-    // paul.Draw(paul_data, PAUL_FRAME_WIDTH, PAUL_FRAME_HEIGHT, 1, BLACK, 0);
-
-    // int jamie_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
-    // Image jamie(jamie_enable, 6);
-    // jamie.Draw(jamie_data, JAMIE_FRAME_WIDTH, JAMIE_FRAME_HEIGHT, 1, BLACK);
-
-    // int jane_enable[] = {BLACK, WHITE, GRAY, OLIVE, BROWN, MAROON};
-    // Image jane(jane_enable, 6);
-    // jane.Draw(jane_data, JANE_FRAME_WIDTH, JANE_FRAME_HEIGHT, 1, BLACK);

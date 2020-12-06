@@ -28,12 +28,28 @@
 
 //AI Scoring Options
 #define CENTER_WEIGHT 2 //Value to weight moves towards center of board
-
-#define ONE_PLAYABLE 5
+#define ONE_PLAYABLE 5  //Value to give a single chip that can be played to 4
 #define TWO_IN_A_ROW 15 //Value to give combonations of 2 in a row
-
-//Value to give combonations of 3 in a row above base. Base value will be 2 * TWO_IN_A_ROW
+    //Value to give combonations of 3 in a row above base. Base value will be 2 * TWO_IN_A_ROW
 #define THREE_IN_A_ROW 45 
-
-//Value to give combonations of 4 in a row above base. Base value will be 2 * THREE_IN_A_ROW + 3 * TWO_IN_A_ROW
+    //Value to give combonations of 4 in a row above base. Base value will be 2 * THREE_IN_A_ROW + 3 * TWO_IN_A_ROW
 #define FOUR_IN_A_ROW 100000 
+
+
+//Image Options
+
+/** Arbitrary value to set a color's RGB values to when disabled.
+ * */
+#define DISABLE_VALUE 4000
+
+/** @brief Optimization Constant.
+ *  @details The number of pixels required padding a region of pixels in order to
+ *  replace the region with the surrounding color. 
+ * */
+#define PER_SIDE 6
+
+/** @brief Optimization Constant.
+ *  @details The number of pixels in a row to attempt to change to another color if
+ *  appropriately surounded by other pixels of consatnt color.
+ * */
+#define OPTIMIZE_WIDTH 3
