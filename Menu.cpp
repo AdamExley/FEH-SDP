@@ -163,6 +163,32 @@ void Menu::showPlay(){
 
 }
 
+
+void Menu::showDifficulty(){
+    
+    menu_state = 6; //Set menu_state to difficulty selection
+    LCD.Clear();
+
+    LCD.SetDrawColor(BUTTON_COLOR);
+
+    //Easy Rectangle
+    LCD.FillRectangle(40,110,110,50);
+
+    //Hard Rectangle
+    LCD.FillRectangle(185,110,110,50);
+
+    //Writing button names
+    LCD.SetFontColor(TEXT_COLOR);
+    LCD.WriteAt("Choose a game difficulty:", 70, 20);
+    LCD.WriteAt("Easy", 75, 125);
+    LCD.WriteAt("Hard", 220, 125);
+    
+    //Draws Return and Exit buttons 
+    drawReturnExit();
+}
+
+
+
 void Menu::showStats(){
     //Lauren Pokonosky
 
@@ -196,21 +222,7 @@ void Menu::showStats(){
     drawReturnExit();
 }
 
-void Menu::showCredits(){
-    //Lauren Pokonosky
 
-    menu_state = 4; //Set menu_state to credits menu
-
-    LCD.Clear();
-
-    LCD.WriteAt("Game Created By:", 0, 0);
-    LCD.WriteAt("Pietro Lavezzo", 0, 30);
-    LCD.WriteAt("Adam Exley", 0, 60);
-    LCD.WriteAt("Lauren Pokonosky", 0, 90);
-  
-    //Draws Return and Exit buttons 
-    drawReturnExit();
-}
 
 void Menu::showInstructions(){
     //Lauren Pokonosky
@@ -232,25 +244,24 @@ void Menu::showInstructions(){
     drawReturnExit();
 }
 
-void Menu::showExit(){
+
+
+void Menu::showCredits(){
     //Lauren Pokonosky
 
-    menu_state = 5; //Set menu_state to exit screen
-    
+    menu_state = 4; //Set menu_state to credits menu
+
     LCD.Clear();
-    LCD.WriteAt("Paul thanks you", 190, 100);
-    LCD.WriteAt("for playing!", 190, 120);
-    Sleep(2.0);
 
-    int paul_enable[] = {BLACK, WHITE, GRAY, OLIVE, MAROON, CYAN};
-    int paul_disable[] = {BLACK, CYAN};
-    Image paul(PAUL_FRAME_WIDTH, PAUL_FRAME_HEIGHT, paul_enable, 6, paul_disable, 2);
-    paul.Draw(paul_data, 1, false);
-
-    while(true){ //Run forever
-
-    }
+    LCD.WriteAt("Game Created By:", 0, 0);
+    LCD.WriteAt("Pietro Lavezzo", 0, 30);
+    LCD.WriteAt("Adam Exley", 0, 60);
+    LCD.WriteAt("Lauren Pokonosky", 0, 90);
+  
+    //Draws Return and Exit buttons 
+    drawReturnExit();
 }
+
 
 
 void Menu::drawReturnExit(){
@@ -267,37 +278,43 @@ void Menu::drawReturnExit(){
     LCD.WriteAt("Exit Game", 215, 213);
 }
 
-void Menu::showDifficulty(){
-    
-    menu_state = 6; //Set menu_state to difficulty selection
-    LCD.Clear();
-
-    LCD.SetDrawColor(BUTTON_COLOR);
-
-    //Easy Rectangle
-    LCD.FillRectangle(40,110,110,50);
-
-    //Hard Rectangle
-    LCD.FillRectangle(185,110,110,50);
-
-    //Writing button names
-    LCD.SetFontColor(TEXT_COLOR);
-    LCD.WriteAt("Choose a game difficulty:", 70, 20);
-    LCD.WriteAt("Easy", 75, 125);
-    LCD.WriteAt("Hard", 220, 125);
-    
-    //Draws Return and Exit buttons 
-    drawReturnExit();
-}
-
 
 bool Menu::getDifficulty(){
+    //Adam Exley
     return difficulty;
 }
 
 bool Menu::getSingleplayer(){
+    //Adam Exley
     return singleplayer;
 }
+
+
+
+void Menu::updateStats(int winner, int turns){
+    //Lauren Pokonosky
+
+    //Updates game statistics
+
+    if(turns < fastest_win){
+        fastest_win = turns;
+    }
+
+    if (singleplayer == true && winner == 1){ //single player win
+        single_player_wins = single_player_wins + 1;
+    }
+    else if (singleplayer == true && winner == 2){ //single player loss
+        AI_wins = AI_wins + 1;
+    }
+    else if (singleplayer != true && winner == 1){ //multi player player 1 win
+        multi_player_1_wins = multi_player_1_wins + 1;
+    }
+    else if (singleplayer != true && winner == 2){ //multi player player 2 win
+        multi_player_2_wins = multi_player_2_wins + 1;
+    }
+}
+
+
 
 
 
@@ -356,6 +373,8 @@ void Menu::showWinLoss(int winner){
 }
 
 
+
+
 void Menu::displayTA(){//this function randomizes the TA image that will show up for the win/loss screen
     //Lauren Pokonosky
 
@@ -408,26 +427,23 @@ void Menu::displayTA(){//this function randomizes the TA image that will show up
 
 
 
-void Menu::updateStats(int winner, int turns){
+
+void Menu::showExit(){
     //Lauren Pokonosky
 
-    //Updates game statistics
+    menu_state = 5; //Set menu_state to exit screen
+    
+    LCD.Clear();
+    LCD.WriteAt("Paul thanks you", 190, 100);
+    LCD.WriteAt("for playing!", 190, 120);
+    Sleep(2.0);
 
-    if(turns < fastest_win){
-        fastest_win = turns;
-    }
+    int paul_enable[] = {BLACK, WHITE, GRAY, OLIVE, MAROON, CYAN};
+    int paul_disable[] = {BLACK, CYAN};
+    Image paul(PAUL_FRAME_WIDTH, PAUL_FRAME_HEIGHT, paul_enable, 6, paul_disable, 2);
+    paul.Draw(paul_data, 1, false);
 
-    if (singleplayer == true && winner == 1){ //single player win
-        single_player_wins = single_player_wins + 1;
-    }
-    else if (singleplayer == true && winner == 2){ //single player loss
-        AI_wins = AI_wins + 1;
-    }
-    else if (singleplayer != true && winner == 1){ //multi player player 1 win
-        multi_player_1_wins = multi_player_1_wins + 1;
-    }
-    else if (singleplayer != true && winner == 2){ //multi player player 2 win
-        multi_player_2_wins = multi_player_2_wins + 1;
-    }
+    while(true){ //Run forever
 
+    }
 }
