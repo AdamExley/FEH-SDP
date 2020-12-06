@@ -2,7 +2,6 @@
 /** @file Game.h
  *  @brief Contains declarations of functions in use throughout the entire game and the game class
  * */
-
 #include "FEHLCD.h"
 #include "FEHUtility.h"
 #include "FEHRandom.h"
@@ -61,7 +60,7 @@ class Game{
 };
 
 
-//Non-class functions included to be used.
+//Non-class functions included to be used throughout program.
 
 /**
  * @brief Makes program idle until a touch is detected
