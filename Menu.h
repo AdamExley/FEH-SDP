@@ -70,96 +70,96 @@ class Menu{
 
   public:
 
-    /** @author Adam Exley
-     *  @brief Constructs a Menu object. Sets initial values for stats/states 
+    /** @brief Constructs a Menu object. Sets initial values for stats/states 
+     *  @author Adam Exley
      * */
     Menu();
 
 
-    /** @authors Adam Exley, Lauren Pokonosky
-     *  @brief Executes the menu function associated with a certain touch location
+    /** @brief Executes the menu function associated with a certain touch location
      *  @param x X-location of touch
      *  @param y Y-location of touch
      *  @returns True/false corresponding as to if the menu selection should continue looping
+     *  @authors Adam Exley, Lauren Pokonosky
      * */
     bool checkTouchLocation(int x, int y);
 
 
-    /** @author Lauren Pokonosky
-     *  @brief Displays main menu
+    /** @brief Displays main menu
+     *  @author Lauren Pokonosky
      * */
     void showMain();
 
   private:
-    /** @author Lauren Pokonosky
-     *  @brief Displays game selection menu. Allows seldction of Single/Multiplayer
+    /** @brief Displays game selection menu. Allows seldction of Single/Multiplayer
+     *  @author Lauren Pokonosky
      * */
     void showPlay();
 
-    /** @author Lauren Pokonosky
-     *  @brief Displays the option of choosing Easy or Hard gameplay in single player mode
+    /** @brief Displays the option of choosing Easy or Hard gameplay in single player mode
+     *  @author Lauren Pokonosky
      * */
     void showDifficulty();
 
-    /** @author Lauren Pokonosky
-     *  @brief Displays statistics on screen
+    /** @brief Displays statistics on screen
+     *  @author Lauren Pokonosky
      * */
     void showStats();
 
-    /** @author Lauren Pokonosky
-     *  @brief Displays game instructions
+    /** @brief Displays game instructions
+     *  @author Lauren Pokonosky
      * */
     void showInstructions();
 
-    /** @author Lauren Pokonosky
-     *  @brief Displays the credits for the game
+    /** @brief Displays the credits for the game
+     *  @author Lauren Pokonosky
      * */
     void showCredits();
 
-    /** @author Lauren Pokonosky
-     *  @brief Draws return and exit buttons
+    /** @brief Draws return and exit buttons
      *  @details Called by various menu display functions
+     *  @author Lauren Pokonosky
      * */
     void drawReturnExit();
 
   public:
 
-    /** @author Adam Exley
-     *  @returns Value of difficulty variable
+    /** @returns Value of difficulty variable
+     *  @author Adam Exley
      * */
     bool getDifficulty();
 
-    /** @author Adam Exley
-     *  @returns Value of singleplayer variable
+    /** @returns Value of singleplayer variable
+     *  @author Adam Exley
      * */
     bool getSingleplayer();
     
-    /** @author Lauren Pokonosky
-     *  @brief Updates the stats stored in the menu object
+    /** @brief Updates the stats stored in the menu object
      *  @param winner Integer correspondng to winning player (1 or 2)
+     *  @author Lauren Pokonosky
      * */
     void updateStats(int winner, int turns);
 
-    /** @author Lauren Pokonosky
-     *  @brief Shows win or loss screens with messages and a random TA.
+    /** @brief Shows win or loss screens with messages and a random TA.
      *  @details 
      *  @param winner Integer correspondng to winning player (1 or 2)
+     *  @author Lauren Pokonosky
      * */
     void showWinLoss(int winner);
 
   private:
 
-    /** @author Lauren Pokonosky
-     *  @brief Displays a random TA image.
+    /** @brief Displays a random TA image.
      *  @details Picks a random integer and then uses Img class to display a TA image.
      *  Called by showWinLoss().
+     *  @author Lauren Pokonosky
      * */
     void displayTA();
 
   public:
 
-    /** @author Lauren Pokonosky
-     *  @brief Displays an exit screen thanking the user for playing. Runs forever
+    /** @brief Displays an exit screen thanking the user for playing. Runs forever
+     *  @author Lauren Pokonosky
      * */
     void showExit();
 

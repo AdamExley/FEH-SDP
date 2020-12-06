@@ -26,35 +26,35 @@ class Game{
 
     public:
 
-        /** @author Adam Exley
-         *  @brief Constructs, sets current player to 1
+        /** @brief Constructs, sets current player to 1
+         *  @author Adam Exley
          * */
         Game();
 
-        /** @author Pietro Lavezzo
-         *  @brief Resets current player to 1
+        /** @brief Resets current player to 1
+         *  @author Pietro Lavezzo
          * */
         void Reset();
 
-        /** @author Pietro Lavezzo
-         *  @brief Sets singleplayer status
+        /** @brief Sets singleplayer status
+         *  @author Pietro Lavezzo
          * */
         void setSingleplayer(bool single);
 
-        /** @author Pietro Lavezzo
-         *  @brief Gets current player
+        /** @brief Gets current player
          *  @returns Current player ID
+         *  @author Pietro Lavezzo
          * */
         int getCurrentPlayer();
 
-        /** @author Pietro Lavezzo
-         *  @brief Returns if it is currently a huamn player's turn
+        /** @brief Returns if it is currently a huamn player's turn
          *  @returns True/False as to if it is a human's turn
+         *  @author Pietro Lavezzo
          * */
         bool isPlayerTurn();
 
-        /** @author Adam Exley
-         *  @brief switches the current player
+        /** @brief switches the current player
+         *  @author Adam Exley
          * */
         void switchPlayer();
 };
@@ -62,17 +62,16 @@ class Game{
 
 //Non-class functions included to be used throughout program.
 
-/**
- * @brief Makes program idle until a touch is detected
- * @param x address to store x coord of touch
- * @param y address to store y coord of touch
- * @returns Nothing
+/** @brief Makes program idle until a touch is detected
+ *  @param x address to store x coord of touch
+ *  @param y address to store y coord of touch
+ *  @author Adam Exley
  * */
 void waitForInput(int *x, int *y);
-/** 
- * @brief Makes program idle until a touch is detected
- * @param x variable to store x coord of touch
- * @param y variable to store y coord of touch
- * @returns Nothing
+
+/** @brief Makes program idle until a touch is detected
+ *  @param x variable to store x coord of touch
+ *  @param y variable to store y coord of touch
+ *  @author Adam Exley
  * */
 void waitForInput(int &x, int &y);

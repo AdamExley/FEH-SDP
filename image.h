@@ -51,49 +51,48 @@ class Image{
         int red, green, blue;
 
     public:
-        /** @author Adam Exley
-         *  @brief Default Image constructor. Enables all 22 LCD Colors for render and drawing.
+        /** @brief Default Image constructor. Enables all 22 LCD Colors for render and drawing.
          *  @param w Image width in pixels
          *  @param h Image height in pixlels
+         *  @author Adam Exley
          * */
         Image(int w, int h);
 
-        /** @author Adam Exley
-         *  @brief Image constructor. Enabled colors are specified.
+        /** @brief Image constructor. Enabled colors are specified.
          *  @param w Image width in pixels
          *  @param h Image height in pixels
          *  @param enabled_colors Int array corresponding to enabled colors. Use defines in FEHLCDColors.h
          *  @param num_enabled Number of values in enabled_colors
          *  @param do_not_draw Int array that stores colors that should be rendered, but should not be drawn
          *  @param num_no_draw Number of values in do_not_draw
+         *  @author Adam Exley
          * */
         Image(int w, int h, const int enabled_colors[], int num_enabled, const int do_not_draw[], int num_no_draw);
 
 
-        /** @author Adam Exley
-         *  @brief Plots a given image with a certain scale, optimization, and coordinate offset
+        /** @brief Plots a given image with a certain scale, optimization, and coordinate offset
          *  @details Converts hexadecimal color array before optionally optimizing it and then displaying it on screen
          *  @param image_array Source array of image to plot
          *  @param scale (Optional) Default 1. Factor to scale image by. Integers only. 
          *  @param optimize (Optional) Default True. Whether to apply horizontal line optimization to the image.
          *  @param x_off (Optional) Default 0. X-coordinate offset of top left corner of image.
          *  @param y_off (Optional) Default 0. Y-coordinate offset of top left corner of image.
+         *  @author Adam Exley
          * */
         void Draw(const uint_fast32_t image_array[], int scale = 1, bool optimize = true, int x_off = 0, int y_off = 0);
 
     private:
-        /** @author Adam Exley
-         *  @brief Finds the closest proteus color to a specified color in an array
+        /** @brief Finds the closest proteus color to a specified color in an array
          *  @details Splits the hex color value in the array into red green and blue components.
          *  Then searches the Proteus lookup table, finding the color that hsa the closest R G and B components.
          *  @param image_array The array with hex color values to look up
          *  @param x The index of the color to look up
          *  @returns The proteus ID of the closest color that is enabled
+         *  @author Adam Exley
          * */
         int lookupColor(const uint_fast32_t image_array[], int x);
 
-        /** @author Adam Exley
-         *  @brief Optimizes a proteus color array for line plotting
+        /** @brief Optimizes a proteus color array for line plotting
          *  @details Called by Draw() if optimization is enabled.
          *  Due to PlotImg() using horizontal lines to plot colors for performance, additional
          *  speed can be gained by lengthening the lines that are drawn. Uses parameters found in config.h
@@ -103,11 +102,11 @@ class Image{
          *  Could be made more efficient by consdiering the order colors are plotted and which colors are enabled.
          *  @todo Consider what colors will be plotted over each color to increase line length and thus performace.
          *  @param image_color_array Array to optimize
+         *  @author Adam Exley
          * */
         void HorizLineOptimize(uint_fast32_t image_color_array[]);
 
-        /** @author Adam Exley
-         *  @brief Plots an array of Proteus-compatible colors on the screen
+        /** @brief Plots an array of Proteus-compatible colors on the screen
          *  @details Must be converted by lookupColor first. Called by Draw().
          *  Plots in horizontal lines of like color to increase speed. This is more efficent than plotting
          *  pixel-by-pixel, but less efficent than plotting the largest possible rectangles or circles of each color.
@@ -116,6 +115,7 @@ class Image{
          *  @param scale The factor to enlarge the image by
          *  @param x_off The x-offset of the image on the screen
          *  @param y_off The y-offset of the image on the screen
+         *  @author Adam Exley
          * */
         void PlotImg(const uint_fast32_t image_array[], const int scale = 1, int x_off = 0, int y_off = 0);
 };
