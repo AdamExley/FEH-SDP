@@ -2,7 +2,6 @@
 /** @file Image.h
  *  @brief Contains declarations of Image class functions.
  * */
-
 #include <stdint.h>
 #include "FEHLCD.h"
 #include "config.h"
